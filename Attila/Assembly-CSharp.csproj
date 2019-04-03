@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\General\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\General\ShowColliders.cs" />
     <Compile Include="Assets\Scripts\GlobalInfo.cs" />
+    <Compile Include="Assets\Scripts\Levels\Grid.cs" />
     <Compile Include="Assets\Scripts\Levels\Levels.cs" />
     <Compile Include="Assets\Scripts\LoadConfig.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
