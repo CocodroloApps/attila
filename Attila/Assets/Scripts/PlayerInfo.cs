@@ -49,7 +49,7 @@ public class IntialConditions
         troops = 1000;
         weapons = 2000;
         gold = 10000;
-}
+    }
 }
 
 

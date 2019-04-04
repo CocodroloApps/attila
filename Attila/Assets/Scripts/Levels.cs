@@ -24,7 +24,34 @@ public class Stage
 {
     public int version;
     public int numStage;
-    public List<StageCell> gridStage;
+    public string nameStage;
+    public string fileName;
+    public List<StageCell> gridStage = new List<StageCell>();
+
+    public Stage()
+    {        
+        DefaultCells cond = new DefaultCells();
+        version = cond.version;
+        numStage = 0;
+        nameStage = "";
+        fileName = "";        
+        for (int i = 0; i < 64; i++)
+        {
+            StageCell defaultCell = new StageCell();
+            defaultCell.x = 0;
+            defaultCell.y = 0;
+            defaultCell.listPos = 0;
+            defaultCell.type = cond.type;
+            defaultCell.isFinal = false;
+            defaultCell.isObjective = false;
+            defaultCell.water = cond.water;
+            defaultCell.food = cond.food;
+            defaultCell.troops = cond.troops;
+            defaultCell.weapons = cond.weapons;
+            defaultCell.gold = cond.gold;
+            gridStage.Add(defaultCell);
+        }
+    }
 }
 
 public class Levels : MonoBehaviour

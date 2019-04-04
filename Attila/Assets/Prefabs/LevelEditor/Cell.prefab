@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4171987941431048638}
   - component: {fileID: 8032483744076805698}
+  - component: {fileID: 8723859883828666077}
   m_Layer: 0
   m_Name: Cell
-  m_TagString: Untagged
+  m_TagString: EditorCell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,3 +80,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8723859883828666077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512631152633993596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73911b81b03a5f9448ee22fc41b25f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info:
+    x: 7
+    y: 7
+    listPos: 63
+    type: 0
+    isFinal: 0
+    isObjective: 0
+    water: 0
+    food: 0
+    troops: 0
+    weapons: 0
+    gold: 0

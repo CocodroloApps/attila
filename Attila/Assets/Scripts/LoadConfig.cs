@@ -32,7 +32,7 @@ public class LoadConfig : MonoBehaviour {
             saveData.gold = cond.gold;
 
             //Save data from PlayerInfo to a file named players
-            DataSaver.saveData(saveData, configFileName);
+            DataSaver.saveData(saveData, configFileName,"txt");
 
             GlobalInfo.gameFirstTime = true;
             GlobalInfo.playFirstTime = true;
@@ -53,7 +53,7 @@ public class LoadConfig : MonoBehaviour {
             GlobalInfo.gold = cond.gold;
         } else
         {
-            PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(configFileName);
+            PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(configFileName,"txt");
             if (loadedData == null)
             {
                 return;

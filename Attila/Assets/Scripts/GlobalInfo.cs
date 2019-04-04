@@ -25,5 +25,7 @@ public class GlobalInfo : MonoBehaviour
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente
     public static int stageVersion;
+    public static string stageName;
+    public static int objectivesCompleted;
     public static List<StageCell> gridStage = new List<StageCell>();
 }

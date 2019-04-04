@@ -6,10 +6,17 @@ using System.Text;
 public class DataSaver
 {
     //Save Data
-    public static void saveData<T>(T dataToSave, string dataFileName)
+    public static void saveData<T>(T dataToSave, string dataFileName, string ext)
     {
         string tempPath = Path.Combine(Application.persistentDataPath, "data");
-        tempPath = Path.Combine(tempPath, dataFileName + ".txt");
+        if (ext == "")
+        {
+            tempPath = Path.Combine(tempPath, dataFileName);
+        }
+        else
+        {
+            tempPath = Path.Combine(tempPath, dataFileName + "." + ext);
+        }
 
         //Convert To Json then to bytes
         string jsonData = JsonUtility.ToJson(dataToSave, true);
@@ -34,10 +41,17 @@ public class DataSaver
     }
 
     //Load Data
-    public static T loadData<T>(string dataFileName)
+    public static T loadData<T>(string dataFileName, string ext)
     {
         string tempPath = Path.Combine(Application.persistentDataPath, "data");
-        tempPath = Path.Combine(tempPath, dataFileName + ".txt");
+        if (ext == "")
+        {
+            tempPath = Path.Combine(tempPath, dataFileName);
+        }
+        else
+        {
+            tempPath = Path.Combine(tempPath, dataFileName + "." + ext);
+        }
 
         //Exit if Directory or File does not exist
         if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
@@ -73,13 +87,20 @@ public class DataSaver
         return (T)Convert.ChangeType(resultValue, typeof(T));
     }
 
-    public static bool deleteData(string dataFileName)
+    public static bool deleteData(string dataFileName, string ext)
     {
         bool success = false;
 
         //Load Data
         string tempPath = Path.Combine(Application.persistentDataPath, "data");
-        tempPath = Path.Combine(tempPath, dataFileName + ".txt");
+        if (ext == "")
+        {
+            tempPath = Path.Combine(tempPath, dataFileName);
+        }
+        else
+        {
+            tempPath = Path.Combine(tempPath, dataFileName + "." + ext);
+        }
 
         //Exit if Directory or File does not exist
         if (!Directory.Exists(Path.GetDirectoryName(tempPath)))

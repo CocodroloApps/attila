@@ -17,12 +17,6 @@ public class Grid : MonoBehaviour
     private Vector2 cellSize;
     private Vector2 offset;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        PaintCells();
-    }
-
     public void Clean()
     {
         foreach (Transform child in gameObject.transform)
@@ -46,6 +40,7 @@ public class Grid : MonoBehaviour
         offset.x = gridSize.offset.x - ((gridSize.size.x) / 2 ) + cellSize.x / 2;
         offset.y = gridSize.offset.y - ((gridSize.size.y) / 2 ) + cellSize.y / 2;
 
+        DefaultCells cond = new DefaultCells();
         int sufixName = 0;
         for (int row = 0; row < rows; row++)
         {
@@ -56,9 +51,17 @@ public class Grid : MonoBehaviour
                 Vector2 pos = new Vector2(col * cellSize.x + transform.position.x + offset.x, row * cellSize.y + transform.position.y + offset.y);
 
                 //Add Cell information
-                //cell.GetComponent<Cell>().value = 0;
-                //cell.GetComponent<Cell>().x = col;
-                //cell.GetComponent<Cell>().y = row;
+                cell.GetComponent<Cell>().info.x = col;
+                cell.GetComponent<Cell>().info.y = row;
+                cell.GetComponent<Cell>().info.listPos = sufixName-1;
+                cell.GetComponent<Cell>().info.type = cond.type;
+                cell.GetComponent<Cell>().info.isFinal = false;
+                cell.GetComponent<Cell>().info.isObjective = false;
+                cell.GetComponent<Cell>().info.water = cond.water;
+                cell.GetComponent<Cell>().info.food = cond.food;
+                cell.GetComponent<Cell>().info.troops = cond.troops;
+                cell.GetComponent<Cell>().info.weapons = cond.weapons;
+                cell.GetComponent<Cell>().info.gold = cond.gold;
                 cell.name = "Cell" + sufixName.ToString();
 
                 //instantiate the game object, at position pos, with rotation set to identity
