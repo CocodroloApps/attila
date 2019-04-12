@@ -274,7 +274,7 @@ public class Editor : MonoBehaviour
         editorStage.numStage = int.Parse(num);
         GlobalInfo.editingCell = -1;
         GameObject.Find("Grid").GetComponent<Grid>().Clean();
-        Invoke("UpdateGrid", 1.3f);        
+        Invoke("UpdateGrid", 1.0f);        
         GameObject.Find("StageNumText").GetComponent<Text>().text = editorStage.numStage.ToString();
     }
 
@@ -318,8 +318,9 @@ public class Editor : MonoBehaviour
         {
             editorStage.numStage = int.Parse(inputNumField.GetComponent<InputField>().text);
             GameObject.Find("Grid").GetComponent<Grid>().Clean();
-            Invoke("UpdateStage", 1.3f);
+            Invoke("UpdateStage", 1.0f);
             GameObject.Find("StageNumText").GetComponent<Text>().text = editorStage.numStage.ToString();
+            GlobalInfo.editingCell = -1;
             CloseNewPanel();
         }
     }
@@ -391,33 +392,36 @@ public class Editor : MonoBehaviour
     }
 
     public void OpenModifyPanel()
-    {       
-        if (GlobalInfo.paintCellType > 0 && GlobalInfo.editingCell >= 0)
+    {        
+        if (GlobalInfo.editingCell >= 0)
         {
-            GlobalInfo.isModifying = true;
-            modifyBox.SetActive(true);
-            GameObject clickedCell = GameObject.Find("Cell" + (GlobalInfo.editingCell + 1).ToString() + "(Clone)");
-            clickedCell.GetComponent<Cell>().ShowStaticBorder();
+            GameObject clickedCell = GameObject.Find("Cell" + (GlobalInfo.editingCell + 1).ToString() + "(Clone)");            
+            if (clickedCell.GetComponent<Cell>().info.type > 0)
+            {
+                GlobalInfo.isModifying = true;
+                modifyBox.SetActive(true);                
+                clickedCell.GetComponent<Cell>().ShowStaticBorder();
 
-            GameObject inputTroopsField = GameObject.Find("InputTroops");
-            GameObject inputWeaponsField = GameObject.Find("InputWeapons");
-            GameObject inputWaterField = GameObject.Find("InputWater");
-            GameObject inputFoodField = GameObject.Find("InputFood");
-            GameObject inputGoldField = GameObject.Find("InputGold");
+                GameObject inputTroopsField = GameObject.Find("InputTroops");
+                GameObject inputWeaponsField = GameObject.Find("InputWeapons");
+                GameObject inputWaterField = GameObject.Find("InputWater");
+                GameObject inputFoodField = GameObject.Find("InputFood");
+                GameObject inputGoldField = GameObject.Find("InputGold");
 
-            inputTroopsField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.troops.ToString();
-            inputWeaponsField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.weapons.ToString();
-            inputWaterField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.water.ToString();
-            inputFoodField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.food.ToString();
-            inputGoldField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.gold.ToString();
+                inputTroopsField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.troops.ToString();
+                inputWeaponsField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.weapons.ToString();
+                inputWaterField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.water.ToString();
+                inputFoodField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.food.ToString();
+                inputGoldField.GetComponent<InputField>().text = clickedCell.GetComponent<Cell>().info.gold.ToString();
 
-            GameObject inputFinalField = GameObject.Find("isFinal");
-            GameObject inputObjectiveField = GameObject.Find("isObjective");
-            GameObject inputStartField = GameObject.Find("isStart");
+                GameObject inputFinalField = GameObject.Find("isFinal");
+                GameObject inputObjectiveField = GameObject.Find("isObjective");
+                GameObject inputStartField = GameObject.Find("isStart");
 
-            inputFinalField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isFinal;
-            inputObjectiveField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isObjective;
-            inputStartField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isStart;
+                inputFinalField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isFinal;
+                inputObjectiveField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isObjective;
+                inputStartField.GetComponent<Toggle>().isOn = clickedCell.GetComponent<Cell>().info.isStart;
+            }            
         }        
     }
 
