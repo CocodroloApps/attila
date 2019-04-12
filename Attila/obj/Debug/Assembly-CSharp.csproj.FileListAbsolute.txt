@@ -1,0 +1,2 @@
+G:\UNITY\PROJECTS\Attila\Attila\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+G:\UNITY\PROJECTS\Attila\Attila\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

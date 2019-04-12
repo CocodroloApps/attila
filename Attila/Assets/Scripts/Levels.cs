@@ -12,11 +12,12 @@ public class StageCell
     public int type;
     public bool isFinal;
     public bool isObjective;
+    public bool isStart;
     public int water;
     public int food;
     public int troops;
     public int weapons;
-    public int gold;
+    public int gold;    
 }
 
 [Serializable]
@@ -44,6 +45,7 @@ public class Stage
             defaultCell.type = cond.type;
             defaultCell.isFinal = false;
             defaultCell.isObjective = false;
+            defaultCell.isStart = false;
             defaultCell.water = cond.water;
             defaultCell.food = cond.food;
             defaultCell.troops = cond.troops;

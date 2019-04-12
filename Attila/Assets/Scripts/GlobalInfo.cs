@@ -28,4 +28,11 @@ public class GlobalInfo : MonoBehaviour
     public static string stageName;
     public static int objectivesCompleted;
     public static List<StageCell> gridStage = new List<StageCell>();
+
+    //Editor
+    public static bool isEditing;
+    public static bool isPainting;
+    public static bool isModifying;
+    public static int paintCellType;
+    public static int editingCell;
 }
