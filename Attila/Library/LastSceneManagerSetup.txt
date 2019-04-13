@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/LevelEditor.unity
+- path: Assets/Scenes/Attila.unity
   isLoaded: 1
   isActive: 1

@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
     <Compile Include="Assets\Scripts\General\DataSaver.cs" />
     <Compile Include="Assets\Scripts\General\FadeScene.cs" />
@@ -73,7 +74,9 @@
     <Compile Include="Assets\Scripts\Levels\Files.cs" />
     <Compile Include="Assets\Scripts\Levels\Grid.cs" />
     <Compile Include="Assets\Scripts\LoadConfig.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
