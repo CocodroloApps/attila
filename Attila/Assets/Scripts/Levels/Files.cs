@@ -15,7 +15,7 @@ public class Files : MonoBehaviour
     {
         string fileName = Path.Combine(Application.persistentDataPath, "levels");
         fileName = Path.Combine(fileName, stageFile.text);
-        GameObject.Find("EditorManager").GetComponent<Editor>().OpenFile(fileName, stageName.text, stageNum.text);
+        GameObject.Find("EditorManager").GetComponent<LevelEditor>().OpenFile(fileName, stageName.text, stageNum.text);
 
         GameObject[] cells = GameObject.FindGameObjectsWithTag("FileCell");
         foreach (GameObject cell in cells)

@@ -7664,7 +7664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310470304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6258fc9cdfeaf4a48927e7eb00244039, type: 3}
+  m_Script: {fileID: 11500000, guid: 5286971dc6fb401468839894c485fb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   saveBox: {fileID: 2086449555}
@@ -7672,7 +7672,6 @@ MonoBehaviour:
   modifyBox: {fileID: 1479607268}
   fileInfoItem: {fileID: 9347751544259060, guid: bac4fc2c004ac9f43bfc155df9acffd8,
     type: 3}
-  editTile: {fileID: 1381925887}
 --- !u!114 &1310470307
 MonoBehaviour:
   m_ObjectHideFlags: 0

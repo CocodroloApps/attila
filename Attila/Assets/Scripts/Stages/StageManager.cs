@@ -13,6 +13,7 @@ public class StageManager : MonoBehaviour
 
     public void ToGameScene()
     {
+        GlobalInfo.actualStage = 1;         //Provisional
         SceneManager.LoadScene("Attila");
     }
 

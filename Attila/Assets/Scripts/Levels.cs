@@ -69,5 +69,6 @@ public class Levels : MonoBehaviour
         GlobalInfo.stageVersion = loadlevel.version; 
         GlobalInfo.actualStage = loadlevel.numStage;
         GlobalInfo.gridStage = loadlevel.gridStage;
+        GlobalInfo.stageName = loadlevel.nameStage;
     }
 }

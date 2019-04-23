@@ -21,12 +21,14 @@ public class GlobalInfo : MonoBehaviour
     public static int troops;
     public static int weapons;
     public static int gold;
+    public static bool isPlaying;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente
     public static int stageVersion;
     public static string stageName;
     public static int objectivesCompleted;
+    public static int playerPos;
     public static List<StageCell> gridStage = new List<StageCell>();
 
     //Editor
