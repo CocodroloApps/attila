@@ -106,11 +106,13 @@
     <Compile Include="Assets\Anonym\Util\script\SSHelper.cs" />
     <Compile Include="Assets\Anonym\Util\script\TouchManager.cs" />
     <Compile Include="Assets\Anonym\Util\script\TouchUtility.cs" />
+    <Compile Include="Assets\Scripts\Attila\GameCell.cs" />
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\Attila\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
     <Compile Include="Assets\Scripts\General\DataSaver.cs" />
     <Compile Include="Assets\Scripts\General\FadeScene.cs" />
+    <Compile Include="Assets\Scripts\General\GeneralUtils.cs" />
     <Compile Include="Assets\Scripts\General\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\General\ShowColliders.cs" />
     <Compile Include="Assets\Scripts\General\ZoomInZoomOut.cs" />

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Sprite objective;
     public Sprite mountains;
     public Sprite empty;
+    public Sprite horse;
 
     // Start is called before the first frame update
     void Start()
@@ -56,24 +57,64 @@ public class GameManager : MonoBehaviour
     }
 
     private void PaintStage()
-    {        
+    {
+        int xx = 0;
+        int yy = 0;
         for (int i = 1; i <= 64; i++)
         {
             GameObject cell = GameObject.Find("Cell" + i.ToString());
             GameObject regular = GetChildWithName(cell, "Regualr_Collider_Union");
             GameObject spriteCell = GetChildWithName(regular, "Iso2DObject_Union");
+
+            // GameCell Class info
+            cell.GetComponent<GameCell>().num = i;
+            cell.GetComponent<GameCell>().x = xx;
+            cell.GetComponent<GameCell>().y = yy;
+            xx++;
+            if (xx == 8)
+            {
+                xx = 0;
+                yy++;
+            }
+
+            //Sprite
             if (GlobalInfo.gridStage[i - 1].type > 0)
             {
                 spriteCell.GetComponent<SpriteRenderer>().sprite = TypeSprite(GlobalInfo.gridStage[i - 1].type);
             } else
             {
-                GameObject.Destroy(cell);
+                Destroy(cell);
             }
+
+            //Player info
             if (GlobalInfo.gridStage[i - 1].isStart == true)
             {
                 GlobalInfo.playerPos = i;
-            }
+            }            
         }
+        //Set player
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString()).GetComponent<Transform>().position;
+
+        //Set player cell
+        GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
+        GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
+        GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");
+        spriteCellStart.GetComponent<SpriteRenderer>().sprite = horse;
+        Invoke("CalculateMovementsAvaliable", 0.5f);
+    }
+
+    private void CalculateMovementsAvaliable()
+    {
+        //Calculate movements avaliable
+        GameObject[] cells = GameObject.FindGameObjectsWithTag("GameCell");
+        foreach (GameObject cell in cells)
+        {
+            cell.GetComponent<GameCell>().CalculateMovements();
+        }
+        GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
+        cellStart.GetComponent<GameCell>().SetMoveables();
+        cellStart.GetComponent<GameCell>().ShowMoveables();
     }
 
     private GameObject GetChildWithName(GameObject obj, string name)
@@ -112,6 +153,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("StageSelector");
     }
 
+    public void MoveHorse(string origen, string final)
+    {
+        GameObject.Find("Player").GetComponent<MovePlayer>().Move(final);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -123,10 +169,9 @@ public class GameManager : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    Debug.Log(GlobalInfo.isPlaying);
-                    if (hit.collider.gameObject.name == "Regualr_Collider_Union" && GlobalInfo.isPlaying == true)
+                    if (hit.collider.gameObject.name == "Regualr_Collider_Union" && GlobalInfo.isPlaying == true && GlobalInfo.isPlayerMoving == false)
                     {
-                        GameObject.Find("Player").GetComponent<MovePlayer>().Move(hit.collider.gameObject.transform.parent.name);
+                        MoveHorse("Cell" + GlobalInfo.playerPos.ToString() , hit.collider.gameObject.transform.parent.name);
                     }                    
                 }                
             }

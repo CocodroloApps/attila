@@ -237,7 +237,8 @@ b3cef659b7319f500b8b0156b2bdf119 Assembly-CSharp.dll:Anonym.Util.TouchManager
 c568a852eaadec50fc573e56fca1978e Assembly-CSharp.dll:Anonym.Util.ParticleSortingTrick
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
-9cbdb5c99e201f250673d45045825d1e Assembly-CSharp.dll:.GameManager
+024180aa81add2338c40d15e3c595d28 Assembly-CSharp.dll:.ZoomInZoomOut
+0bc90049a81b992e014f1c3a12e75505 Assembly-CSharp.dll:.GameManager
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -261,6 +262,8 @@ aaa88f11c1903f4075ef9712069015c7 Assembly-CSharp.dll:Anonym.Isometric.IsometricM
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 f7a53b41932d6f517873a52a30a20e04 Assembly-CSharp.dll:.ColoredObject
 756f29eb5b04ee30504fb266fec153e8 Assembly-CSharp.dll:Anonym.Isometric.IsometricNavMeshAgent
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MovePlayer
+e3a6f352f0d08d3430e349a76fad9861 Assembly-CSharp.dll:.LevelEditor
 ed6104940a6480ab31f705e34346a7fd Assembly-CSharp.dll:Anonym.Isometric.IsometricSortingOrder
 8a6ab9615f8bb95baa054f7accfbad46 Assembly-CSharp.dll:Anonym.Isometric.Iso2DObject
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ShowColliders
@@ -345,6 +348,4 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-e3a6f352f0d08d3430e349a76fad9861 Assembly-CSharp.dll:.LevelEditor
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MovePlayer
-024180aa81add2338c40d15e3c595d28 Assembly-CSharp.dll:.ZoomInZoomOut
+c6c121bbd64ae7337d6f261f8169ad96 Assembly-CSharp.dll:.GameCell

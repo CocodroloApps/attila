@@ -22,6 +22,7 @@ public class GlobalInfo : MonoBehaviour
     public static int weapons;
     public static int gold;
     public static bool isPlaying;
+    public static bool isPlayerMoving;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente

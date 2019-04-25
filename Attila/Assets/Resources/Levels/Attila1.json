@@ -260,15 +260,15 @@
             "x": 2,
             "y": 2,
             "listPos": 18,
-            "type": 4,
+            "type": 1,
             "isFinal": false,
             "isObjective": false,
             "isStart": true,
-            "water": 10,
-            "food": 50,
-            "troops": 50,
+            "water": 0,
+            "food": 5,
+            "troops": 100,
             "weapons": 50,
-            "gold": 50
+            "gold": 0
         },
         {
             "x": 3,
