@@ -23,12 +23,15 @@ public class GlobalInfo : MonoBehaviour
     public static int gold;
     public static bool isPlaying;
     public static bool isPlayerMoving;
+    public static bool isOldCellDestroyed;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente
     public static int stageVersion;
     public static string stageName;
-    public static int objectivesCompleted;
+    public static int objectivesNum;
+    public static int movementsNum;
+    public static int finalNum;
     public static int playerPos;
     public static List<StageCell> gridStage = new List<StageCell>();
 

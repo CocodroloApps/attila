@@ -9,6 +9,8 @@ public class GameCell : MonoBehaviour
     public int y;
     public int num;
     public bool moveable;
+    public bool final;
+    public bool objective;
     public int[] moves = new int[8] ;
 
     // Start is called before the first frame update
@@ -88,13 +90,14 @@ public class GameCell : MonoBehaviour
             int pos = Array.IndexOf(moves, cell.GetComponent<GameCell>().num);
             if (pos > -1)
             {
-                cell.GetComponent<GameCell>().moveable = true;
+                cell.GetComponent<GameCell>().moveable = true;                
             }
         }
     }
 
     public void ShowMoveables()
     {
+        GlobalInfo.movementsNum = 0;
         for (int i = 0; i < 8; i++)
         {
             if (moves[i]>0)
@@ -102,8 +105,22 @@ public class GameCell : MonoBehaviour
                 GameObject cell = GameObject.Find("Cell" + moves[i].ToString());
                 GameObject selector = GeneralUtils.FindObject(cell, "Selector");
                 selector.SetActive(true);
+                GlobalInfo.movementsNum++;
             }
         }
+    }
+
+    public int GetMoveables()
+    {
+        int num = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            if (moves[i] > 0)
+            {
+                num++;
+            }
+        }
+        return num;
     }
 
     public void HideMoveables()

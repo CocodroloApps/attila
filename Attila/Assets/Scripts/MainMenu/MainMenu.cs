@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
 public class MainMenu : MonoBehaviour
 {
+    public Text troops;
+    public Text weapons;
+    public Text water;
+    public Text food;
+    public Text gold;
+
     // Start is called before the first frame update
     void Start()
     {
         GlobalInfo.sessionsCount++;
         StartCoroutine(SaveSessionsConfig());
+        SetEnviroment();
     }
 
     IEnumerator SaveSessionsConfig()
@@ -19,6 +27,15 @@ public class MainMenu : MonoBehaviour
         PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");        
         loadedData.sessionsCount = GlobalInfo.sessionsCount;
         DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");        
+    }
+
+    public void SetEnviroment()
+    {
+        troops.text = GlobalInfo.troops.ToString("#,#");
+        weapons.text = GlobalInfo.weapons.ToString("#,#");
+        water.text = GlobalInfo.water.ToString("#,#");
+        food.text = GlobalInfo.food.ToString("#,#");
+        gold.text = GlobalInfo.gold.ToString("#,#");        
     }
 
     public void PlayGame()

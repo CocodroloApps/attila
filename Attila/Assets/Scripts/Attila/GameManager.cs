@@ -46,9 +46,11 @@ public class GameManager : MonoBehaviour
         gold.text = GlobalInfo.gold.ToString("#,#");
 
         Levels.LoadLevel(GlobalInfo.actualStage);
-        GlobalInfo.objectivesCompleted = 0;
+        GlobalInfo.objectivesNum = 0;
+        GlobalInfo.finalNum = 0;
         stageName.text = GlobalInfo.stageName;
         PaintStage();
+        PaintInfo();
     }
 
     private void StartPlay()
@@ -81,6 +83,20 @@ public class GameManager : MonoBehaviour
             if (GlobalInfo.gridStage[i - 1].type > 0)
             {
                 spriteCell.GetComponent<SpriteRenderer>().sprite = TypeSprite(GlobalInfo.gridStage[i - 1].type);
+                if (GlobalInfo.gridStage[i - 1].isObjective)
+                {                    
+                    GameObject ObjFlag = GeneralUtils.FindObject(cell, "Flag");
+                    ObjFlag.SetActive(true);
+                    cell.GetComponent<GameCell>().objective = true;
+                    GlobalInfo.objectivesNum++;                    
+                }
+                if (GlobalInfo.gridStage[i - 1].isFinal)
+                {                 
+                    GameObject FinFlag = GeneralUtils.FindObject(cell, "FlagF");
+                    FinFlag.SetActive(true);
+                    cell.GetComponent<GameCell>().final = true;
+                    GlobalInfo.finalNum++;
+                }
             } else
             {
                 Destroy(cell);
@@ -131,6 +147,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PaintInfo()
+    {
+        GameObject.Find("Player").GetComponent<MovePlayer>().ShowInfo();
+    }
+
     public Sprite TypeSprite(int num)
     {
         if (num == 1) { return tundra; }
@@ -158,6 +179,11 @@ public class GameManager : MonoBehaviour
         GameObject.Find("Player").GetComponent<MovePlayer>().Move(final);
     }
 
+    private bool DestionationAvaliable(GameObject dest)
+    {        
+        return dest.GetComponent<GameCell>().moveable;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -169,9 +195,14 @@ public class GameManager : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject.name == "Regualr_Collider_Union" && GlobalInfo.isPlaying == true && GlobalInfo.isPlayerMoving == false)
+                    if (hit.collider.gameObject.name == "Regualr_Collider_Union" 
+                        && GlobalInfo.isPlaying == true 
+                        && GlobalInfo.isPlayerMoving == false)
                     {
-                        MoveHorse("Cell" + GlobalInfo.playerPos.ToString() , hit.collider.gameObject.transform.parent.name);
+                        if (DestionationAvaliable(GameObject.Find(hit.collider.gameObject.transform.parent.name)))
+                        {
+                            MoveHorse("Cell" + GlobalInfo.playerPos.ToString(), hit.collider.gameObject.transform.parent.name);
+                        }                        
                     }                    
                 }                
             }

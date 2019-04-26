@@ -521,6 +521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5758fbd105b8714bbc21bf37674c319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  troops: {fileID: 1472922406}
+  weapons: {fileID: 838672223}
+  water: {fileID: 273817758}
+  food: {fileID: 1277544218}
+  gold: {fileID: 1056831308}
 --- !u!4 &216152769
 Transform:
   m_ObjectHideFlags: 0
