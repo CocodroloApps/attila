@@ -48,6 +48,12 @@ public class MainMenu : MonoBehaviour
             DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
             GlobalInfo.playFirstTime = false;
         }
-        SceneManager.LoadScene("StageSelector");
+        if (GlobalInfo.maxStageCompleted < GlobalInfo.maxStagesGame)
+        {
+            SceneManager.LoadScene("StageSelector");
+        } else
+        {
+            SceneManager.LoadScene("Winner");
+        }        
     }
 }

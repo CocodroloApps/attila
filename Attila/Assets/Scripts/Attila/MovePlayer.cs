@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -41,8 +42,20 @@ public class MovePlayer : MonoBehaviour
 
     IEnumerator DestroyCell(GameObject cellToDestroy)
     {
-        yield return new WaitForSeconds(1f);        
-        Destroy(cellToDestroy);
+        yield return new WaitForSeconds(1f);
+        // Is mountain.. dont destroy
+        if (GlobalInfo.gridStage[cellToDestroy.GetComponent<GameCell>().num - 1].type == 12)
+        {
+        } else
+        {
+            //Dont destroy final if ALL objectives are NOT destroyed first
+            if (GlobalInfo.gridStage[cellToDestroy.GetComponent<GameCell>().num - 1].isFinal && GlobalInfo.objectivesNum > 0)
+            {
+            } else
+            {
+                Destroy(cellToDestroy);
+            }            
+        }        
         yield return new WaitForSeconds(0.5f);
         CalculateNewMovements();
         GlobalInfo.isOldCellDestroyed = true;
@@ -80,18 +93,47 @@ public class MovePlayer : MonoBehaviour
         //Update values
         if (GameObject.Find(destination).GetComponent<GameCell>().objective == true)
         {
-            GlobalInfo.objectivesNum--;
+            Objective();
+            
         }
         if (GameObject.Find(destination).GetComponent<GameCell>().final == true)
         {
-            GlobalInfo.finalNum--;
+            Final();
         }
 
+        if ((GameObject.Find(destination).GetComponent<GameCell>().final == false) && (GameObject.Find(destination).GetComponent<GameCell>().objective == false))
+        {
+            Normal();
+        }
+
+        //Events
         if (GlobalInfo.objectivesNum == 0)
         {
             if (GlobalInfo.finalNum == 0)
             {
                 //Good job!
+                GlobalInfo.maxStageCompleted = GlobalInfo.actualStage;
+                PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
+                loadedData.actualStage = GlobalInfo.actualStage;
+                loadedData.maxStageCompleted = GlobalInfo.maxStageCompleted;
+                loadedData.troops = GlobalInfo.troops;
+                loadedData.weapons = GlobalInfo.weapons;
+                loadedData.water = GlobalInfo.water;
+                loadedData.food = GlobalInfo.food;
+                loadedData.gold = GlobalInfo.gold;
+                loadedData.score = GlobalInfo.gold;
+                DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
+
+                if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)
+                {
+                    //Game Finish
+                    SceneManager.LoadScene("Winner");
+                }
+                else
+                {
+                    //Next stage
+                    NextLevel();                    
+                }                
             }
         }
 
@@ -104,8 +146,39 @@ public class MovePlayer : MonoBehaviour
         GlobalInfo.isPlayerMoving = false;
     }
 
+    public void Objective()
+    {
+        GlobalInfo.score = GlobalInfo.score + 100;
+        GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+        GlobalInfo.objectivesNum--;
+    }
+
+    public void Final()
+    {
+        GlobalInfo.score = GlobalInfo.score + 1000;
+        if (GlobalInfo.objectivesNum == 0)
+        {
+            GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+            GlobalInfo.finalNum--;
+        }        
+    }
+
+    public void Normal()
+    {
+        GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+        GlobalInfo.score = GlobalInfo.score + 10;
+    }
+
+    public void NextLevel()
+    {        
+        GlobalInfo.actualStage++;
+        SceneManager.LoadScene("Attila");
+    }
+
     public void ShowInfo()
     {
+        GameObject.Find("GameManager").GetComponent<GameManager>().ShowInfo();
+        finalText.text = GlobalInfo.finalNum.ToString();
         objectivesText.text = GlobalInfo.objectivesNum.ToString();        
     }
 
@@ -118,11 +191,24 @@ public class MovePlayer : MonoBehaviour
                 GameObject.Find(destination).GetComponent<GameCell>().ShowMoveables();
                 GlobalInfo.playerPos = GameObject.Find(destination).GetComponent<GameCell>().num;
 
-                //Set destionation cell
-                GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
-                GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
-                GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");
-                spriteCellStart.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameManager").GetComponent<GameManager>().horse;
+                //Set destionation cell                
+                if (GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].type == 12)
+                {
+                  //Is mountain
+                } else
+                {
+                    if (GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].isFinal && GlobalInfo.objectivesNum > 0)
+                    {
+                        //Is final but objectives are not completed
+                    }
+                    else
+                    {
+                        GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
+                        GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
+                        GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");
+                        spriteCellStart.GetComponent<SpriteRenderer>().sprite = GameObject.Find("GameManager").GetComponent<GameManager>().horse;
+                    }                    
+                }                
                 ProcessEvents();                
             }            
         }

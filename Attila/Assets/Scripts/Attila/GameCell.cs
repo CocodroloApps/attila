@@ -135,4 +135,13 @@ public class GameCell : MonoBehaviour
             }
         }
     }
+
+    public void UpdateValues()
+    {
+        GlobalInfo.troops = GlobalInfo.troops + GlobalInfo.gridStage[num-1].troops;
+        GlobalInfo.weapons = GlobalInfo.weapons + GlobalInfo.gridStage[num - 1].weapons;
+        GlobalInfo.water = GlobalInfo.water + GlobalInfo.gridStage[num - 1].water;
+        GlobalInfo.food = GlobalInfo.food + GlobalInfo.gridStage[num - 1].food;
+        GlobalInfo.gold = GlobalInfo.gold + GlobalInfo.gridStage[num - 1].gold;
+    }
 }

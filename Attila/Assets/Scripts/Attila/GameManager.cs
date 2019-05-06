@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Text food;
     public Text gold;
     public Text stageName;
+    public Text score;
 
     public Sprite tundra;
     public Sprite desert;
@@ -28,9 +29,17 @@ public class GameManager : MonoBehaviour
     public Sprite empty;
     public Sprite horse;
 
+    private int troopsO;
+    private int weaponsO;
+    private int waterO;
+    private int foodO;
+    private int goldO;
+    private int scoreO;
+
     // Start is called before the first frame update
     void Start()
     {
+        SaveOriginals();
         GlobalInfo.isPlaying = false;
         GlobalInfo.stagesCount++;
         SetEnviroment();
@@ -39,12 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void SetEnviroment()
     {
-        troops.text = GlobalInfo.troops.ToString("#,#");
-        weapons.text = GlobalInfo.weapons.ToString("#,#");
-        water.text = GlobalInfo.water.ToString("#,#");
-        food.text = GlobalInfo.food.ToString("#,#");
-        gold.text = GlobalInfo.gold.ToString("#,#");
-
+        ShowInfo();
         Levels.LoadLevel(GlobalInfo.actualStage);
         GlobalInfo.objectivesNum = 0;
         GlobalInfo.finalNum = 0;
@@ -52,6 +56,38 @@ public class GameManager : MonoBehaviour
         PaintStage();
         PaintInfo();
     }
+
+    public void ShowInfo()
+    {
+        troops.text = GlobalInfo.troops.ToString("#,#");
+        weapons.text = GlobalInfo.weapons.ToString("#,#");
+        water.text = GlobalInfo.water.ToString("#,#");
+        food.text = GlobalInfo.food.ToString("#,#");
+        gold.text = GlobalInfo.gold.ToString("#,#");
+        score.text = GlobalInfo.score.ToString("#,#");
+    }
+
+    public void SaveOriginals()
+    {
+        //Save original values
+        troopsO = GlobalInfo.troops;
+        weaponsO = GlobalInfo.weapons;
+        waterO = GlobalInfo.water;
+        foodO = GlobalInfo.food;
+        goldO = GlobalInfo.gold;
+        scoreO = GlobalInfo.score;
+    }
+
+    public void RestoreOriginals()
+    {
+        //Restore original values
+        GlobalInfo.troops = troopsO;
+        GlobalInfo.weapons = weaponsO;
+        GlobalInfo.water = waterO;
+        GlobalInfo.food = foodO;
+        GlobalInfo.gold = goldO;
+        GlobalInfo.score = scoreO;
+    } 
 
     private void StartPlay()
     {
@@ -113,10 +149,13 @@ public class GameManager : MonoBehaviour
         player.transform.position = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString()).GetComponent<Transform>().position;
 
         //Set player cell
-        GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
-        GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
-        GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");
-        spriteCellStart.GetComponent<SpriteRenderer>().sprite = horse;
+        if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type !=12 && GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal == false)
+        {
+            GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
+            GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
+            GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");
+            spriteCellStart.GetComponent<SpriteRenderer>().sprite = horse;
+        }        
         Invoke("CalculateMovementsAvaliable", 0.5f);
     }
 
@@ -172,6 +211,12 @@ public class GameManager : MonoBehaviour
     public void ToStageMenu()
     {
         SceneManager.LoadScene("StageSelector");
+    }
+
+    public void RestartLevel()
+    {
+        RestoreOriginals();
+        SceneManager.LoadScene("Attila");
     }
 
     public void MoveHorse(string origen, string final)

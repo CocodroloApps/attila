@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Attila.unity
     guid: a76a643592d418647a797d9831eb4a1d
+  - enabled: 1
+    path: Assets/Scenes/Winner.unity
+    guid: 506ac7db0115c0940a157ae9b555af87
   m_configObjects: {}

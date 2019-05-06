@@ -387,7 +387,7 @@
             "y": 3,
             "listPos": 27,
             "type": 4,
-            "isFinal": false,
+            "isFinal": true,
             "isObjective": false,
             "isStart": true,
             "water": 10,

@@ -127,6 +127,7 @@
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
+    <Compile Include="Assets\Scripts\Winner\WinnerManager.cs" />
     <None Include="Assets\Anonym\MapEditor\Read Me.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
