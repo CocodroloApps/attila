@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public Sprite empty;
     public Sprite horse;
 
+    public GameObject infoBox;
+
     private int troopsO;
     private int weaponsO;
     private int waterO;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         SaveOriginals();
         GlobalInfo.isPlaying = false;
+        GlobalInfo.isShowingInfo = false;
         GlobalInfo.stagesCount++;
         SetEnviroment();
         StartPlay();
@@ -219,6 +222,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Attila");
     }
 
+    public void ShowMoveResult()
+    {
+        if (GlobalInfo.isPlayerMoving == false && GlobalInfo.isEventAvaliable == true)
+        {
+            GlobalInfo.isShowingInfo = true;
+            infoBox.SetActive(true);
+            GameObject.Find("InfoBox").GetComponent<InfoBox>().ShowMoveResult(GlobalInfo.playerPos - 1);
+        }        
+    }
+
+    public void HideMoveResult()
+    {
+        GlobalInfo.isShowingInfo = false;
+        infoBox.SetActive(false);        
+    }
+
     public void MoveHorse(string origen, string final)
     {
         GameObject.Find("Player").GetComponent<MovePlayer>().Move(final);
@@ -242,7 +261,8 @@ public class GameManager : MonoBehaviour
                 {
                     if (hit.collider.gameObject.name == "Regualr_Collider_Union" 
                         && GlobalInfo.isPlaying == true 
-                        && GlobalInfo.isPlayerMoving == false)
+                        && GlobalInfo.isPlayerMoving == false
+                        && GlobalInfo.isShowingInfo == false)
                     {
                         if (DestionationAvaliable(GameObject.Find(hit.collider.gameObject.transform.parent.name)))
                         {

@@ -194,15 +194,18 @@ public class MovePlayer : MonoBehaviour
                 //Set destionation cell                
                 if (GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].type == 12)
                 {
-                  //Is mountain
+                    //Is mountain
+                    GlobalInfo.isEventAvaliable = true;
                 } else
                 {
                     if (GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].isFinal && GlobalInfo.objectivesNum > 0)
                     {
                         //Is final but objectives are not completed
+                        GlobalInfo.isEventAvaliable = false;
                     }
                     else
                     {
+                        GlobalInfo.isEventAvaliable = true;
                         GameObject cellStart = GameObject.Find("Cell" + GlobalInfo.playerPos.ToString());
                         GameObject regularStart = GetChildWithName(cellStart, "Regualr_Collider_Union");
                         GameObject spriteCellStart = GetChildWithName(regularStart, "Iso2DObject_Union");

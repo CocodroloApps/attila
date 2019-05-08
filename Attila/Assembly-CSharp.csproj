@@ -108,6 +108,7 @@
     <Compile Include="Assets\Anonym\Util\script\TouchUtility.cs" />
     <Compile Include="Assets\Scripts\Attila\GameCell.cs" />
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Attila\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Attila\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
     <Compile Include="Assets\Scripts\General\DataSaver.cs" />

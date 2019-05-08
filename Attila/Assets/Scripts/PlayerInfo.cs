@@ -40,7 +40,7 @@ public class IntialConditions
     public IntialConditions()
     {
         version = 1;    
-        maxStagesGame = 2;
+        maxStagesGame = 5;
         maxStageCompleted = 0;
         actualStage = 1;
         score = 0;

@@ -23,7 +23,9 @@ public class GlobalInfo : MonoBehaviour
     public static int gold;
     public static bool isPlaying;
     public static bool isPlayerMoving;
-    public static bool isOldCellDestroyed;
+    public static bool isOldCellDestroyed;  //Se ha destruido ya la celda de origen?
+    public static bool isEventAvaliable;
+    public static bool isShowingInfo;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente
