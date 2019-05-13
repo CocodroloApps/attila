@@ -56,6 +56,23 @@ namespace Anonym.Util
             }
             return result.ToArray();
         }
-        
+        public static Rect Sub_Vertical(ref Rect rt, float sub_y)
+        {
+            Rect new_rt = new Rect(rt.position, new Vector2(rt.width, sub_y));
+            rt.yMin = new_rt.yMax;
+            return new_rt;
+        }
+        public static Rect Sub_Horizontal(ref Rect rt, float sub_x)
+        {
+            Rect new_rt = new Rect(rt.position, new Vector2(sub_x, rt.height));
+            rt.xMin = new_rt.xMax;
+            return new_rt;
+        }
+#if UNITY_EDITOR
+        public static Rect Sub_Vertical(ref Rect rt)
+        {
+            return Sub_Vertical(ref rt, UnityEditor.EditorGUIUtility.singleLineHeight);
+        }
+#endif
     }
 }

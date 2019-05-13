@@ -153,6 +153,7 @@ namespace Anonym.Util
             }
             return true;
         }
+
         static bool Tile_Copy(GameObject target, IsoTile refTile, bool bIncludeBody, bool bIncludeAttachments, bool bAutoIsoLight)
         {
             IsoTile tile = IsoTile.Find(target);
@@ -163,40 +164,15 @@ namespace Anonym.Util
             tile.Copycat(refTile, bIncludeBody, bIncludeAttachments, true);
             return true;
         }
+
         public static bool Tile_Create(ref GameObject target, Vector3 position, IsoTile refTile, bool bIncludeBody, bool bIncludeAttachments, bool bAutoIsoLight, IsoTileBulk bulk)
         {
-            var bulks = IsoMap.instance.BulkList;
-            if (bulk == null)
-            {
-                float fMin = float.MaxValue;
-                for (int i = 0; i < bulks.Count; ++i)
-                {
-                    float fDistance = Vector3.Distance(position, bulks[i].GetBounds().ClosestPoint(position));
-                    if (fDistance < fMin)
-                    {
-                        bulk = bulks[i];
-                        fMin = fDistance;
-                    }
-                }
-                if (bulk == null)
-                {
-                    Debug.LogWarning("To create a tile, you need at least one Bulk in the Scene.");
-                    return false;
-                }
-            }
-
-            IsoTile tile = bulk.NewTile(position - bulk.transform.position, false);
-
-            if (tile == null)
-                return false;
-
-            target = tile.gameObject;
-
-            if (refTile != null)
-                tile.Copycat(refTile, bIncludeBody, bIncludeAttachments, true);
-
-            return true;
+            return IsoTile.Create(ref target, position, refTile, bulk, bIncludeBody, bIncludeAttachments, bAutoIsoLight);
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+            return IsoTile.Create(ref target, position, refTile, bulk, bIncludeBody, bIncludeAttachments, bAutoIsoLight, MasterPaletteWindow.bNewPrefabStyle);
+#endif
         }
+
         static bool Tile_Erase(ref GameObject target)
         {
             if (target != null)
@@ -233,7 +209,7 @@ namespace Anonym.Util
             fWeight = Mathf.Clamp01(fWeight);
             return Mathf.Sqrt((1 - fWeight) * rgbLeft * rgbLeft + fWeight * rgbRight * rgbRight);
         }
-        #endregion
+#endregion
 
         public override Texture[] GetTextures()
         {
@@ -279,5 +255,5 @@ namespace Anonym.Util
             return bResult;
         }
 #endif
+        }
     }
-}

@@ -26,8 +26,10 @@ namespace Anonym.Isometric
         IsoTile _tile_Scene;        
         IsoTile refTile;
 
-        bool bPrefab = false;        
-
+        bool bPrefab = false;
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+        bool bPartofPrefabWorkflow = false;
+#endif
         bool bRightEdge = false;
         bool bLeftEdge = false;
         bool bUpEdge = false;
@@ -37,17 +39,29 @@ namespace Anonym.Isometric
         float fHandleSize = 1;
         float fHandleOffsetSize = 1.5f;
         Vector3 handlePosition_Centor = Vector3.zero;
+        Camera _camera = null;
+        Camera camera { get { return _camera ? _camera : _camera = FindObjectOfType<Camera>(); } }
 
         bool bNoBulk = false;
 
         bool bSingleCtlr = true;
         static bool bShowCreateAttachmentBtn = true;
+        [SerializeField]
+        static bool bHideSideMenu = false;
+        [SerializeField]
+        static bool bHideTileSetSpritesMenu = true;
+        [SerializeField]
         static bool bHideCCMenu = true;
         static bool bFrameSelected = false;
         static bool bWithAttachment = false;
         SelectionType selectionType = SelectionType.NewTile;
         static GUIStyle screenInfoFontStyle = null;
         static int previewLayer = 0;
+
+        TmpTexture2D tileIcon = new TmpTexture2D();
+
+        SerializedProperty spTileSet;
+        SerializedObject spTileInspector;
 
         PreviewRenderUtility previewRenderUtility;
         Camera PreviewCam { get
@@ -66,12 +80,31 @@ namespace Anonym.Isometric
             if (_tile_Inspector == null || _tile_Inspector.gameObject != Selection.activeGameObject)
             {
                 _tile_Inspector = Selection.activeGameObject == null ? null : 
-                    Selection.activeGameObject.GetComponent<IsoTile>();                
+                    Selection.activeGameObject.GetComponent<IsoTile>();
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+                bPartofPrefabWorkflow = PrefabUtility.IsPartOfAnyPrefab(_tile_Inspector);
+#endif
                 childInfoUpdate();
             }
 
             if (_tile_Inspector)
+            {
                 bNoBulk = _tile_Inspector.GetComponentInParent<IsoTileBulk>() == null;
+            }
+
+            if (spTileInspector != null && _tile_Inspector  != null && spTileInspector.targetObject != _tile_Inspector.gameObject)
+            {
+                spTileInspector.ApplyModifiedProperties();
+                spTileInspector = null;
+            }
+            spTileSet = null;
+
+            if (_tile_Inspector)
+            {
+                spTileInspector = new SerializedObject(_tile_Inspector);
+                if (spTileInspector != null)
+                    spTileSet = spTileInspector.FindProperty("_tileSetSprites");
+            }
         }
         void update_SceneTile()
         {
@@ -85,7 +118,11 @@ namespace Anonym.Isometric
         void childInfoUpdate()
         {
             if (_tile_Inspector != null)
+            {
                 _tile_Inspector.Update_AttachmentList();
+
+                tileIcon.MakeRenderImage(_tile_Inspector.gameObject, camera, Color.clear);
+            }
             //EditorUtility.SetDirty(target);
         }
         bool undoredo()
@@ -163,10 +200,10 @@ namespace Anonym.Isometric
 
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("[Tile Control]", EditorStyles.boldLabel);
+
             Inspector_Tile();
-
             Inspector_Side();
-
+            Inspector_TileSet();
             Inspector_Collider();
 
             EditorGUILayout.Separator();
@@ -189,11 +226,19 @@ namespace Anonym.Isometric
                 update_SceneTile();
 
                 Handles.BeginGUI();
-                Rect _windowRT = new Rect(Screen.width - 250, Screen.height - 120, 240, 95);
+
+                float fGap = 20 * EditorGUIUtility.pixelsPerPoint;
+                float fHeightPixel = EditorGUIUtility.singleLineHeight * 5 * EditorGUIUtility.pixelsPerPoint;
+                float fWidthPixel = 230 * EditorGUIUtility.pixelsPerPoint;
+                Rect _windowRT = new Rect(Screen.width - (fGap * 0.6f + fWidthPixel), 
+                    Screen.height - (fGap * 2 + fHeightPixel), fWidthPixel, fHeightPixel);
+                _windowRT = EditorGUIUtility.PixelsToPoints(_windowRT);
+
                 int windowID = EditorGUIUtility.GetControlID(FocusType.Passive, _windowRT);
                 GUILayout.Window(windowID, _windowRT, ScreenInfoWindow,
                     _E_Mode == EditorMode.Extrude ?
                     "Extrude Mode" : "Select Mode");
+
                 Handles.EndGUI();
 
                 if (_tile_Scene.coordinates.bChangedforEditor)
@@ -433,7 +478,7 @@ namespace Anonym.Isometric
             {
                 CustomEditorGUI.Button(refTile != null, Color.cyan, "Copycat", () =>    {
                     for (int i = 0; i < targets.Length; ++i)
-                        ((IsoTile)targets[i]).Copycat(refTile);
+                        ((IsoTile)targets[i]).Copycat(refTile, true);
                 });
 
                 CustomEditorGUI.Button(true, CustomEditorGUI.Color_LightYellow, "Duplicate", () => {
@@ -510,25 +555,65 @@ namespace Anonym.Isometric
                     }
                 }
             }
-            EditorGUILayout.Separator();
             EditorGUI.indentLevel = 0;
+            EditorGUILayout.Separator();
+        }
+
+        void Inspector_TileSet()
+        {
+            var _tileSet = spTileSet.objectReferenceValue as TileSetSprites;
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                bHideTileSetSpritesMenu = CustomEditorGUI.LableWithToggle("[TileSetSprites]", EditorStyles.boldLabel, bHideTileSetSpritesMenu, "Hide");
+                GUILayout.FlexibleSpace();
+                CustomEditorGUI.Button(_tileSet, CustomEditorGUI.Color_LightBlue, "Update TileSetSprites",
+                    () => {
+                        IsoTile.UpdateTileSet(serializedObject.targetObjects.Select(t => t is IsoTile ? t as IsoTile : (t is GameObject ? IsoTile.Find(t as GameObject) : null)).
+                            Where(t => t != null && t.tileSetSprites != null), true, true, "Update Self: TileSetSprites");
+                    });
+            }
+            if (!bHideTileSetSpritesMenu)
+            {
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(spTileSet);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    _tileSet = spTileSet.objectReferenceValue as TileSetSprites;
+                    _tile_Inspector.ChangeTileSet(_tileSet);
+                    if (_tileSet && _tileSet.LookupedSubTileSet)
+                    {
+                        SubTileSetDrawer.BakeTilesetImage(_tileSet.LookupedSubTileSet, tileIcon);
+                        _tileSet.LookupedSubTileSet.bakedTileSetImg = tileIcon.texture;
+                    }
+                }
+            }
+            EditorGUILayout.Separator();
         }
 
         void Inspector_Side()
         {
-            EditorGUILayout.Separator();
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.LabelField("[Side Control]", EditorStyles.boldLabel, GUILayout.MaxWidth(120));
+                bHideSideMenu = CustomEditorGUI.LableWithToggle("[Side Control]", EditorStyles.boldLabel, bHideSideMenu, "Hide");
+            }
+
+            if (!bHideSideMenu)
+            {
                 using (new GUIBackgroundColorScope(Util.CustomEditorGUI.Color_LightBlue))
                 {
+                    bool bDisabled = false;
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+                        bDisabled = bPartofPrefabWorkflow;
+#endif
+                    EditorGUI.BeginDisabledGroup(bDisabled);
                     EditorGUI.BeginChangeCheck();
                     bool _bUnionMode = 1 == EditorGUILayout.Popup(
                         _tile_Inspector.GetComponent<IsoTile>().IsUnionCube()
                          ? 1 : 0, new string[] { "Side Mode", " Union Mode" });
                     if (EditorGUI.EndChangeCheck())
                     {
-                        foreach(GameObject _go in Selection.objects)
+                        foreach (GameObject _go in Selection.objects)
                         {
                             if (_go == null)
                                 continue;
@@ -537,58 +622,86 @@ namespace Anonym.Isometric
                             {
                                 _t.Reset_SideObject(_bUnionMode);
                             }
-                        }                        
+                        }
+                        EditorGUIUtility.ExitGUI();
+                    }
+                    EditorGUI.EndDisabledGroup();
+                }
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    float fWidth = EditorGUIUtility.currentViewWidth / 3f;
+                    Rect _Rect = EditorGUILayout.GetControlRect(
+                        new GUILayoutOption[] { GUILayout.Height(fWidth), GUILayout.ExpandWidth(true) });
+
+                    Rect[] _DescRectDivision;
+                    Rect[] _SubRects;
+
+                    if (_tile_Inspector.IsUnionCube())
+                    {
+                        Iso2DObject _Union = _tile_Inspector.GetSideObject(Iso2DObject.Type.Side_Union);
+                        if (_Union != null)
+                        {
+                            SpriteRenderer sprr = _Union.sprr;
+                            _DescRectDivision = _Rect.Division(
+                                new float[] { 0.25f / 8f, 2.75f / 8f, 1 / 8f, 3f / 8f, 1f / 8f }, null);
+                            _SubRects = _DescRectDivision[1].Division(null, new float[] { 0.05f, 0.35f, 0.6f });
+                            EditorGUI.BeginDisabledGroup(_tile_Inspector && _tile_Inspector.tileSetSprites);
+                            Union_Field(_SubRects[1], "Union Sprite", _Union, Handles.selectedColor);
+                            EditorGUI.EndDisabledGroup();
+                            Util.CustomEditorGUI.DrawSprite(_SubRects[2].Division(new float[] { 0.25f, 0.5f }, null)[1],
+                                IsoMap.gui_IsoTile_Union_OutlineImage, Color.clear, true, false);
+                            DrawTileSprite(_DescRectDivision[3]);
+                        }
+                    }
+                    else
+                    {
+                        _DescRectDivision = _Rect.Division(
+                            new float[] { 0.5f / 8f, 2.5f / 8f, 1f / 8f, 3 / 8f, 1f / 8f }, null);
+
+                        _SubRects = _DescRectDivision[1].Division(null,
+                            new float[] { 2 / 10f, 2 / 10f, 2 / 10f, 2 / 10f, 2 / 10f });
+
+                        _Rect = _DescRectDivision[3].Division(new float[] { 0.1f, 0.8f }, new float[] { 0.2f, 0.8f })[3];
+
+                        Iso2DObject _Iso2D_x = Side_Field(_SubRects[0], Iso2DObject.Type.Side_X, Handles.xAxisColor, IsoMap.Prefab_Side_X);
+                        Iso2DObject _Iso2D_y = Side_Field(_SubRects[2], Iso2DObject.Type.Side_Y, Handles.yAxisColor, IsoMap.Prefab_Side_Y);
+                        Iso2DObject _Iso2D_z = Side_Field(_SubRects[4], Iso2DObject.Type.Side_Z, Handles.zAxisColor, IsoMap.Prefab_Side_Z);
+
+                        if (_Iso2D_x == null && _Iso2D_y == null && _Iso2D_z == null)
+                            Util.CustomEditorGUI.DrawSprite(_Rect, IsoMap.gui_IsoTile_Side_OutlineImage, Color.clear, false, false);
+
+
+                        //CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_y, false, false);
+                        CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_x, false, false);
+                        CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_z, false, false);
+                        DrawTileSprite(_DescRectDivision[3]);
                     }
                 }
             }
             EditorGUILayout.Separator();
+        }
 
-            using (new EditorGUILayout.HorizontalScope())
+        void DrawTileSprite(Rect rt)
+        {
+            Texture2D _tex = null;
+            bool bTileSet = _tile_Inspector.tileSetSprites && _tile_Inspector.tileSetSprites.LookupedSubTileSet;
+            if (_tile_Inspector && bTileSet)
             {
-                float fWidth = EditorGUIUtility.currentViewWidth / 3f;
-                Rect _Rect = EditorGUILayout.GetControlRect(
-                    new GUILayoutOption[] { GUILayout.Height(fWidth), GUILayout.ExpandWidth(true) });
-
-                Rect[] _DescRectDivision;
-                Rect[] _SubRects;
-
-                if (_tile_Inspector.IsUnionCube())
-                {
-                    Iso2DObject _Union = _tile_Inspector.GetSideObject(Iso2DObject.Type.Side_Union);
-                    if (_Union != null)
-                    {
-                        SpriteRenderer sprr = _Union.sprr;                        
-                        _DescRectDivision = _Rect.Division(
-                            new float[] { 0.25f/8f, 2.75f/8f, 1/8f, 3f/8f, 1f/8f}, null);
-                        _SubRects = _DescRectDivision[1].Division(null, new float[] { 0.05f, 0.35f, 0.6f });
-                        Union_Field(_SubRects[1], "Union Sprite", _Union, Handles.selectedColor);
-                        Util.CustomEditorGUI.DrawSprite(_SubRects[2].Division(new float[] { 0.25f, 0.5f }, null)[1],
-                            IsoMap.gui_IsoTile_Union_OutlineImage, Color.clear, true, false);
-                        CustomEditorGUI.DrawSideSprite(_DescRectDivision[3], _Union, false, false);
-                    }
-                }
-                else
-                {
-                    _DescRectDivision = _Rect.Division(
-                        new float[] { 0.5f/8f, 2.5f/8f, 1f/8f, 3/8f, 1f/8f }, null);
-
-                    _SubRects = _DescRectDivision[1].Division(null, 
-                        new float[] {2/10f, 2/10f, 2/10f, 2/10f, 2/10f});
-                    
-                    _Rect = _DescRectDivision[3].Division(new float[]{0.1f, 0.8f}, new float[]{0.2f, 0.8f})[3];
-                    Util.CustomEditorGUI.DrawSprite(_Rect, IsoMap.gui_IsoTile_Side_OutlineImage, Color.clear, false, false);
-
-                    Iso2DObject _Iso2D_x = Side_Field(_SubRects[0], Iso2DObject.Type.Side_X, Handles.xAxisColor, IsoMap.Prefab_Side_X);
-                    Iso2DObject _Iso2D_y = Side_Field(_SubRects[2], Iso2DObject.Type.Side_Y, Handles.yAxisColor, IsoMap.Prefab_Side_Y);
-                    Iso2DObject _Iso2D_z = Side_Field(_SubRects[4], Iso2DObject.Type.Side_Z, Handles.zAxisColor, IsoMap.Prefab_Side_Z);
-
-                    CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_y, false, false);
-                    CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_x, false, false);
-                    CustomEditorGUI.DrawSideSprite(_Rect, _Iso2D_z, false, false);
-                }
+                _tex = _tile_Inspector.tileSetSprites.LookupedSubTileSet.bakedTileSetImg;
             }
-            EditorGUILayout.Space();
-            EditorGUILayout.Space();
+
+            if (_tex)
+                GUI.DrawTexture(rt, _tex, ScaleMode.ScaleToFit);
+            else
+                tileIcon.DrawRect(rt);
+
+            if (bTileSet)
+            {
+                GUIContent label = new GUIContent("TileSet Driven Sprite");
+                float fWidth = GUI.skin.label.CalcSize(label).x;
+                Rect rt_tileSetDesc = new Rect(rt.xMin + (rt.width - fWidth) * 0.5f, rt.yMax - EditorGUIUtility.singleLineHeight, fWidth, EditorGUIUtility.singleLineHeight);
+                EditorGUI.LabelField(rt_tileSetDesc, label);
+            }
         }
 
         Iso2DObject Side_Field(Rect _Rect, Iso2DObject.Type _sideType, Color _color, GameObject _prefab)
@@ -612,7 +725,7 @@ namespace Anonym.Isometric
 
             List<Iso2DObject> _lookupList = Iso2DObject.GetSideListOfTileSelection(_sideType);
             
-            if (_bToggle && _lookupList.Count > 0)
+            if (_tile_Scene && _bToggle && _lookupList.Count > 0)
             {
                 if (_obj == null)
                     _obj = _tile_Scene.GetSideObject(_sideType);
@@ -687,11 +800,7 @@ namespace Anonym.Isometric
         }
         void Inspector_Collider()
         {
-            EditorGUILayout.Separator();
-            Rect rt = EditorGUILayout.GetControlRect();
-            Rect[] rts = rt.Division(3, 1);
-            EditorGUI.LabelField(rts[0], "[Collider Control]", EditorStyles.boldLabel);
-            bHideCCMenu = EditorGUI.ToggleLeft(rts[1], "Hide", bHideCCMenu);
+            bHideCCMenu = CustomEditorGUI.LableWithToggle("[Collider Control]", EditorStyles.boldLabel, bHideCCMenu, "Hide");
 
             if (bHideCCMenu)
                 return;
@@ -861,7 +970,7 @@ namespace Anonym.Isometric
                 IsoTile _isoTile = Editor.Instantiate (_tile_Inspector);
                 previewObject = _isoTile.gameObject;
                 previewObject.transform.position = Vector3.zero;
-                _isoTile.Copycat(_tile_Inspector.GetComponent<IsoTile>(), true, false);
+                _isoTile.Copycat(_tile_Inspector.GetComponent<IsoTile>(), true, true, false);
                 var isoLightRecivers = _isoTile.GetComponentsInChildren<IsoLightReciver>();
                 foreach (var reciver in isoLightRecivers)
                     DestroyImmediate(reciver);

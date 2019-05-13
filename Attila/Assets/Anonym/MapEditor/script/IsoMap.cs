@@ -53,7 +53,7 @@ namespace Anonym.Isometric
 
         [SerializeField]
         public Vector2 TileAngle = DefaultTileAngle;
-        static Vector2 DefaultTileAngle = new Vector2(30f, -45f);
+        public static Vector2 DefaultTileAngle = new Vector2(30f, -45f);
 
 #if UNITY_EDITOR
 

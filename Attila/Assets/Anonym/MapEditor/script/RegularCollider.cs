@@ -67,7 +67,8 @@ namespace Anonym.Isometric
                 int _so = CalcSortingOrder();
                 for (int i = 0; i < _iso2DsCash.Length; ++i)
                 {
-                    _so = _iso2DsCash[i].Update_SortingOrder(_so, false);
+                    if (_iso2DsCash[i] != null)
+                        _so = _iso2DsCash[i].Update_SortingOrder(_so, false);
                 }
             }
 
@@ -219,7 +220,8 @@ namespace Anonym.Isometric
             {
                 for (int i = 0; i < _iso2DsCash.Length; ++i)
                 {
-                    _iso2DsCash[i].Update_SortingOrder(iNewSortingOrder, bUndoable);
+                    if (_iso2DsCash[i] != null)
+                        _iso2DsCash[i].Update_SortingOrder(iNewSortingOrder, bUndoable);
                 }
             }
         }
@@ -243,7 +245,8 @@ namespace Anonym.Isometric
             {
                 for (int i = 0; i < _iso2DsCash.Length; ++i)
                 {
-                    _iso2DsCash[i].Update_SortingOrder(ISOListForBackup.Count > i ? ISOListForBackup[i] : 0, false);
+                    if (_iso2DsCash[i] != null)
+                        _iso2DsCash[i].Update_SortingOrder(ISOListForBackup.Count > i ? ISOListForBackup[i] : 0, false);
                 }
             }
             ISOListForBackup.Clear();

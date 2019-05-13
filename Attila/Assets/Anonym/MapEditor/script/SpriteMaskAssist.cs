@@ -22,12 +22,15 @@ namespace Anonym.Isometric
         [SerializeField]
         List<SpriteRenderer> sprrList = new List<SpriteRenderer>();
 
+        [SerializeField]
+        List<TallCharacterHelper> tchList = new List<TallCharacterHelper>();
+
         private void Start()
         {
-            Init();
+            // Init();
         }
 
-        public void Init(SpriteRenderer _sprr = null)
+        public void Init(SpriteRenderer _sprr = null, float fAlphaCutoff = 1f)
         {
             if (spriteMask == null)
                 spriteMask = GetComponent<SpriteMask>();
@@ -37,7 +40,7 @@ namespace Anonym.Isometric
                 order = GetComponent<IsometricSortingOrder>();
             order.AddUpdateCallBack(this);
 
-            spriteMask.alphaCutoff = 1;
+            spriteMask.alphaCutoff = fAlphaCutoff;
 
             UpdateSprite();
         }
@@ -61,21 +64,28 @@ namespace Anonym.Isometric
             UpdateSprite();
         }
 
-        public void Regist(List<SpriteRenderer> spriteRenderers)
+        public void Regist(List<SpriteRenderer> spriteRenderers, TallCharacterHelper _tch = null)
         {
             sprrList.AddRange(spriteRenderers.Where(r => r != null));// && r.enabled && !sprrList.Contains(r)));
             //sprrList = sprrList.Distinct();
             UpdateSortingOrder();
+
+            if (_tch != null && !tchList.Contains(_tch))
+                tchList.Add(_tch);
         }
 
-        public bool UnRegist(List<SpriteRenderer> spriteRenderers)
+        public bool UnRegist(List<SpriteRenderer> spriteRenderers, TallCharacterHelper _tch = null)
         {
+            if (_tch != null && tchList.Contains(_tch))
+                tchList.Remove(_tch);
+
             var gos = spriteRenderers.Select(r => r.gameObject).Distinct();
             spriteRenderers.ForEach(r => sprrList.Remove(r));
             if (sprrList.Any(r => gos.Contains(r.gameObject)))
                 return false;
 
-            UpdateSortingOrder();
+            UpdateSortingOrder();           
+
             return true;
         }
 
@@ -95,5 +105,16 @@ namespace Anonym.Isometric
                     spriteMask.frontSortingOrder = Mathf.Min(spriteMask.frontSortingOrder, order.iLastSortingOrder - 1);
             }
         }
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < tchList.Count; ++i)
+            {
+                if (tchList[i] != null)
+                {
+                    tchList[i].Remove(this, true);
+                }
+            }
+    }
     }
 }

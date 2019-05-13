@@ -47,7 +47,7 @@ namespace Anonym.Isometric
 		[HideInInspector]
 		float _lastSpritePPU;
 		[HideInInspector]
-		float _lastPPURefScale;
+		float _lastPPURefScale = 1;
 		public float PPURefScale{
 			get{
 				if (sprr == null || sprr.sprite == null)

@@ -12,8 +12,10 @@ namespace Anonym.Isometric
     [CustomPropertyDrawer(typeof(IsoTile))]
     public class IsoTileDrawer : PropertyDrawer
     {
+        TmpTexture2D tmpTexture2D = new TmpTexture2D();
         static int cellSize = 40;
         static int border = 2;
+
         public static int RectHeight { get { return cellSize + border * 2; } }
         public static Rect GetRect()
         {
@@ -28,8 +30,11 @@ namespace Anonym.Isometric
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (Event.current.type == EventType.ScrollWheel)
-                return;
+            //if (Event.current.type == EventType.ScrollWheel)
+            //{
+            //    EditorGUIUtility.ExitGUI();
+            //    return;
+            //}
                 
             SerializedProperty sp = property.serializedObject.FindProperty(property.propertyPath);
             if (sp != property)
@@ -58,34 +63,13 @@ namespace Anonym.Isometric
 
             CustomEditorGUI.DrawBordereddRect(rect, borderColor, rect_inside, Color.clear);
             
-            Iso2DObject[] _iso2Ds = _target.GetComponentsInChildren<Iso2DObject>();
-            for (int i = 0 ; i < _iso2Ds.Length; ++i)
-            {
-                if (_iso2Ds[i] != null && (_iso2Ds[i].IsXYZSide || _iso2Ds[i].IsUnionSide))
-                {
-                    CustomEditorGUI.DrawSideSprite(rect_preview, _iso2Ds[i], false, false);
-                }
-            }
+            tmpTexture2D.MakeRenderImage(_target, null, Color.clear);
+            tmpTexture2D.DrawRect(rect_preview);
 
             int iLv = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
             EditorGUI.LabelField(rect_info_name, _target.name, EditorStyles.boldLabel);
-            // 서브 인포 출력
-            //using (new EditorGUILayout.HorizontalScope())
-            {
-                float _fMinSize = Mathf.Min(rect_info_Sub.width, rect_info_Sub.height);
 
-                for (int i = 0; i < _iso2Ds.Length; ++i)
-                {
-                    if (_iso2Ds[i] != null && _iso2Ds[i].IsAttachment)
-                    {
-                        Rect _rt = EditorGUI.IndentedRect(rect_info_Sub);
-                        _rt.width = _rt.height = _fMinSize;
-                        rect_info_Sub.xMin += _fMinSize;
-                        CustomEditorGUI.DrawSideSprite(_rt, _iso2Ds[i], false, true);
-                    }
-                }
-            }
             EditorGUI.indentLevel = iLv;
 
             if (GUI.enabled)

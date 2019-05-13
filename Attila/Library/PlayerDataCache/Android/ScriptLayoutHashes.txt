@@ -94,8 +94,8 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-fea57f61d8806118298cf4972e7b0d52 Assembly-CSharp.dll:Anonym.Isometric.SpriteMaskAssist
-11d8662582cd9de902542a306dfa4ec8 Assembly-CSharp.dll:Anonym.Isometric.IsoTile
+80278a85794c9be1316d3268df0e07cd Assembly-CSharp.dll:Anonym.Isometric.SpriteMaskAssist
+3e7201edc0d88a11092afb8f70e74bce Assembly-CSharp.dll:Anonym.Isometric.IsoTile
 8f6d77d61cfca6a5af79fd141db972d4 Assembly-CSharp.dll:Anonym.Isometric.ISOBasis
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -130,7 +130,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Levels
 08cd93137d6ba790d1090af8d0c15318 Assembly-CSharp.dll:.EditorClickManager
-7f4263b80835d58e6db9b201d3c53d66 Assembly-CSharp.dll:Anonym.Isometric.IsoTileBulk
+643e05b7ec37d8aa0910953c0748a24e Assembly-CSharp.dll:Anonym.Isometric.IsoTileBulk
 0a167b17832d59a5f10926102cccf393 Assembly-CSharp.dll:Anonym.Isometric.IsoLightReciver
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -240,7 +240,7 @@ aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 024180aa81add2338c40d15e3c595d28 Assembly-CSharp.dll:.ZoomInZoomOut
 37159ef932afdc72b08ff1bf8ac5c8a8 Assembly-CSharp.dll:.GameCell
-d78478a84aade45615835d450c2b4b8b Assembly-CSharp.dll:.GameManager
+31a711c27781d64848f7e33065735ac6 Assembly-CSharp.dll:.GameManager
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -267,7 +267,7 @@ f7a53b41932d6f517873a52a30a20e04 Assembly-CSharp.dll:.ColoredObject
 756f29eb5b04ee30504fb266fec153e8 Assembly-CSharp.dll:Anonym.Isometric.IsometricNavMeshAgent
 80720cfd7e9927448366b2a3215d9008 Assembly-CSharp.dll:.MovePlayer
 e3a6f352f0d08d3430e349a76fad9861 Assembly-CSharp.dll:.LevelEditor
-ed6104940a6480ab31f705e34346a7fd Assembly-CSharp.dll:Anonym.Isometric.IsometricSortingOrder
+fab7db98b545b08e10fcb2f1bc690ba8 Assembly-CSharp.dll:Anonym.Isometric.IsometricSortingOrder
 8a6ab9615f8bb95baa054f7accfbad46 Assembly-CSharp.dll:Anonym.Isometric.Iso2DObject
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ShowColliders
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
@@ -275,7 +275,7 @@ d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 b9d3e77e5899f4e933b461b904f4eddc Assembly-CSharp.dll:.Grid
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
-f0b114a452ee7b42bea6113d0fa3a3dc Assembly-CSharp.dll:Anonym.Isometric.GridCoordinates
+9663cc980a2c71008f702c6794537e5c Assembly-CSharp.dll:Anonym.Isometric.GridCoordinates
 8f06a20d55b22238e5a7cc8ed6511a05 Assembly-CSharp.dll:Anonym.Util.GameObjectSelector
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
@@ -313,9 +313,10 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-a6a28b710915db30a7df0cf0069c8ded Assembly-CSharp.dll:Anonym.Isometric.TallCharacterHelper
-a7510804375ea117c6e2ea4b103364e9 Assembly-CSharp.dll:Anonym.Util.SSHelper
-ed6104940a6480ab31f705e34346a7fd Assembly-CSharp.dll:Anonym.Isometric.IsometircSortingOrder
+5d9c539d5103d290e5a45d69a4156d53 Assembly-CSharp.dll:Anonym.Isometric.TallCharacterHelper
+6a8ef5517b9fd311cb94308988c32a9c Assembly-CSharp.dll:Anonym.Util.SSHelper
+fab7db98b545b08e10fcb2f1bc690ba8 Assembly-CSharp.dll:Anonym.Isometric.IsometircSortingOrder
+e231f8223476d216810a832b95b18dba Assembly-CSharp.dll:.InfoBox
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 f8b139fcde9fda6214245df246415cc7 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
 0077fc8e4fbae67f80e80ebd534de5a0 Vuforia.UnityExtensions.dll:Vuforia.AnchorStageBehaviour
@@ -351,4 +352,7 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-e231f8223476d216810a832b95b18dba Assembly-CSharp.dll:.InfoBox
+cca7d97c591ec0a4d772a7594b87c536 Assembly-CSharp.dll:Anonym.Isometric.TileSetSprites
+46f2be16809e60896d3ff56058eae0d0 Assembly-CSharp.dll:Anonym.Isometric.SubTileSet
+c75d53a8188e647b47f39c0a5b743650 Assembly-CSharp.dll:Anonym.Util.Billboard
+85af03bfa916bcc3ba04aff4e37cb50c Assembly-CSharp.dll:Anonym.Util.SelfieStick

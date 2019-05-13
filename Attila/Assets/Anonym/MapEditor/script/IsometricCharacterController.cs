@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 namespace Anonym.Isometric
 {
+    using Util;
+
     [RequireComponent(typeof(CharacterController))]
     public class IsometricCharacterController : IsometricMovement
     {

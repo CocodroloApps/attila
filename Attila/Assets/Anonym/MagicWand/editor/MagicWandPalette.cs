@@ -49,10 +49,10 @@ namespace Anonym.Util
     [CreateAssetMenu(fileName = "New Tile Set", menuName = "Anonym/Magic Wand/Tile Set", order = 999)]
     public class MagicWandPalette : MagicWandPalette<MagicWand>
     {
-        public static MagicWandPalette CreateAsset(string path)
+        public static MagicWandPalette CreateAsset(string path, bool bOverride = false)
         {
             var _instance = ScriptableObject.CreateInstance<MagicWandPalette>();
-            string _path = AssetDatabase.GenerateUniqueAssetPath(path);
+            string _path = bOverride ? path : AssetDatabase.GenerateUniqueAssetPath(path);
             AssetDatabase.CreateAsset(_instance, _path);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();

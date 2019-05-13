@@ -37,7 +37,7 @@ namespace Anonym.Isometric
         bool bFoldoutComponentList = false;
         LayerMask layerMask = 1;
 
-        Dictionary<System.Type, bool> FilterableComponent = new Dictionary<System.Type, bool>() {
+        static Dictionary<System.Type, bool> FilterableComponent = new Dictionary<System.Type, bool>() {
             { typeof(IsoTile), false },
             { typeof(IsoTileBulk), false },
             { typeof(IsoMap), false },
@@ -220,6 +220,34 @@ namespace Anonym.Isometric
                         DestroyImmediate(com);
                 }
             }
+        }
+
+        static void SetEnable(GameObject target, bool bEnable)
+        {
+            // root 이하의 모든 Iso Coms에 대해 bEnable를 적용한다.
+            var comEnumerator = FilterableComponent.GetEnumerator();
+
+            while (comEnumerator.MoveNext())
+            {
+                var type = comEnumerator.Current.Key;
+                if ((type.IsSubclassOf(typeof(Component)) || type.IsSubclassOf(typeof(MonoBehaviour)) || type.IsInterface))
+                {
+                    var hv = target.GetComponent(type) as Behaviour;
+                    if (hv)
+                        hv.enabled = bEnable;
+                }
+            }
+        }
+
+        public static void SetEnable(bool bEnable, GameObject root)
+        {
+            int childCount = root.transform.childCount;
+            for (int i = 0; i < childCount; ++i)
+            {
+                SetEnable(bEnable, root.transform.GetChild(i).gameObject);
+            }
+
+            SetEnable(root, bEnable);
         }
     }
 }

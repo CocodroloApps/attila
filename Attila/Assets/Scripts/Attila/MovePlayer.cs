@@ -103,6 +103,12 @@ public class MovePlayer : MonoBehaviour
 
         if ((GameObject.Find(destination).GetComponent<GameCell>().final == false) && (GameObject.Find(destination).GetComponent<GameCell>().objective == false))
         {
+            int nType = GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].type;
+            // Is Town OR City OR Army
+            if (nType == 4 || nType == 5 || nType == 6 )
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
+            }
             Normal();
         }
 
@@ -132,7 +138,7 @@ public class MovePlayer : MonoBehaviour
                 else
                 {
                     //Next stage
-                    NextLevel();                    
+                    StartCoroutine(NextLevel());                    
                 }                
             }
         }
@@ -151,6 +157,7 @@ public class MovePlayer : MonoBehaviour
         GlobalInfo.score = GlobalInfo.score + 100;
         GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
         GlobalInfo.objectivesNum--;
+        GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
     }
 
     public void Final()
@@ -160,6 +167,7 @@ public class MovePlayer : MonoBehaviour
         {
             GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
             GlobalInfo.finalNum--;
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
         }        
     }
 
@@ -169,8 +177,9 @@ public class MovePlayer : MonoBehaviour
         GlobalInfo.score = GlobalInfo.score + 10;
     }
 
-    public void NextLevel()
-    {        
+    IEnumerator NextLevel()
+    {
+        yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
         GlobalInfo.actualStage++;
         SceneManager.LoadScene("Attila");
     }

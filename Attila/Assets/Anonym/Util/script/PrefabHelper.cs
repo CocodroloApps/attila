@@ -13,6 +13,9 @@ namespace Anonym.Util
     {
         public static bool IsPrefab(GameObject go)
         {
+            if (go == null || go.scene == null)
+                return false;
+
             return go.scene.rootCount == 0;
         }
 

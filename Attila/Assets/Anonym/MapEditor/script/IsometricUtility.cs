@@ -44,18 +44,51 @@ namespace Anonym.Isometric
             return null;
         }
 
+        public static IsoTile Extrude_Separately(this IsoTile tile, Vector3 _direction, bool _bWithAttachment)
+        {
+            var lastTile = tile.Extrude(_direction, true);
+            int iPReventLoop = tile.coordinates.grid.CoordinatesCountInTile(_direction) - 1;
+            tile.coordinates.Translate(Vector3.up * iPReventLoop);
+
+            return lastTile;
+            //IsoTile lastTile = null;
+            //while(iPReventLoop-- > 0)
+            //{
+            //    lastTile = tile.Extrude(_direction, _bWithAttachment);
+            //    //이번 업데이트에 생긴 오브젝트는 콜리더/바운드 체크가 잘 되지 않는다.
+                
+            //    //Duplicate 하고 움직이지 말고, 움직이고 Duplicate하면 안되나?
+            //    // 그럼 언제까지 움직이는데?
+
+            //    //그냥 계산 된 높이 까지 올리는 로직으로 대체.
+            //    if (lastTile)
+            //    {
+            //        // 타일이 생성되면 중첩되지 않을 만큼 공간을 더 벌린다.
+            //        while(tile.IsAccumulatedTile_Collider(-_direction))
+            //        {
+            //            tile.coordinates.Translate(_direction);
+            //        }
+            //        tile.coordinates.Translate(-_direction);
+            //        break;
+            //    }
+            //}
+            //return lastTile;
+        }
+
         static IsoTile extrude(this IsoTile tile, Vector3 _direction, bool _bContinuously, bool _withAttachment)
         {
+            const string undoName = "IsoTile: Extrude";
             IsoTile _new = tile.Duplicate();
             if (!_withAttachment)
                 _new.Clear_Attachment(false);
 #if UNITY_EDITOR
-            Undo.RegisterCreatedObjectUndo(_new.gameObject, "IsoTile:Extrude");
+            Undo.RegisterCreatedObjectUndo(_new.gameObject, undoName);
 #endif
-            _new.coordinates.Translate(_direction, "IsoTile:Extrude");
+            _new.coordinates.Translate(_direction, undoName);
 #if UNITY_EDITOR
-            Undo.RecordObject(tile.gameObject, "IsoTile:Extrude");
-#endif
+            Undo.RecordObject(tile.gameObject, undoName);
+#endif            
+            IsoTile.UpdateTileSet(_new, false, true, undoName);
             return _new;
         }
 
@@ -84,13 +117,13 @@ namespace Anonym.Isometric
 
         public static bool IsLastTile(this IsoTile tile, Vector3 _direction)
         {
-            return tile.Bulk.GetTiles_At(tile.coordinates._xyz, _direction, false, true).Count == 0;
+            return tile.Bulk.GetTiles_At(tile.coordinates._xyz, _direction, false, true).Count() == 0;
         }
 
         public static IsoTile NextTile(this IsoTile tile, Vector3 _direction)
         {
-            List<IsoTile> _tiles = tile.Bulk.GetTiles_At(tile.coordinates._xyz, _direction, false, false);
-            return (_tiles.Count > 0) ? _tiles[0] : null;
+            IEnumerable<IsoTile> _tiles = tile.Bulk.GetTiles_At(tile.coordinates._xyz, _direction, false, false);
+            return (_tiles.Count() > 0) ? _tiles.First() : null;
         }
 
         public static T FindComponentInParent<T>(this GameObject start) where T: Component

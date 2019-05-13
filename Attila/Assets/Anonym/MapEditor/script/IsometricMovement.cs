@@ -5,29 +5,40 @@ using UnityEngine;
 namespace Anonym.Isometric
 {
     using Util;
-    public enum InGameDirection
+   
+    public static class InGameDirectionToVector
     {
-        Jump_Move = 0,
-        Right_Move = 1,
-        Right_Rotate = -1 * Right_Move,
-        RD_Move = 2,
-        RD_Rotate = -1 * RD_Move,
-        Down_Move = 3,
-        Down_Rotate = -1 * Down_Move,
-        LD_Move = 4,
-        LD_Rotate = -1 * LD_Move,
-        Left_Move = 5,
-        Left_Rotate = -1 * Left_Move,
-        LT_Move = 6,
-        LT_Rotate = -1 * LT_Move,
-        Top_Move = 7,
-        Top_Rotate = -1 * Top_Move,
-        RT_Move = 8,
-        RT_Rotate = -1 * RT_Move,
-        Dash = 9,
+        public static int ToInt(this InGameDirection _dir)
+        {
+            return (int)_dir;
+        }
 
-        OppositeDir = 4,
-        None = 1000,
+        public static Vector3 ToVector3(this InGameDirection _dir)
+        {
+            switch(_dir)
+            {
+                case InGameDirection.Right_Move:
+                    return Vector3.right + Vector3.forward;
+                case InGameDirection.DR_Move:
+                    return Vector3.right;
+                case InGameDirection.Down_Move:
+                    return Vector3.right + Vector3.back;
+                case InGameDirection.DL_Move:
+                    return Vector3.back ;
+                case InGameDirection.Left_Move:
+                    return Vector3.left + Vector3.back;
+                case InGameDirection.TL_Move:
+                    return Vector3.left;
+                case InGameDirection.Top_Move:
+                    return Vector3.left + Vector3.forward;
+                case InGameDirection.TR_Move:
+                    return Vector3.forward;
+                case InGameDirection.Jump_Move:
+                    return Vector3.up;
+                default:
+                    return Vector3.zero;
+            }
+        }
     }
 
     [DisallowMultipleComponent]

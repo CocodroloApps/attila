@@ -11,7 +11,7 @@ namespace Anonym.Isometric
     ///  </summary>
     public interface IGridOperator
     {
-        Vector3 PositionToCoordinates(Vector3 position, bool bSnap = false);
+        Vector3 PositionToCoordinates(Vector3 globalPosition, bool bSnap = false);
         Vector3 CoordinatesToPosition(Vector3 coordinates, bool bSnap = false);
         int CoordinatesCountInTile(Vector3 _direction);
 

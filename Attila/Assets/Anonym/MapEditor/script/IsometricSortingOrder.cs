@@ -8,6 +8,8 @@ using UnityEditor;
 
 namespace Anonym.Isometric
 {
+    using Util;
+
     public class IsometricSortingOrderUtility
     {
         public static int IsometricSortingOrder(Transform _transform)
@@ -47,6 +49,16 @@ namespace Anonym.Isometric
 
         [SerializeField]
         int iParticleSortingAdd = 0;
+
+        List<IOverrideSortingOrder> _iOverrideSOList = new List<IOverrideSortingOrder>();
+        List<IOverrideSortingOrder> IOverrideSOList
+        {
+            get
+            {
+                update_Child();
+                return _iOverrideSOList;
+            }
+        }
 
         List<SpriteRenderer> _dependentList = new List<SpriteRenderer>();
         List<SpriteRenderer> DependentList
@@ -112,6 +124,9 @@ namespace Anonym.Isometric
                     if (_iso2D == null || _iso2D.RC == null)
                         _dependentList.Add(_sprr);
                 }
+
+                _iOverrideSOList.Clear();
+                _iOverrideSOList.AddRange(transform.GetComponentsInChildren<IOverrideSortingOrder>());
             }
             bCorrupted = false;
         }
@@ -205,25 +220,37 @@ namespace Anonym.Isometric
                 {
                     dependentList[i].sortingOrder = iLastSortingOrder + i + 1;
                 }
+
+                // For external components that inherit the IOverrideSortingOrder interface.
+                var overrideList = IOverrideSOList;
+                for (int i = 0; i < overrideList.Count; ++i)
+                {
+                    overrideList[i].sortingOrder = iLastSortingOrder;
+                }
             }
 #if UNITY_EDITOR
             else if (bCurrpted || bJustDoIt)
             {
-                for (int i = 0; i < dependentList.Count; ++i)
+                for (int i = 0; i < dependentList.Count && i < _sprrISOListForBackup.Count; ++i)
                 {
-                    if (_sprrISOListForBackup.Count > i)
-                        dependentList[i].sortingOrder = _sprrISOListForBackup[i];
+                    dependentList[i].sortingOrder = _sprrISOListForBackup[i];
                 }
 
                 var particleSystemRenderList = ParticleSystemRendererList;
-                for (int i = 0; i < particleSystemRenderList.Count; ++i)
+                for (int i = 0; i < particleSystemRenderList.Count && i < _prsISOListForBackup.Count; ++i)
                 {
-                    if (_prsISOListForBackup.Count > i)
-                        particleSystemRenderList[i].sortingOrder = _prsISOListForBackup[i];
+                    particleSystemRenderList[i].sortingOrder = _prsISOListForBackup[i];
+                }
+
+                var iOverrideList = IOverrideSOList;
+                for (int i = 0; i < iOverrideList.Count && i < _iOverrideISOBackup.Count; ++i)
+                {
+                    iOverrideList[i].sortingOrder = _iOverrideISOBackup[i];
                 }
             }
-#endif
+#endif           
 
+            // For, calculated and updated by themselves.
             var regularColliderList = RegularColliderList;
             for (int i = 0; i < regularColliderList.Count; ++i)
             {
@@ -331,12 +358,63 @@ namespace Anonym.Isometric
         }
         #endregion
 
+        #region Runtime
+        public void Reset_SortingOrder(int iNewSortingOrder, bool bUndoable)
+        {
+            const string undoName = "SortingOrder update";
+
+            iLastSortingOrder = iNewSortingOrder;
+#if UNITY_EDITOR
+            _sprrISOListForBackup.Clear();
+            _prsISOListForBackup.Clear();
+#endif
+            var dependentList = DependentList;
+            if (bUndoable)
+                UndoUtil.Record(dependentList.ToArray(), undoName);
+
+            if (IsoMap.instance.bUseIsometricSorting)
+            {
+                for (int i = 0; i < dependentList.Count; ++i)
+                {
+                    dependentList[i].sortingOrder = iLastSortingOrder + i;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dependentList.Count; ++i)
+                {
+                    dependentList[i].sortingOrder = iNewSortingOrder;
+                }
+
+                var particleSystemRenderList = ParticleSystemRendererList;
+                if (bUndoable)
+                    UndoUtil.Record(dependentList.ToArray(), undoName);
+
+                for (int i = 0; i < particleSystemRenderList.Count; ++i)
+                {
+                    particleSystemRenderList[i].sortingOrder = iNewSortingOrder;
+                }
+            }
+
+#if UNITY_EDITOR
+            _regularColliderList.ForEach((r) => r.ResetSortingOrder(iNewSortingOrder, bUndoable));
+#endif
+
+            if (bUndoable)
+                UndoUtil.Record(_iOverrideSOList.Select(o => o as Object).Where(o => o != null).ToArray(), undoName);
+
+            _iOverrideSOList.ForEach((o) => o.sortingOrder = iNewSortingOrder);
+        }
+        #endregion
+
 #if UNITY_EDITOR
         #region MapEditor
         [SerializeField]
         List<int> _sprrISOListForBackup = new List<int>();
         [SerializeField]
         List<int> _prsISOListForBackup = new List<int>();
+        [SerializeField]
+        List<int> _iOverrideISOBackup = new List<int>();
         public void Clear_Backup(bool bUndoable = true)
         {
             Reset_SortingOrder(iLastSortingOrder, bUndoable);
@@ -357,6 +435,13 @@ namespace Anonym.Isometric
             }
             _prsISOListForBackup.Clear();
 
+            var iOverrideList = IOverrideSOList;
+            for (int i = 0; i < iOverrideList.Count; ++i)
+            {
+                iOverrideList[i].sortingOrder = _iOverrideISOBackup.Count > i ? _iOverrideISOBackup[i] : 0;
+            }
+            iOverrideList.Clear();
+
             var regularColliderList = RegularColliderList;
             regularColliderList.ForEach(r => r.Revert_SortingOrder());
         }
@@ -370,45 +455,14 @@ namespace Anonym.Isometric
             var particleSystemRenderList = ParticleSystemRendererList;
             particleSystemRenderList.ForEach(r => _prsISOListForBackup.Add(r != null ? r.sortingOrder : 0));
 
+            _iOverrideISOBackup.Clear();
+            var iOverrideList = IOverrideSOList;
+            iOverrideList.ForEach(o => _iOverrideISOBackup.Add(o.sortingOrder));
+
             var regularColliderList = RegularColliderList;
             regularColliderList.ForEach(r => r.Backup_SortingOrder());
-        }
-        public void Reset_SortingOrder(int iNewSortingOrder, bool bUndoable)
-        {
-            iLastSortingOrder = iNewSortingOrder;
-            _sprrISOListForBackup.Clear();
-            _prsISOListForBackup.Clear();
 
-            var dependentList = DependentList;
-            if (bUndoable)
-                Undo.RecordObjects(dependentList.ToArray(), "SortingOrder update");
-
-            if (IsoMap.instance.bUseIsometricSorting)
-            {
-                for (int i = 0; i < dependentList.Count; ++i)
-                {
-                    dependentList[i].sortingOrder = iLastSortingOrder + i;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dependentList.Count; ++i)
-                {
-                    dependentList[i].sortingOrder = iNewSortingOrder;
-                }
-
-                var particleSystemRenderList = ParticleSystemRendererList;
-                if (bUndoable)
-                    Undo.RecordObjects(dependentList.ToArray(), "SortingOrder update");
-
-                for (int i = 0; i < particleSystemRenderList.Count; ++i)
-                {
-                    particleSystemRenderList[i].sortingOrder = iNewSortingOrder;
-                }
-            }
-
-            _regularColliderList.ForEach((r) => r.ResetSortingOrder(iNewSortingOrder, bUndoable));
-        }
+        }       
 
         #endregion MapEditor
 #endif

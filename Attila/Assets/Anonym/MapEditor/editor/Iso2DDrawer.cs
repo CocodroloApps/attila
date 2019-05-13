@@ -16,6 +16,8 @@ namespace Anonym.Isometric
         const int fudgeWidth = 195;
         const int border = 2;
 
+        TmpTexture2D tmpTexture2D = new TmpTexture2D();
+
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             return RectHeight;
@@ -30,8 +32,11 @@ namespace Anonym.Isometric
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (Event.current.type == EventType.ScrollWheel)
-                return;
+            //if (Event.current.type == EventType.ScrollWheel)
+            //{
+            //    EditorGUIUtility.ExitGUI();
+            //    return;
+            //}
                 
             SerializedProperty sp = property.serializedObject.FindProperty(property.propertyPath);
             if (sp != property)
@@ -49,10 +54,10 @@ namespace Anonym.Isometric
             }
 
             Rect rect = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), new GUIContent(""));
-            Drawer(rect, _target);
+            Drawer(rect, _target, tmpTexture2D);
         }
 
-        public static void Drawer(Rect rect, GameObject _target)
+        public static void Drawer(Rect rect, GameObject _target, TmpTexture2D tmpTexture2D)
         {
             IsoTile _thisTile = _target.GetComponent<IsoTile>();
             Iso2DObject _iso2D = _target.GetComponent<Iso2DObject>();
@@ -62,6 +67,7 @@ namespace Anonym.Isometric
             if (_thisTile == null && _iso2D != null)
                 borderColor = CustomEditorGUI.Iso2DTypeColor(_iso2D._Type);
 
+            #region Rect
             Rect rect_inside = new Rect(rect.xMin + border, rect.yMin + border, rect.width - border * 2, rect.height - border * 2);
 
             Rect rect_preview = new Rect(rect_inside.xMin, rect_inside.yMin, cellSize, rect_inside.height);
@@ -81,12 +87,19 @@ namespace Anonym.Isometric
                 new Rect(rect_inside.xMax - cellSize * 3.3f, rect_info_Sub.yMin, cellSize, rect_info_Sub.height),
                 new Rect(rect_inside.xMax - cellSize * 4.4f, rect_info_Sub.yMin, cellSize, rect_info_Sub.height)
             };
+            #endregion
 
             bool bControllerable = (_thisTile == null || _thisTile.gameObject != _target.gameObject)
                 || (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<IsoTileBulk>());
 
             CustomEditorGUI.DrawBordereddRect(rect, borderColor, rect_inside, Color.clear);
-            CustomEditorGUI.DrawSideSprite(rect_preview, _iso2D, false, false);
+            if (tmpTexture2D != null)
+            {
+                tmpTexture2D.MakeRenderImage(_target.gameObject, null, Color.clear);
+                tmpTexture2D.DrawRect(rect_preview);
+            }
+            else
+                CustomEditorGUI.DrawSideSprite(rect_preview, _iso2D, false, false);
 
             int iLv = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
@@ -143,8 +156,14 @@ namespace Anonym.Isometric
 
                 }
 
+                bool bDisableDeleteBtn = false;
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+                bDisableDeleteBtn = PrefabUtility.IsPartOfAnyPrefab(_iso2D);
+#endif
+                EditorGUI.BeginDisabledGroup(bDisableDeleteBtn);
                 CustomEditorGUI.Button(rect_btns[buttonIndex++].ReSize(2f, 2f), true, CustomEditorGUI.Color_LightYellow, "Del!!",
                     () => { _iso2D.DestoryGameObject(true, true); });
+                EditorGUI.EndDisabledGroup();
             }
             EditorGUI.indentLevel = iLv;
         }

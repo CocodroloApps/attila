@@ -45,7 +45,7 @@ namespace Anonym.Isometric
                     if (isAllActived)
                     {
                         Debug.LogWarning("There is Iso2D Object without Sprite.\nCheck this Object : " + names);
-                        Debug.LogError("Iso2DObject Must be a descendant of RegularCollider\n" + names);
+                        Debug.LogWarning("Iso2DObject Must be a descendant of RegularCollider\n" + names);
                     }
                 }
                 return _tile;
@@ -78,7 +78,17 @@ namespace Anonym.Isometric
             get
             {
                 if (IsoMap.IsNull)
-                    return new Vector2(transform.localEulerAngles.x, transform.localEulerAngles.y);
+                {
+                    Transform _transform = transform;
+                    if (!IsSideOfTile && Tile)
+                    {
+                        var sides = Tile.GetSideObjects(Type.Side_Union, Type.Side_X, Type.Side_Y, Type.Side_Z);
+                        if (sides.Length > 0)
+                            _transform = sides[0].transform;
+                    }
+
+                    return new Vector2(_transform.localEulerAngles.x, _transform.localEulerAngles.y);
+                }
                 return IsoMap.instance.TileAngle;
             }
         }
@@ -137,15 +147,40 @@ namespace Anonym.Isometric
             return _DestroyGameObject;
         }
 
-        public void DestoryGameObject(bool bCanUndo, bool bJustDoIt)
+        public bool DestoryGameObject(bool bCanUndo, bool bJustDoIt)
         {
             GameObject _DestroyGameObject = GetDestoryParentObject(bJustDoIt);
 #if UNITY_EDITOR
             if (bCanUndo)
-                UnityEditor.Undo.DestroyObjectImmediate(_DestroyGameObject);
+                return UndoUtil.Delete(_DestroyGameObject);
             else
 #endif
                 DestroyImmediate(_DestroyGameObject);
+
+            return true;
+        }
+
+        public bool ChangeSprite(Sprite _newSprite, bool _bKeepChildLoosyScale = false, bool bRecordForUndo = true, string undoName = "Changed: Sprites")
+        {
+            if (sprr.sprite == _newSprite)
+                return false;
+
+#if UNITY_EDITOR
+            if (bRecordForUndo)
+                UnityEditor.Undo.RecordObject(sprr, undoName);
+
+            if (_bApplyPPUScale)
+            {
+                Toggle_ApplyPPUScale();
+                sprr.sprite = _newSprite;
+                Toggle_ApplyPPUScale();
+            }
+            else
+#endif
+            {
+                sprr.sprite = _newSprite;
+            }
+            return true;
         }
         #endregion
 
@@ -174,20 +209,6 @@ namespace Anonym.Isometric
 			_rc = null;
 			_tile = null;
 		}		
-
-		public void ChangeSprite(Sprite _newSprite, bool _bKeepChildLoosyScale = false)
-		{
-			UnityEditor.Undo.RecordObject(sprr, "Sprite Changed");
-			if (_bApplyPPUScale)
-			{
-				Toggle_ApplyPPUScale();
-				sprr.sprite = _newSprite;
-				Toggle_ApplyPPUScale();
-			}
-			else{
-				sprr.sprite = _newSprite;
-			}
-		}
 
 		public void Copycat(Iso2DObject _target, bool bUndoable = true)
 		{

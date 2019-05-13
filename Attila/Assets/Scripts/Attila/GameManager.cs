@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public Sprite horse;
 
     public GameObject infoBox;
+    public GameObject battleBox;
 
     private int troopsO;
     private int weaponsO;
@@ -235,7 +236,19 @@ public class GameManager : MonoBehaviour
     public void HideMoveResult()
     {
         GlobalInfo.isShowingInfo = false;
-        infoBox.SetActive(false);        
+        infoBox.SetActive(false);
+    }
+
+    public void ShowBattleResult()
+    {
+        GlobalInfo.isShowingInfo = true;
+        battleBox.SetActive(true);
+    }
+
+    public void HideBattleResult()
+    {        
+        battleBox.SetActive(false);
+        ShowMoveResult();
     }
 
     public void MoveHorse(string origen, string final)

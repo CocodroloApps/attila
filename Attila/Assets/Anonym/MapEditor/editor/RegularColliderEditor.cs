@@ -20,6 +20,8 @@ namespace Anonym.Isometric
         Iso2DObject _childIso2D_0;
         SerializedProperty _spIso2DScaleMultiplier;
 
+        TmpTexture2D tmpTexture2D = new TmpTexture2D();
+
         bool undoredo()
         {
             if (Event.current.commandName == "UndoRedoPerformed")
@@ -75,7 +77,7 @@ namespace Anonym.Isometric
             SubCollider_Create();
             SubCollider_List();            
 
-            CustomEditorGUI.ColliderControlHelperGUI(targets);
+            CustomEditorGUI.ColliderControlHelperGUI(tmpTexture2D, targets);
 
             serializedObject.ApplyModifiedProperties();
 		}        

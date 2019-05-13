@@ -21,13 +21,13 @@ namespace Anonym.Util
             FixedYAxis,
         }
 
-        #region Member
+#region Member
         [SerializeField]
         AbstractMagicWandPalette selectedPalette;
         [SerializeField]
         AbstractMagicWandPalette defaultPalette;
         [SerializeField]
-        AbstractMagicWandPalette defaultTileSetPalette;
+        AbstractMagicWandPalette TileSetPaletteForSave;
 
         [System.NonSerialized]
         List<AbstractMagicWandPalette> Palettes = new List<AbstractMagicWandPalette>();
@@ -43,6 +43,7 @@ namespace Anonym.Util
         List<MagicWand.ParamType> paramTypes = new List<MagicWand.ParamType>();
 
         List<GameObject> makeUpedTargetList = new List<GameObject>();
+        List<Vector2Int> makeUpedXZCoordinates = new List<Vector2Int>();
 
         // LastTarget
         IsoTile lastTile = null;
@@ -64,7 +65,7 @@ namespace Anonym.Util
         }
         void setTargetPos(Vector3 position)
         {
-            vTargetCellPos = grid.SnapedPosition(position);
+            _vTargetCellPos = grid.SnapedPosition(position);
         }
 
         Grid grid;
@@ -73,7 +74,7 @@ namespace Anonym.Util
         bool bSelectionFoldout = true;
         Vector2 vSelectedWandScrollPos = Vector2.zero;
         [SerializeField]
-        Vector3 vTargetCellPos = Vector3.zero;
+        Vector3 _vTargetCellPos = Vector3.zero;
 
         [SerializeField]
         bool bBrushMode = false;
@@ -90,8 +91,25 @@ namespace Anonym.Util
         [SerializeField]
         IsoTileBulk cLockedBulk = null;        
 
+        [SerializeField]
         bool bFoldoutOption = true;
+        [SerializeField]
         bool bMultipleApply = true;
+
+        [SerializeField]
+        bool bAutoStack = false;
+        bool isTileWandSelected
+        {
+            get
+            {
+                return selectionForUse.Exists(w => (w is TileWand));
+            }
+        }
+
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+        [SerializeField]
+        public static bool bNewPrefabStyle = false;
+#endif  
         bool bAreadyPressed = false;
 
         bool bShowNativeGrid = false;
@@ -106,7 +124,7 @@ namespace Anonym.Util
         MethodInfo getColor;
         MethodInfo setColor;
 #endif
-        #region Params
+#region Params
         [SerializeField]
         IsoTile tileParam = null;
         void SetTileParam(IsoTile tile)
@@ -205,8 +223,8 @@ namespace Anonym.Util
             if (!xPlaneEX && !yPlaneEX && !zPlaneEX)
                 return;
 
-            List<IsoTile> tiles = bulk.GetTiles_At(coordinates);
-            if (tiles.Count == 0)
+            var tiles = bulk.GetTiles_At(coordinates);
+            if (tiles.Count() == 0)
                 return;
 
             Vector3 position = bulk.coordinates.CoordinatesToPosition(coordinates);
@@ -214,7 +232,7 @@ namespace Anonym.Util
             Plane planeY = new Plane(Vector3.down, position);
             Plane planeZ = new Plane(Vector3.back, position);
 
-            IsoTile[] tileArray = bulk.GetTiles();
+            var tileArray = bulk.GetAllTiles();
             foreach(var tile in tileArray)
             {
                 bool bIntersect = false;
@@ -231,7 +249,7 @@ namespace Anonym.Util
         }
         static void AllinBulkExpand(IsoTileBulk bulk, ref List<IsoTile> tileList)
         {
-            tileList.AddRange(bulk.GetTiles());
+            tileList.AddRange(bulk.GetAllTiles());
         }
 
         IEnumerator<IsoTile> GetExpandedTiles(GameObject gameObject)
@@ -284,7 +302,11 @@ namespace Anonym.Util
         const string DefaultTileSetFolder = "TileWand";
         const string DefaultTileSetFolderPath = DefaultPath + "/" + DefaultTileSetFolder;
         const string DefaultTileWandPathName = DefaultTileSetFolderPath + "/" + "Tile";
-        const string DefaultTileSetPath = DefaultTileSetFolderPath + "/" + "Tile Set.asset";
+        const string DefaultTileWandName = "Tile Set.asset";
+        const string DefaultTileSetPath = DefaultTileSetFolderPath + "/" + DefaultTileWandName;
+
+        [SerializeField]
+        string SavePath = DefaultTileSetFolderPath;
 
         Texture2D AssetIconTexture;
         Texture2D PipetteOn;
@@ -347,17 +369,22 @@ namespace Anonym.Util
                 return vLastTileBound;
             }
         }
-        float fTopOfTileBound { get
+        float fTopOfTileBound_LastTile { get
             {
-                return fixedYAxisValue + (lastTile == null
-                    ? (grid != null ? grid.TileSize.y : 1) * 0.5f
-                    : lastTile.GetBounds_SideOnly().extents.y);
+                return fixedYAxisValue + fTopOfTileBound(lastTile);
             }
+        }
+        float fTopOfTileBound(IsoTile tile)
+        {
+            Grid _grid = tile ? tile.coordinates.grid :null;
+            if (_grid == null)
+                _grid = grid;
+            return  tile == null ? (_grid != null ? _grid.TileSize.y : 1) * 0.5f : tile.GetBounds_SideOnly().extents.y;
         }
         bool PositionOnSurface(Camera cam, Vector3 vMousePosition, out Vector3 vResult)
         {
             return TouchUtility.Raycast_Plane(cam, vMousePosition, 
-                new Plane(Vector3.down, fTopOfTileBound), out vResult);
+                new Plane(Vector3.down, fTopOfTileBound_LastTile), out vResult);
         }
         Ray GetRay_MouseToScreen(Vector3 vMousePosition)
         {
@@ -368,7 +395,41 @@ namespace Anonym.Util
             RaycastHit hit;
             if (Physics.Raycast(GetRay_MouseToScreen(vMousePosition), out hit, 10000, -1, QueryTriggerInteraction.Collide))
                 return hit.collider.gameObject;
+
+            // null 인 경우 모든 또는 지정된 벌크에 해당 좌표를 포함하는 공간에 타일이 있는지 찾아서 리턴 그리고 거리순 정렬.
+            Vector3 _vHitPosition;
+            Camera cam = SceneView.currentDrawingSceneView.camera;
+            if (PositionOnSurface(cam, vMousePosition, out _vHitPosition))
+            {
+                var _tiles = FindTileCellWithPosition(_vHitPosition);
+                if (_tiles.Count() > 0)
+                {
+                    return _tiles.First().gameObject;
+                }
+            }
+
             return null;
+        }
+        IEnumerable<IsoTile> FindTileCellWithPosition(Vector3 position)
+        {
+            List<IsoTile> _tiles = new List<IsoTile>();
+            List<IsoTileBulk> _bulks = null;
+            if (cLockedBulk != null)
+            {
+                _bulks = new List<IsoTileBulk>();
+                _bulks.Add(cLockedBulk);
+            }
+            else
+                _bulks = IsoMap.instance.BulkList;
+
+            foreach(var _b in _bulks)
+            {
+                var _ts = _b.GetTiles_At(_b.coordinates.grid.SnapedPosition(position - _b.transform.position));
+                if (_ts != null && _ts.Count() > 0)
+                    _tiles.AddRange(_ts);
+            }
+
+            return _tiles.OrderBy(t => Vector3.Distance(t.transform.position, position));
         }
         void MakeUpAt(Vector3 vMousePosition)
         {
@@ -386,7 +447,7 @@ namespace Anonym.Util
             {
                 Vector3 vTargetTopPos;
                 bool bHitOnSurface = PositionOnSurface(cam, vMousePosition, out vTargetTopPos);
-                vTargetTopPos.y = vTargetCellPos.y;
+                vTargetTopPos.y = _vTargetCellPos.y;
                 vPositionParam = vTargetTopPos;
 
                 if (targetType == TargetType.MouseOver || !bAreadyPressed)
@@ -400,11 +461,16 @@ namespace Anonym.Util
                 {
                     if (bHitOnSurface)
                     {
-                        var hits = Physics.RaycastAll(GetRay_MouseToScreen(vMousePosition), 1000, -1, QueryTriggerInteraction.Collide)
-                            .Where(h => h.collider != null)
-                            .Select(c => findTile(c.collider.gameObject))
-                            .Where(t => t != null && t.GetBounds_SideOnly().Contains(vTargetTopPos))
-                            .Distinct().OrderBy(t => Vector3.Distance(t.transform.position, vTargetTopPos));
+                        var hits = Physics.RaycastAll(GetRay_MouseToScreen(vMousePosition), 1000, -1, QueryTriggerInteraction.Collide).
+                            Where(h => h.collider != null).Select(c => findTile(c.collider.gameObject)).Distinct().
+                            Where(t => t != null && t.GetBounds_SideOnly().Contains(t.Bulk.coordinates.grid.SnapedPosition(vTargetTopPos, true))).
+                            OrderBy(t => Vector3.Distance(t.transform.position, vTargetTopPos)).ToArray();
+                        
+                        // Top 좌표를 포함하는게 아니라, Top 좌표가 가르키는 셀의 중앙을 포함하는 타일을 찾는 것으로 변경
+                        if (hits.Count() == 0)
+                        {
+                            hits = FindTileCellWithPosition(vTargetTopPos).ToArray();
+                        }
 
                         bool bResult = false;
                         if (hits.Count() > 0)
@@ -412,16 +478,23 @@ namespace Anonym.Util
                             if (lastTarget_gameObjects.Count > 0 && hits.All(r => !lastTarget_gameObjects.Contains(r.gameObject)))
                                 clearLastTarget();
 
-                            foreach (var hit in hits)
+                            foreach (var t in hits)
                             {
-                                if (bResult |= MakeUpEX(hit.gameObject))
+                                if (bResult |= MakeUpEX(t.gameObject))
                                     break;
                             }
                         }
                         else
                             bResult = MakeUp(null);
                             
-                        if (!bResult)
+                        if (bResult)
+                        {
+                            if (hits.Count() > 0 && bAutoStack)
+                            {
+                                AddToMakeUpedList(hits.Where(t => t != null).Select(t => t.gameObject).ToArray());
+                            }
+                        }
+                        else
                             clearLastTargets_All(vTargetTopPos);
                     }
                 }
@@ -455,7 +528,34 @@ namespace Anonym.Util
 
             IsoTile startTile = IsoTile.Find(currentTarget);
             bool bResult = false, bNullStart = startTile == null;
-            Vector3 selectedPos = startTile ? startTile.transform.position : vTargetCellPos;
+            Vector3 selectedPos = _vTargetCellPos;
+
+            if (startTile)
+            {
+                selectedPos = startTile.transform.position;
+                if (bAutoStack && isTileWandSelected)
+                {
+                    if (makeUpedTargetList.Contains(currentTarget) || makeUpedXZCoordinates.Contains(XZPos(currentTarget)))
+                        return false;
+
+                    if (startTile != startTile.FindTop())
+                        return false;
+
+                    //int iLoopLock = 10;
+                    //IsoTile belowTile = null;
+                    //while(belowTile == null && iLoopLock-- > 0)
+                    //    belowTile = startTile.Extrude(Vector3.up, false);
+
+                    startTile.Extrude_Separately(Vector3.up, false);
+                    vPositionParam = startTile.transform.position;
+                    currentTarget = startTile.gameObject;
+                    //var belowTile = startTile.Extrude_Separately(Vector3.up, false);
+                    //vPositionParam = belowTile.transform.position;
+                    //currentTarget = startTile.gameObject;
+                }
+            }
+            else if (bAutoStack)
+                return false;
 
             var e = selectionForUse.GetEnumerator();
             while (e.MoveNext())
@@ -468,7 +568,7 @@ namespace Anonym.Util
 
                 if (bResult |= bMultiCheck(current, currentTarget, wandTargetObject))
                     continue;
-
+                
                 if (bResult |= current.MakeUp(ref currentTarget, GetParams(current)))
                 {
                     AddToMakeUpedList(wandTargetObject);
@@ -479,19 +579,19 @@ namespace Anonym.Util
 
             if (!lastTarget_gameObjects.Contains(currentTarget))
                 lastTarget_gameObjects.Add(currentTarget);
-            lastTile = IsoTile.Find(currentTarget);
 
             if (bResult)
                 AddToMakeUpedList(targetObject, currentTarget);
 
+            lastTile = IsoTile.Find(currentTarget);
             if (bNullStart && lastTile)
                 selectedPos = lastTile.transform.position;
 
-            vTargetCellPos = new Vector3(selectedPos.x, vTargetCellPos.y, selectedPos.z);
+            _vTargetCellPos = new Vector3(selectedPos.x, _vTargetCellPos.y, selectedPos.z);
             if (bAreadyPressed == false)
             {
                 bAreadyPressed = true;
-                fixedYAxisValue = vTargetCellPos.y = selectedPos.y;
+                fixedYAxisValue = _vTargetCellPos.y = selectedPos.y;
             }
 
             return bResult;
@@ -500,10 +600,28 @@ namespace Anonym.Util
         {
             foreach (var add in adds)
             {
-                if (add != null && !makeUpedTargetList.Contains(add))
+                if (add == null)
+                    continue;
+
+                if (!makeUpedTargetList.Contains(add))
                     makeUpedTargetList.Add(add);
+
+                if (bAutoStack)
+                {
+                    if (!isMakeUpedXZ(add))
+                        makeUpedXZCoordinates.Add(XZPos(add));
+                }
             }
         }
+        Vector2Int XZPos(GameObject obj)
+        {
+            return new Vector2Int(Mathf.RoundToInt(obj.transform.position.x), Mathf.RoundToInt(obj.transform.position.z));
+        }
+        bool isMakeUpedXZ(GameObject obj)
+        {
+            return makeUpedXZCoordinates.Contains(XZPos(obj));
+        }
+
         bool bMultiCheck(MagicWand wand, GameObject targetObject, GameObject wandTargetObject)
         {
             bool bMulti = bMultipleApply && (wand == null || wand.bAllowMultipleApplyOnAClick);
@@ -581,10 +699,11 @@ namespace Anonym.Util
             showHelpMSG();
             TopField();
 
+            ShowSelectedWand();
+
             if (ShowPaletteDic())
                 UpdateSelection();
 
-            ShowSelectedWand();
 
             if (bJustSerialized)
                 UpdateWandParams();
@@ -665,13 +784,14 @@ namespace Anonym.Util
                 case EventType.MouseDrag:
                     if (e.button == 0)
                     {
-                        MakeUpAt(e.mousePosition);
+                        MakeUpAt(e.mousePosition * EditorGUIUtility.pixelsPerPoint);
                         e.Use();
                     }
                     break;
                 case EventType.MouseUp:
                     if (e.button == 0)
                     {
+                        makeUpedXZCoordinates.Clear();
                         makeUpedTargetList.Clear();
                         clearLastTarget();
                         bAreadyPressed = false;
@@ -789,8 +909,25 @@ namespace Anonym.Util
         bool ShowPaletteDic()
         {
             CustomEditorGUI.DrawSeperator();
-            Palettes.RemoveAll(p => p == null);
-            GUILayout.Label(string.Format("[Palette: loaded({0})]", Palettes.Count), EditorStyles.boldLabel);
+            if (Palettes.Contains(null))
+                Palettes.RemoveAll(p => p == null);
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                GUILayout.Label(string.Format("[Palette: loaded({0})]", Palettes.Count), EditorStyles.boldLabel);
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button("New"))
+                {
+                    var finalPath = EditorUtility.SaveFilePanelInProject("Save TileWand Palette", "New Palette", "asset", "Please enter a file name", SavePath);
+
+                    if (!string.IsNullOrEmpty(finalPath))
+                    {
+                        SavePath = System.IO.Path.GetDirectoryName(finalPath);
+                        var newPalette = MagicWandPalette.CreateAsset(finalPath);
+                    }
+                }
+            }
+
 
             UpdatePaletteField();
 
@@ -967,8 +1104,7 @@ namespace Anonym.Util
                         Vector2 textSize = GUI.skin.label.CalcSize(label);
 
                         EditorGUILayout.LabelField(label, GUILayout.Width(textSize.x));
-                        targetType = (TargetType) EditorGUILayout.EnumPopup(targetType);
-                        GUILayout.FlexibleSpace();                        
+                        targetType = (TargetType) EditorGUILayout.EnumPopup(targetType);                       
                     }
 
                     using (new EditorGUILayout.HorizontalScope())
@@ -981,11 +1117,27 @@ namespace Anonym.Util
                         }
                     }
 
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+                    using (new EditorGUILayout.HorizontalScope())
+                    {
+                        GUIContent label = new GUIContent("Use Prefab workflow of 2018.3", "Keeps links with prefab when placing tiles with tile wand.\nThis is about new prefab workflow of 2018.3");
+                        bNewPrefabStyle = EditorGUILayout.ToggleLeft(label, bNewPrefabStyle);
+                    }
+#endif
                     using (new EditorGUILayout.HorizontalScope())
                     {
                         GUIContent label = new GUIContent("Allows multiple apply to the same object during one click.",
                             "Multiple apply occurs when the mouse cursor re-enters the same object during MouseButtonDown.");
+
+                        bool isTileWand = isTileWandSelected;
+                        EditorGUI.BeginDisabledGroup(bAutoStack && isTileWand);
                         bMultipleApply = EditorGUILayout.ToggleLeft(label, bMultipleApply);
+                        EditorGUI.EndDisabledGroup();
+
+                        EditorGUI.BeginDisabledGroup(!isTileWand);
+                        bAutoStack = EditorGUILayout.ToggleLeft(new GUIContent("Above of tile", 
+                            "If there is a tile under the mouse, then this option will extrude it's TopTile upwards and decorate it with the ref tile."), bAutoStack);
+                        EditorGUI.EndDisabledGroup();
                     }
 
                     using (new EditorGUILayout.HorizontalScope())
@@ -1253,7 +1405,7 @@ namespace Anonym.Util
                             TogglePipetteMode(!bPipetteMode);
 
                         }
-
+                        
                         using (new EditorGUILayout.VerticalScope())
                         {
                             // GameObject of Tile gameObjectParam
@@ -1281,36 +1433,64 @@ namespace Anonym.Util
                         {
                             bool guiEnabled = GUI.enabled;
                             GUI.enabled = false;
-                            EditorGUILayout.PropertyField(drawerSO, GUILayout.Height(fHeight));
+                            EditorGUILayout.PropertyField(drawerSO, GUILayout.Height(EditorGUIUtility.singleLineHeight * 4));
                             GUI.enabled = guiEnabled;
 
-                            if (tileParam != null && GUILayout.Button("Make a Tile Wand!\nFor Reuse.", GUILayout.Height(fHeight)))
+                            using (new EditorGUILayout.VerticalScope(GUILayout.Width(position.width * 0.5f)))
                             {
-                                if (!AssetDatabase.IsValidFolder(DefaultTileSetFolderPath))
-                                    AssetDatabase.CreateFolder(DefaultPath, DefaultTileSetFolder);
-
-                                if (!defaultTileSetPalette)
+                                if (tileParam != null)
                                 {
-                                    defaultTileSetPalette = AssetDatabase.LoadAssetAtPath<AbstractMagicWandPalette>(DefaultTileSetPath);
-                                    if (!defaultTileSetPalette)
+                                    using (new EditorGUILayout.HorizontalScope())
                                     {
-                                        defaultTileSetPalette = MagicWandPalette.CreateAsset(DefaultTileSetPath);
+                                        CustomEditorGUI.FitLabel(new GUIContent("Add to "));
+                                        TileSetPaletteForSave = EditorGUILayout.ObjectField(TileSetPaletteForSave, typeof(AbstractMagicWandPalette), allowSceneObjects: false) as AbstractMagicWandPalette;
+                                    }
+
+                                    if (GUILayout.Button("Save a new TileWand & Prefab!\nFor Reuse.", GUILayout.ExpandHeight(true)))
+                                    {
+                                        if(TileSetPaletteForSave || 
+                                            EditorUtility.DisplayDialog("Select TileWand & Prefab", "No pallet to add TileWand was specified. Do you still want to continue for save?", "Save", "Cancel"))
+                                        {
+                                            SpriteRenderer[] sprrs = tileParam.GetComponentsInChildren<SpriteRenderer>();
+                                            string spriteName = sprrs.Where(s => s.sprite != null).Select(s => s.sprite.name).Aggregate((l, r) => l + " " + r);
+                                            var finalPath = EditorUtility.SaveFilePanelInProject("Save TileWand & Prefab", spriteName, "asset", "Please enter a file name", SavePath);
+
+                                            if (!string.IsNullOrEmpty(finalPath))
+                                            {
+                                                SavePath = System.IO.Path.GetDirectoryName(finalPath);
+
+                                                var tempGO = GameObject.Instantiate(tileParam, tileParam.transform.parent);
+                                                TileWand newTileWand = TileWand.CreateAsset(finalPath, tempGO, true);
+                                                DestroyImmediate(tempGO.gameObject);
+
+                                                if (TileSetPaletteForSave)
+                                                {
+                                                    TileSetPaletteForSave.AddMagicWand(newTileWand);
+                                                    updatePalettes(TileSetPaletteForSave);
+                                                    EditorUtility.SetDirty(TileSetPaletteForSave);
+                                                }
+
+                                                AssetDatabase.SaveAssets();
+                                                AssetDatabase.Refresh();
+                                            }
+                                        }
+
+                                        //if (!AssetDatabase.IsValidFolder(DefaultTileSetFolderPath))
+                                        //    AssetDatabase.CreateFolder(DefaultPath, DefaultTileSetFolder);
+
+                                        //if (!defaultTileSetPaletteForSave)
+                                        //{
+                                        //    defaultTileSetPaletteForSave = AssetDatabase.LoadAssetAtPath<AbstractMagicWandPalette>(DefaultTileSetPath);
+                                        //    if (!defaultTileSetPaletteForSave)
+                                        //    {
+                                        //        defaultTileSetPaletteForSave = MagicWandPalette.CreateAsset(DefaultTileSetPath);
+                                        //    }
+                                        //}                                        
                                     }
                                 }
 
-                                var tempGO = GameObject.Instantiate(tileParam, tileParam.transform.parent);
-                                TileWand newTileWand = TileWand.CreateAsset(DefaultTileWandPathName, tempGO);
-                                DestroyImmediate(tempGO.gameObject);
+                                // Target TileSet Collection
 
-                                if (defaultTileSetPalette)
-                                {
-                                    defaultTileSetPalette.AddMagicWand(newTileWand);
-                                    updatePalettes(defaultTileSetPalette);
-                                }
-
-                                EditorUtility.SetDirty(defaultTileSetPalette);
-                                AssetDatabase.SaveAssets();
-                                AssetDatabase.Refresh();
                             }
                         }
                     }
@@ -1339,13 +1519,13 @@ namespace Anonym.Util
             int iHalfCount = iLineCount / 2;
 
             Vector3 vGridInterval = grid == null ? Vector3.one : grid.TileSize;
-            Vector3 vOrigin = vTargetCellPos + vGridInterval * 0.5f;
+            Vector3 vOrigin = _vTargetCellPos + vGridInterval * 0.5f;
             if (targetType != TargetType.MouseOver)
-                vOrigin.y = fTopOfTileBound;
+                vOrigin.y = fTopOfTileBound_LastTile;
 
-            Vector3 vAdjustmentForYAxis = vTargetCellPos + new Vector3(-vGridInterval.x * 0.5f, 0f, vGridInterval.z * 0.5f);
+            Vector3 vAdjustmentForYAxis = _vTargetCellPos + new Vector3(-vGridInterval.x * 0.5f, 0f, vGridInterval.z * 0.5f);
 
-            Handles.Label(vAdjustmentForYAxis, vTargetCellPos.ToString());
+            Handles.Label(vAdjustmentForYAxis, _vTargetCellPos.ToString());
 
             Handles.zTest = UnityEngine.Rendering.CompareFunction.LessEqual;
             for (int x = -iHalfCount; x < iHalfCount; x += Mathf.RoundToInt(vGridInterval.x))
@@ -1361,7 +1541,7 @@ namespace Anonym.Util
 
             Handles.color = Color.yellow * 0.9f;
             Handles.zTest = UnityEngine.Rendering.CompareFunction.Always;
-            Handles.DrawWireCube(vTargetCellPos, vTopOfTileBound);
+            Handles.DrawWireCube(_vTargetCellPos, vTopOfTileBound);
         }
 #endregion
 

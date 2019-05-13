@@ -12,6 +12,8 @@ namespace Anonym.Isometric
         bool IsPrefab = false;
         bool bAutoReParent = false;
 
+        TmpTexture2D tmpTexture2D = new TmpTexture2D();
+
         private void OnEnable()
         {
             if (IsPrefab = PrefabHelper.IsPrefab(targets.Select(r => (r as SubColliderHelper).gameObject).ToArray()))
@@ -26,7 +28,7 @@ namespace Anonym.Isometric
                 return;
             }
 
-            CustomEditorGUI.ColliderControlHelperGUI(targets);
+            CustomEditorGUI.ColliderControlHelperGUI(tmpTexture2D, targets);
         }
 
         private void OnSceneGUI()

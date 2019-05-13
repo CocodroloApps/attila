@@ -86,6 +86,7 @@ using UnityEditor;
         {
             string path = "Assets/Anonym/Isometric/prefab/MeshUp/";
             AssetDatabase.CreateAsset(mesh, path + mesh.name + ".asset");    
+            AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
 #endif

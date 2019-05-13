@@ -371,22 +371,22 @@ namespace Anonym.Util
             }
             return bChanged;
         }
-        static void Undo_Iso2DSpriteField(Sprite _origin, List<Iso2DObject> _objs, Color _color, params GUILayoutOption[] _options)
-        {
-            using (new GUIBackgroundColorScope(_color))
-            {
-                using (var result = new EditorGUI.ChangeCheckScope())
-                {             
-                    Sprite _newSprite = (Sprite)EditorGUILayout.ObjectField(_origin, 
-                        typeof(Sprite), allowSceneObjects: false, options:_options);
-                    if (result.changed)
-                    {
-                        Undo_Iso2DSprite(_objs, _newSprite);
-                        EditorUtility.SetDirty(Selection.activeObject);
-                    }
-                }
-            }
-        }
+        //static void Undo_Iso2DSpriteField(Sprite _origin, List<Iso2DObject> _objs, Color _color, params GUILayoutOption[] _options)
+        //{
+        //    using (new GUIBackgroundColorScope(_color))
+        //    {
+        //        using (var result = new EditorGUI.ChangeCheckScope())
+        //        {             
+        //            Sprite _newSprite = (Sprite)EditorGUILayout.ObjectField(_origin, 
+        //                typeof(Sprite), allowSceneObjects: false, options:_options);
+        //            if (result.changed)
+        //            {
+        //                Undo_Iso2DSprite(_objs, _newSprite);
+        //                EditorUtility.SetDirty(Selection.activeObject);
+        //            }
+        //        }
+        //    }
+        //}
         public static void Undo_Iso2DSpriteField(Rect _rect, Sprite _origin, List<Iso2DObject> _objs, Color _color)
         {
             _rect.x += 5;
@@ -499,7 +499,7 @@ namespace Anonym.Util
         }        
 
         static bool bFoldout_ColliderControlGUI = false;
-        public static void ColliderControlHelperGUI(Object[] objects)
+        public static void ColliderControlHelperGUI(TmpTexture2D tmpTexture2D, Object[] objects)
         {
             SubColliderHelper[] _cols = objects.Where(r => r is SubColliderHelper).Cast<SubColliderHelper>().ToArray();
 
@@ -562,7 +562,7 @@ namespace Anonym.Util
                 {
                     Iso2Ds = Iso2Ds.Distinct().ToList();
                     GUILayoutOption heightLayout = GUILayout.Height(EditorGUIUtility.singleLineHeight * 3);
-                    Iso2Ds.ForEach(r => Iso2DDrawer.Drawer(EditorGUILayout.GetControlRect(heightLayout), r.gameObject));
+                    Iso2Ds.ForEach(r => Iso2DDrawer.Drawer(EditorGUILayout.GetControlRect(heightLayout), r.gameObject, tmpTexture2D));
                 }
             }
         }
@@ -593,6 +593,19 @@ namespace Anonym.Util
                 EditorGUI.EndDisabledGroup();
             }
         }
+
+        public static bool LableWithToggle(string labelText, GUIStyle style, bool bToggle, string bToggleText)
+        {
+            GUIContent label = new GUIContent(labelText);
+            float fWidth = style.CalcSize(label).x;
+
+            Rect rt = EditorGUILayout.GetControlRect();
+            Rect rt_label = new Rect(rt.position, new Vector2(fWidth, rt.height));
+            Rect rt_Toggle = new Rect(rt_label.xMax, rt.yMin, rt.width - fWidth, rt.height);
+
+            EditorGUI.LabelField(rt_label, label, style);
+            return EditorGUI.ToggleLeft(rt_Toggle, "Hide", bToggle);
+        }
 #endif
-            }
+    }
 }

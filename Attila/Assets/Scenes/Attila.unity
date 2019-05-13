@@ -284,6 +284,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20223519}
   m_CullTransparentMesh: 0
+--- !u!1 &23494556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23494557}
+  - component: {fileID: 23494559}
+  - component: {fileID: 23494558}
+  m_Layer: 5
+  m_Name: RomansTroopsLost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &23494557
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23494556}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2089638335}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -52}
+  m_SizeDelta: {x: 250, y: 55.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &23494558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23494556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1fccf8faa48c106429f692d21ea20317, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 60
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '- 10.000'
+--- !u!222 &23494559
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23494556}
+  m_CullTransparentMesh: 0
 --- !u!1 &33097160
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +556,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &34769324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,8 +571,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -2}
   _autoName: {fileID: 34769321}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -2}
 --- !u!114 &34769325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,8 +589,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 34769324}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 34769321}
   _so: {fileID: 34769323}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 34769321}
   _attachedList:
     bFoldout: 1
     childList:
@@ -1207,6 +1290,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &71085646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,8 +1305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -3}
   _autoName: {fileID: 71085643}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -3}
 --- !u!114 &71085647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,8 +1323,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 71085646}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 71085643}
   _so: {fileID: 71085645}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 71085643}
   _attachedList:
     bFoldout: 1
     childList:
@@ -1271,6 +1358,136 @@ MonoBehaviour:
   final: 0
   objective: 0
   moves: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!1 &75116079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75116080}
+  - component: {fileID: 75116083}
+  - component: {fileID: 75116082}
+  - component: {fileID: 75116081}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &75116080
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75116079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 417824043}
+  - {fileID: 2143910939}
+  m_Father: {fileID: 558985198}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000012398, y: -306}
+  m_SizeDelta: {x: 356.9, y: 118.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &75116081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75116079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 75116082}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 867815674}
+        m_MethodName: HideBattleResult
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &75116082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75116079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5369ca8c7b28de1418ff3f912e661700, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &75116083
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75116079}
+  m_CullTransparentMesh: 0
 --- !u!1 &75530295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1583,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &75530300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,8 +1598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -6}
   _autoName: {fileID: 75530297}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -6}
 --- !u!114 &75530301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,8 +1616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 75530300}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 75530297}
   _so: {fileID: 75530299}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 75530297}
   _attachedList:
     bFoldout: 1
     childList:
@@ -1623,6 +1844,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &87849906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,8 +1859,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -6}
   _autoName: {fileID: 87849903}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -6}
 --- !u!114 &87849907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,8 +1877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 87849906}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 87849903}
   _so: {fileID: 87849905}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 87849903}
   _attachedList:
     bFoldout: 1
     childList:
@@ -1687,6 +1912,85 @@ MonoBehaviour:
   final: 0
   objective: 0
   moves: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!1 &90782605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90782606}
+  - component: {fileID: 90782608}
+  - component: {fileID: 90782607}
+  m_Layer: 5
+  m_Name: RomansTroops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &90782606
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90782605}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2089638335}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 210.2, y: 41.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &90782607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90782605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1fccf8faa48c106429f692d21ea20317, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 550.000
+--- !u!222 &90782608
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90782605}
+  m_CullTransparentMesh: 0
 --- !u!1 &90972848
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2642,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &106287636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2352,8 +2657,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -4}
   _autoName: {fileID: 106287633}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -4}
 --- !u!114 &106287637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2368,8 +2675,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 106287636}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 106287633}
   _so: {fileID: 106287635}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 106287633}
   _attachedList:
     bFoldout: 1
     childList:
@@ -2497,6 +2805,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &115526371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2511,8 +2820,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -6}
   _autoName: {fileID: 115526368}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -6}
 --- !u!114 &115526372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,8 +2838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 115526371}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 115526368}
   _so: {fileID: 115526370}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 115526368}
   _attachedList:
     bFoldout: 1
     childList:
@@ -2754,6 +3066,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &135206969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,8 +3081,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -9}
   _autoName: {fileID: 135206966}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -9}
 --- !u!114 &135206970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2784,8 +3099,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 135206969}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 135206966}
   _so: {fileID: 135206968}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 135206966}
   _attachedList:
     bFoldout: 1
     childList:
@@ -3191,6 +3507,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150352404}
   m_CullTransparentMesh: 0
+--- !u!1 &153861171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 153861172}
+  - component: {fileID: 153861174}
+  - component: {fileID: 153861173}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &153861172
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153861171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 720268534}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 1}
+  m_SizeDelta: {x: 210.2, y: 218.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &153861173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153861171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 258832639f6592949a1b8145088d99cc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &153861174
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153861171}
+  m_CullTransparentMesh: 0
 --- !u!1 &153861303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,6 +3949,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &176330896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176330897}
+  - component: {fileID: 176330899}
+  - component: {fileID: 176330898}
+  m_Layer: 5
+  m_Name: Shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &176330897
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176330896}
+  m_LocalRotation: {x: -0.00038978778, y: -0.0007319255, z: 0.008047212, w: 0.9999673}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00451545}
+  m_LocalScale: {x: 1.1627, y: 1.1259, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.044000003, y: -0.08400001, z: 0.92200005}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.6157937, y: 239.45999}
+  m_SizeDelta: {x: 216.4, y: 49.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &176330898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176330896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.24528301, g: 0.23487005, b: 0.23487005, a: 0.54509807}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 633687e2d99fcbe438496a714cbb4461, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &176330899
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176330896}
+  m_CullTransparentMesh: 0
 --- !u!1 &180831662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4580,6 +5044,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &252500063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4594,8 +5059,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -4}
   _autoName: {fileID: 252500060}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -4}
 --- !u!114 &252500064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4610,8 +5077,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 252500063}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 252500060}
   _so: {fileID: 252500062}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 252500060}
   _attachedList:
     bFoldout: 1
     childList:
@@ -5625,6 +6093,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &311445016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5639,8 +6108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -2}
   _autoName: {fileID: 311445013}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -2}
 --- !u!114 &311445017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5655,8 +6126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 311445016}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 311445013}
   _so: {fileID: 311445015}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 311445013}
   _attachedList:
     bFoldout: 1
     childList:
@@ -5979,6 +6451,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &342766067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5993,8 +6466,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -6}
   _autoName: {fileID: 342766064}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -6}
 --- !u!114 &342766068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6009,8 +6484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 342766067}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 342766064}
   _so: {fileID: 342766066}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 342766064}
   _attachedList:
     bFoldout: 1
     childList:
@@ -7141,6 +7617,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &374287662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7155,8 +7632,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -5}
   _autoName: {fileID: 374287659}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -5}
 --- !u!114 &374287663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7171,8 +7650,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 374287662}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 374287659}
   _so: {fileID: 374287661}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 374287659}
   _attachedList:
     bFoldout: 1
     childList:
@@ -7628,6 +8108,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &384754610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7642,8 +8123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -7}
   _autoName: {fileID: 384754607}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -7}
 --- !u!114 &384754611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7658,8 +8141,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 384754610}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 384754607}
   _so: {fileID: 384754609}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 384754607}
   _attachedList:
     bFoldout: 1
     childList:
@@ -8079,6 +8563,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &401768663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8093,8 +8578,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -4}
   _autoName: {fileID: 401768660}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -4}
 --- !u!114 &401768664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8109,8 +8596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 401768663}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 401768660}
   _so: {fileID: 401768662}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 401768660}
   _attachedList:
     bFoldout: 1
     childList:
@@ -8405,6 +8893,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &417824042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417824043}
+  - component: {fileID: 417824045}
+  - component: {fileID: 417824044}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &417824043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417824042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 75116080}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3, y: -0.000005722}
+  m_SizeDelta: {x: 293.1, y: 37.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &417824044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417824042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: de13e16614900214a9b73e4e8fa13b38, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: NEXT
+--- !u!222 &417824045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417824042}
+  m_CullTransparentMesh: 0
 --- !u!1 &420162357
 GameObject:
   m_ObjectHideFlags: 0
@@ -8794,6 +9361,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &437931942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8808,8 +9376,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -7}
   _autoName: {fileID: 437931939}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -7}
 --- !u!114 &437931943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8824,8 +9394,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 437931942}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 437931939}
   _so: {fileID: 437931941}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 437931939}
   _attachedList:
     bFoldout: 1
     childList:
@@ -9149,6 +9720,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &446986963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9163,8 +9735,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -8}
   _autoName: {fileID: 446986960}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -8}
 --- !u!114 &446986964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9179,8 +9753,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 446986963}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 446986960}
   _so: {fileID: 446986962}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 446986960}
   _attachedList:
     bFoldout: 1
     childList:
@@ -9798,6 +10373,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &465851627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9812,8 +10388,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -3}
   _autoName: {fileID: 465851624}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -3}
 --- !u!114 &465851628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9828,8 +10406,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 465851627}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 465851624}
   _so: {fileID: 465851626}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 465851624}
   _attachedList:
     bFoldout: 1
     childList:
@@ -10349,6 +10928,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &482341667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10363,8 +10943,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -5}
   _autoName: {fileID: 482341664}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -5}
 --- !u!114 &482341668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10379,8 +10961,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 482341667}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 482341664}
   _so: {fileID: 482341666}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 482341664}
   _attachedList:
     bFoldout: 1
     childList:
@@ -11532,6 +12115,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &530449317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11546,8 +12130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -2}
   _autoName: {fileID: 530449314}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -2}
 --- !u!114 &530449318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11562,8 +12148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 530449317}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 530449314}
   _so: {fileID: 530449316}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 530449314}
   _attachedList:
     bFoldout: 1
     childList:
@@ -11966,6 +12553,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &538487568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11980,8 +12568,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -4}
   _autoName: {fileID: 538487565}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -4}
 --- !u!114 &538487569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11996,8 +12586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 538487568}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 538487565}
   _so: {fileID: 538487567}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 538487565}
   _attachedList:
     bFoldout: 1
     childList:
@@ -12292,6 +12883,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &558985197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558985198}
+  - component: {fileID: 558985200}
+  - component: {fileID: 558985199}
+  m_Layer: 5
+  m_Name: BattleBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &558985198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558985197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2039037349}
+  - {fileID: 75116080}
+  - {fileID: 737569360}
+  m_Father: {fileID: 1348802410}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558985199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558985197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &558985200
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558985197}
+  m_CullTransparentMesh: 0
 --- !u!1 &561263722
 GameObject:
   m_ObjectHideFlags: 0
@@ -12561,6 +13229,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &589590000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12575,8 +13244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -5}
   _autoName: {fileID: 589589997}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -5}
 --- !u!114 &589590001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12591,8 +13262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 589590000}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 589589997}
   _so: {fileID: 589589999}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 589589997}
   _attachedList:
     bFoldout: 1
     childList:
@@ -12897,6 +13569,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &601705489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12911,8 +13584,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -2}
   _autoName: {fileID: 601705486}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -2}
 --- !u!114 &601705490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12927,8 +13602,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 601705489}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 601705486}
   _so: {fileID: 601705488}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 601705486}
   _attachedList:
     bFoldout: 1
     childList:
@@ -13154,6 +13830,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &605070436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13168,8 +13845,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -6}
   _autoName: {fileID: 605070433}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -6}
 --- !u!114 &605070437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13184,8 +13863,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 605070436}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 605070433}
   _so: {fileID: 605070435}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 605070433}
   _attachedList:
     bFoldout: 1
     childList:
@@ -13818,6 +14498,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &640014198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13832,8 +14513,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -5}
   _autoName: {fileID: 640014195}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -5}
 --- !u!114 &640014199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13848,8 +14531,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 640014198}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 640014195}
   _so: {fileID: 640014197}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 640014195}
   _attachedList:
     bFoldout: 1
     childList:
@@ -13977,6 +14661,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &640802020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13991,8 +14676,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -4}
   _autoName: {fileID: 640802017}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -4}
 --- !u!114 &640802021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14007,8 +14694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 640802020}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 640802017}
   _so: {fileID: 640802019}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 640802017}
   _attachedList:
     bFoldout: 1
     childList:
@@ -14609,6 +15297,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &692834724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14623,8 +15312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -9}
   _autoName: {fileID: 692834721}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -9}
 --- !u!114 &692834725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14639,8 +15330,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 692834724}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 692834721}
   _so: {fileID: 692834723}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 692834721}
   _attachedList:
     bFoldout: 1
     childList:
@@ -15014,6 +15706,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &720268533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720268534}
+  - component: {fileID: 720268536}
+  - component: {fileID: 720268535}
+  m_Layer: 5
+  m_Name: Roman
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &720268534
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720268533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 153861172}
+  - {fileID: 2089638335}
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 229, y: -15}
+  m_SizeDelta: {x: 212.1, y: 218.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &720268535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720268533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5b587278e89de92439ce56447e2a55d7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &720268536
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720268533}
+  m_CullTransparentMesh: 0
 --- !u!1 &722389091
 GameObject:
   m_ObjectHideFlags: 0
@@ -15207,6 +15975,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &724693387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15221,8 +15990,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -3}
   _autoName: {fileID: 724693384}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -3}
 --- !u!114 &724693388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15237,8 +16008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 724693387}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 724693384}
   _so: {fileID: 724693386}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 724693384}
   _attachedList:
     bFoldout: 1
     childList:
@@ -15565,6 +16337,160 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &735906321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 735906322}
+  - component: {fileID: 735906324}
+  - component: {fileID: 735906323}
+  m_Layer: 5
+  m_Name: Result
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &735906322
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735906321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 172}
+  m_SizeDelta: {x: 590.4, y: 79.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &735906323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735906321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.21337666, g: 0.28124553, b: 0.3301887, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: de13e16614900214a9b73e4e8fa13b38, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 120
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Victory!
+--- !u!222 &735906324
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735906321}
+  m_CullTransparentMesh: 0
+--- !u!1 &737569359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 737569360}
+  - component: {fileID: 737569362}
+  - component: {fileID: 737569361}
+  m_Layer: 5
+  m_Name: Ribbon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &737569360
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737569359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2001904102}
+  m_Father: {fileID: 558985198}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000024319, y: 445}
+  m_SizeDelta: {x: 588.5, y: 127}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &737569361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737569359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5880f7462e0714d4690cb6362d956e86, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &737569362
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737569359}
+  m_CullTransparentMesh: 0
 --- !u!1 &738047376
 GameObject:
   m_ObjectHideFlags: 0
@@ -15705,6 +16631,80 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &762968192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 762968193}
+  - component: {fileID: 762968195}
+  - component: {fileID: 762968194}
+  m_Layer: 5
+  m_Name: Swords
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &762968193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762968192}
+  m_LocalRotation: {x: -0.00046970905, y: -0.00088199787, z: 0.009697194, w: 0.9999525}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1627, y: -1.1259, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -0.053000003, y: -0.102000006, z: 1.1110001}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 306}
+  m_SizeDelta: {x: 197.4, y: 131}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &762968194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762968192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: bb6b99fe714a9534c9a9feeef4052c0f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &762968195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762968192}
+  m_CullTransparentMesh: 0
 --- !u!1 &768314181
 GameObject:
   m_ObjectHideFlags: 0
@@ -15898,6 +16898,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &771902048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15912,8 +16913,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -2}
   _autoName: {fileID: 771902045}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -2}
 --- !u!114 &771902049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15928,8 +16931,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 771902048}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 771902045}
   _so: {fileID: 771902047}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 771902045}
   _attachedList:
     bFoldout: 1
     childList:
@@ -16483,6 +17487,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &787923482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16497,8 +17502,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -7}
   _autoName: {fileID: 787923479}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -7}
 --- !u!114 &787923483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16513,8 +17520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 787923482}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 787923479}
   _so: {fileID: 787923481}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 787923479}
   _attachedList:
     bFoldout: 1
     childList:
@@ -17309,6 +18317,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &814059580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17323,8 +18332,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -4}
   _autoName: {fileID: 814059577}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -4}
 --- !u!114 &814059581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17339,8 +18350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 814059580}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 814059577}
   _so: {fileID: 814059579}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 814059577}
   _attachedList:
     bFoldout: 1
     childList:
@@ -18615,6 +19627,7 @@ MonoBehaviour:
   empty: {fileID: 21300000, guid: 7f33ed9b7b5ade24a9cd4a54fe57d2f7, type: 3}
   horse: {fileID: 21300000, guid: 0637de59e8d7db544a68214566ad584c, type: 3}
   infoBox: {fileID: 398079008}
+  battleBox: {fileID: 558985197}
 --- !u!4 &867815675
 Transform:
   m_ObjectHideFlags: 0
@@ -19245,6 +20258,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &891058415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19259,8 +20273,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -9}
   _autoName: {fileID: 891058412}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -9}
 --- !u!114 &891058416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19275,8 +20291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 891058415}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 891058412}
   _so: {fileID: 891058414}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 891058412}
   _attachedList:
     bFoldout: 1
     childList:
@@ -19771,6 +20788,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &910589309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19785,8 +20803,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -8}
   _autoName: {fileID: 910589306}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -8}
 --- !u!114 &910589310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19801,8 +20821,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 910589309}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 910589306}
   _so: {fileID: 910589308}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 910589306}
   _attachedList:
     bFoldout: 1
     childList:
@@ -20954,6 +21975,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &947581745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20968,8 +21990,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -5}
   _autoName: {fileID: 947581742}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -5}
 --- !u!114 &947581746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20984,8 +22008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 947581745}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 947581742}
   _so: {fileID: 947581744}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 947581742}
   _attachedList:
     bFoldout: 1
     childList:
@@ -21113,6 +22138,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &947637226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21127,8 +22153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -7}
   _autoName: {fileID: 947637223}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -7}
 --- !u!114 &947637227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21143,8 +22171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 947637226}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 947637223}
   _so: {fileID: 947637225}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 947637223}
   _attachedList:
     bFoldout: 1
     childList:
@@ -22848,6 +23877,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1007303949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22862,8 +23892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -6}
   _autoName: {fileID: 1007303946}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -6}
 --- !u!114 &1007303950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22878,8 +23910,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1007303949}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1007303946}
   _so: {fileID: 1007303948}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1007303946}
   _attachedList:
     bFoldout: 1
     childList:
@@ -23868,6 +24901,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1038094118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23882,8 +24916,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -7}
   _autoName: {fileID: 1038094115}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -7}
 --- !u!114 &1038094119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23898,8 +24934,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1038094118}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1038094115}
   _so: {fileID: 1038094117}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1038094115}
   _attachedList:
     bFoldout: 1
     childList:
@@ -26145,6 +27182,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1159244313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26159,8 +27197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -8}
   _autoName: {fileID: 1159244310}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -8}
 --- !u!114 &1159244314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26175,8 +27215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1159244313}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1159244310}
   _so: {fileID: 1159244312}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1159244310}
   _attachedList:
     bFoldout: 1
     childList:
@@ -27435,6 +28476,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1217099060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27449,8 +28491,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -7}
   _autoName: {fileID: 1217099057}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -7}
 --- !u!114 &1217099061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27465,8 +28509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1217099060}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1217099057}
   _so: {fileID: 1217099059}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1217099057}
   _attachedList:
     bFoldout: 1
     childList:
@@ -27692,6 +28737,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1228028125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27706,8 +28752,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -7}
   _autoName: {fileID: 1228028122}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -7}
 --- !u!114 &1228028126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27722,8 +28770,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1228028125}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1228028122}
   _so: {fileID: 1228028124}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1228028122}
   _attachedList:
     bFoldout: 1
     childList:
@@ -29222,6 +30271,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1303549485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29236,8 +30286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -7}
   _autoName: {fileID: 1303549482}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -7}
 --- !u!114 &1303549486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29252,8 +30304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1303549485}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1303549482}
   _so: {fileID: 1303549484}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1303549482}
   _attachedList:
     bFoldout: 1
     childList:
@@ -29709,6 +30762,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1346057447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29723,8 +30777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -5, y: -12, z: -5}
   _autoName: {fileID: 1346057444}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -5, y: -4, z: -5}
 --- !u!114 &1346057448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29739,8 +30795,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1346057447}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1346057444}
   _so: {fileID: 1346057446}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1346057444}
   _attachedList:
     bFoldout: 1
     childList:
@@ -29975,6 +31032,7 @@ RectTransform:
   - {fileID: 996719810}
   - {fileID: 1465581236}
   - {fileID: 398079009}
+  - {fileID: 558985198}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30176,6 +31234,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1353132324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30190,8 +31249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -8}
   _autoName: {fileID: 1353132321}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -8}
 --- !u!114 &1353132325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30206,8 +31267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1353132324}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1353132321}
   _so: {fileID: 1353132323}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1353132321}
   _attachedList:
     bFoldout: 1
     childList:
@@ -30385,6 +31447,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1365952195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365952196}
+  - component: {fileID: 1365952198}
+  - component: {fileID: 1365952197}
+  m_Layer: 5
+  m_Name: HunsTroopsLost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1365952196
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365952195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1918760177}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -52}
+  m_SizeDelta: {x: 250, y: 55.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1365952197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365952195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1fccf8faa48c106429f692d21ea20317, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 60
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '- 10.000'
+--- !u!222 &1365952198
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365952195}
+  m_CullTransparentMesh: 0
 --- !u!1 &1368372928
 GameObject:
   m_ObjectHideFlags: 0
@@ -30885,6 +32026,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1407067924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407067925}
+  - component: {fileID: 1407067927}
+  - component: {fileID: 1407067926}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1407067925
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407067924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1890941449}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.94998, y: -0.000026222}
+  m_SizeDelta: {x: 210.2, y: 218.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1407067926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407067924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 9e45bc7bc84224e49bc78a724ca4271a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1407067927
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407067924}
+  m_CullTransparentMesh: 0
 --- !u!1 &1407302159
 GameObject:
   m_ObjectHideFlags: 0
@@ -31159,6 +32374,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1419233531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31173,8 +32389,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -2}
   _autoName: {fileID: 1419233528}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -2}
 --- !u!114 &1419233532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31189,8 +32407,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1419233531}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1419233528}
   _so: {fileID: 1419233530}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1419233528}
   _attachedList:
     bFoldout: 1
     childList:
@@ -32374,6 +33593,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1456289035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32388,8 +33608,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -5}
   _autoName: {fileID: 1456289032}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -5}
 --- !u!114 &1456289036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32404,8 +33626,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1456289035}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1456289032}
   _so: {fileID: 1456289034}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1456289032}
   _attachedList:
     bFoldout: 1
     childList:
@@ -33067,6 +34290,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1486467545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33081,8 +34305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -9}
   _autoName: {fileID: 1486467542}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -9}
 --- !u!114 &1486467546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33097,8 +34323,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1486467545}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1486467542}
   _so: {fileID: 1486467544}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1486467542}
   _attachedList:
     bFoldout: 1
     childList:
@@ -33324,6 +34551,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1501375876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33338,8 +34566,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -8}
   _autoName: {fileID: 1501375873}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -8}
 --- !u!114 &1501375877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33354,8 +34584,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1501375876}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1501375873}
   _so: {fileID: 1501375875}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1501375873}
   _attachedList:
     bFoldout: 1
     childList:
@@ -33703,6 +34934,7 @@ MonoBehaviour:
   - {fileID: 1217099061}
   - {fileID: 1759167078}
   - {fileID: 1737942056}
+  bFrozen: 0
   _referenceTile: {fileID: 1046543167763804, guid: 9a3da0318e7dfbf42b6fd7d4f5931e99,
     type: 3}
   _bSensorOff_ChildChange: 0
@@ -33816,8 +35048,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -1, z: 0}
   _autoName: {fileID: 1518767866}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -0.33333334, z: 0}
 --- !u!114 &1518767866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34634,6 +35868,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1546339490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34648,8 +35883,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -8}
   _autoName: {fileID: 1546339487}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -8}
 --- !u!114 &1546339491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34664,8 +35901,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1546339490}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1546339487}
   _so: {fileID: 1546339489}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1546339487}
   _attachedList:
     bFoldout: 1
     childList:
@@ -34793,6 +36031,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1554883066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34807,8 +36046,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -5}
   _autoName: {fileID: 1554883063}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -5}
 --- !u!114 &1554883067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34823,8 +36064,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1554883066}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1554883063}
   _so: {fileID: 1554883065}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1554883063}
   _attachedList:
     bFoldout: 1
     childList:
@@ -35306,6 +36548,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1581753207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35320,8 +36563,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -6}
   _autoName: {fileID: 1581753204}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -6}
 --- !u!114 &1581753208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35336,8 +36581,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1581753207}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1581753204}
   _so: {fileID: 1581753206}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1581753204}
   _attachedList:
     bFoldout: 1
     childList:
@@ -35465,6 +36711,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1590942772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35479,8 +36726,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -4}
   _autoName: {fileID: 1590942769}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -4}
 --- !u!114 &1590942773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35495,8 +36744,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1590942772}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1590942769}
   _so: {fileID: 1590942771}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1590942769}
   _attachedList:
     bFoldout: 1
     childList:
@@ -36477,6 +37727,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1649463995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649463996}
+  - component: {fileID: 1649463998}
+  - component: {fileID: 1649463997}
+  m_Layer: 5
+  m_Name: Result
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1649463996
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649463995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3, y: 172}
+  m_SizeDelta: {x: 590.4, y: 79.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1649463997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649463995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: de13e16614900214a9b73e4e8fa13b38, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 120
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Victory!
+--- !u!222 &1649463998
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649463995}
+  m_CullTransparentMesh: 0
 --- !u!1 &1650966271
 GameObject:
   m_ObjectHideFlags: 0
@@ -36842,6 +38171,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1657257369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36856,8 +38186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -3}
   _autoName: {fileID: 1657257366}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -3}
 --- !u!114 &1657257370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36872,8 +38204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1657257369}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1657257366}
   _so: {fileID: 1657257368}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1657257366}
   _attachedList:
     bFoldout: 1
     childList:
@@ -37067,6 +38400,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1660861764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37081,8 +38415,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -9}
   _autoName: {fileID: 1660861761}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -9}
 --- !u!114 &1660861765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37097,8 +38433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1660861764}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1660861761}
   _so: {fileID: 1660861763}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1660861761}
   _attachedList:
     bFoldout: 1
     childList:
@@ -37554,6 +38891,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1681928717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37568,8 +38906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 1, y: -12, z: -2}
   _autoName: {fileID: 1681928714}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 1, y: -4, z: -2}
 --- !u!114 &1681928718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37584,8 +38924,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1681928717}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1681928714}
   _so: {fileID: 1681928716}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1681928714}
   _attachedList:
     bFoldout: 1
     childList:
@@ -38051,6 +39392,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1704081592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38065,8 +39407,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -6}
   _autoName: {fileID: 1704081589}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -6}
 --- !u!114 &1704081593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38081,8 +39425,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1704081592}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1704081589}
   _so: {fileID: 1704081591}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1704081589}
   _attachedList:
     bFoldout: 1
     childList:
@@ -38374,6 +39719,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1716395334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38388,8 +39734,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -2}
   _autoName: {fileID: 1716395331}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -2}
 --- !u!114 &1716395335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38404,8 +39752,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1716395334}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1716395331}
   _so: {fileID: 1716395333}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1716395331}
   _attachedList:
     bFoldout: 1
     childList:
@@ -38670,8 +40019,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1737942060}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1737942059}
   _so: {fileID: 1737942058}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1737942059}
   _attachedList:
     bFoldout: 1
     childList:
@@ -38722,6 +40072,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1737942059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38752,8 +40103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -9}
   _autoName: {fileID: 1737942059}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -9}
 --- !u!114 &1737942061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38986,6 +40339,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1759167077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39000,8 +40354,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -8}
   _autoName: {fileID: 1759167074}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -8}
 --- !u!114 &1759167078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39016,8 +40372,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1759167077}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1759167074}
   _so: {fileID: 1759167076}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1759167074}
   _attachedList:
     bFoldout: 1
     childList:
@@ -39145,6 +40502,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1766371202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39159,8 +40517,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -4, y: -12, z: -9}
   _autoName: {fileID: 1766371199}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -4, y: -4, z: -9}
 --- !u!114 &1766371203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39175,8 +40535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1766371202}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1766371199}
   _so: {fileID: 1766371201}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1766371199}
   _attachedList:
     bFoldout: 1
     childList:
@@ -39995,6 +41356,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1872855756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872855757}
+  - component: {fileID: 1872855759}
+  - component: {fileID: 1872855758}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1872855757
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872855756}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6, y: -6}
+  m_SizeDelta: {x: 340.2, y: 340.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1872855758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872855756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 655283f5234e80042ac9dbbed835c41b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1872855759
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872855756}
+  m_CullTransparentMesh: 0
 --- !u!1 &1873907452
 GameObject:
   m_ObjectHideFlags: 0
@@ -40090,6 +41525,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1873907457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40104,8 +41540,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -3}
   _autoName: {fileID: 1873907454}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -3}
 --- !u!114 &1873907458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40120,8 +41558,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1873907457}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1873907454}
   _so: {fileID: 1873907456}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1873907454}
   _attachedList:
     bFoldout: 1
     childList:
@@ -40479,6 +41918,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1889781697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40493,8 +41933,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -2, y: -12, z: -8}
   _autoName: {fileID: 1889781694}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -2, y: -4, z: -8}
 --- !u!114 &1889781698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40509,8 +41951,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1889781697}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1889781694}
   _so: {fileID: 1889781696}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1889781694}
   _attachedList:
     bFoldout: 1
     childList:
@@ -40543,6 +41986,82 @@ MonoBehaviour:
   final: 0
   objective: 0
   moves: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!1 &1890941448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890941449}
+  - component: {fileID: 1890941451}
+  - component: {fileID: 1890941450}
+  m_Layer: 5
+  m_Name: Hun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1890941449
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890941448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1407067925}
+  - {fileID: 1918760177}
+  m_Father: {fileID: 2039037349}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -229, y: -15}
+  m_SizeDelta: {x: 212.1, y: 218.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1890941450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890941448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5b587278e89de92439ce56447e2a55d7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1890941451
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890941448}
+  m_CullTransparentMesh: 0
 --- !u!1 &1891381783
 GameObject:
   m_ObjectHideFlags: 0
@@ -40810,6 +42329,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1913155896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40824,8 +42344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -1, y: -12, z: -3}
   _autoName: {fileID: 1913155893}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -1, y: -4, z: -3}
 --- !u!114 &1913155897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40840,8 +42362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1913155896}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1913155893}
   _so: {fileID: 1913155895}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1913155893}
   _attachedList:
     bFoldout: 1
     childList:
@@ -41136,6 +42659,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1918760176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918760177}
+  - component: {fileID: 1918760179}
+  - component: {fileID: 1918760178}
+  m_Layer: 5
+  m_Name: InfoBoxHuns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1918760177
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918760176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2119641189}
+  - {fileID: 1365952196}
+  m_Father: {fileID: 1890941449}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.9499397, y: -132.7}
+  m_SizeDelta: {x: 210.2, y: 47.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1918760178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918760176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e41a68cc34db50f46a2b63ec7aa0fdcc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1918760179
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918760176}
+  m_CullTransparentMesh: 0
 --- !u!1 &1919282441
 GameObject:
   m_ObjectHideFlags: 0
@@ -42057,6 +43656,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &1949398621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42071,8 +43671,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -3, y: -12, z: -9}
   _autoName: {fileID: 1949398618}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -3, y: -4, z: -9}
 --- !u!114 &1949398622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42087,8 +43689,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 1949398621}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 1949398618}
   _so: {fileID: 1949398620}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 1949398618}
   _attachedList:
     bFoldout: 1
     childList:
@@ -42743,6 +44346,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2001904101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2001904102}
+  - component: {fileID: 2001904104}
+  - component: {fileID: 2001904103}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2001904102
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001904101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 737569360}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4, y: -6.9}
+  m_SizeDelta: {x: 386.3, y: 36.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2001904103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001904101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: de13e16614900214a9b73e4e8fa13b38, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: BATTLE
+--- !u!222 &2001904104
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001904101}
+  m_CullTransparentMesh: 0
 --- !u!1 &2013134388
 GameObject:
   m_ObjectHideFlags: 0
@@ -43495,6 +45177,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2039037348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039037349}
+  - component: {fileID: 2039037351}
+  - component: {fileID: 2039037350}
+  m_Layer: 5
+  m_Name: Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2039037349
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039037348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 176330897}
+  - {fileID: 762968193}
+  - {fileID: 1872855757}
+  - {fileID: 1649463996}
+  - {fileID: 735906322}
+  - {fileID: 1890941449}
+  - {fileID: 720268534}
+  m_Father: {fileID: 558985198}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000022888, y: 10}
+  m_SizeDelta: {x: 888.3, y: 888.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2039037350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039037348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e72d8ef033385fc42a3ac7f9dc8e687a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &2039037351
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039037348}
+  m_CullTransparentMesh: 0
 --- !u!1 &2040978621
 GameObject:
   m_ObjectHideFlags: 0
@@ -43590,6 +45353,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &2040978626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43604,8 +45368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: -6, y: -12, z: -3}
   _autoName: {fileID: 2040978623}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: -6, y: -4, z: -3}
 --- !u!114 &2040978627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43620,8 +45386,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 2040978626}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 2040978623}
   _so: {fileID: 2040978625}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 2040978623}
   _attachedList:
     bFoldout: 1
     childList:
@@ -44612,6 +46379,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &2084420449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44626,8 +46394,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -4}
   _autoName: {fileID: 2084420446}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -4}
 --- !u!114 &2084420450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44642,8 +46412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 2084420449}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 2084420446}
   _so: {fileID: 2084420448}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 2084420446}
   _attachedList:
     bFoldout: 1
     childList:
@@ -44676,6 +46447,82 @@ MonoBehaviour:
   final: 0
   objective: 0
   moves: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!1 &2089638334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2089638335}
+  - component: {fileID: 2089638337}
+  - component: {fileID: 2089638336}
+  m_Layer: 5
+  m_Name: InfoBoxRoman
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2089638335
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089638334}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 90782606}
+  - {fileID: 23494557}
+  m_Father: {fileID: 720268534}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1, y: -132.7}
+  m_SizeDelta: {x: 210.2, y: 47.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2089638336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089638334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e41a68cc34db50f46a2b63ec7aa0fdcc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &2089638337
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089638334}
+  m_CullTransparentMesh: 0
 --- !u!1 &2101533446
 GameObject:
   m_ObjectHideFlags: 0
@@ -45297,6 +47144,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2119641188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2119641189}
+  - component: {fileID: 2119641191}
+  - component: {fileID: 2119641190}
+  m_Layer: 5
+  m_Name: HunsTroops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2119641189
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119641188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1918760177}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 210.2, y: 41.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2119641190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119641188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1fccf8faa48c106429f692d21ea20317, type: 3}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 550.000
+--- !u!222 &2119641191
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119641188}
+  m_CullTransparentMesh: 0
 --- !u!1 &2137999377
 GameObject:
   m_ObjectHideFlags: 0
@@ -45370,6 +47296,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137999377}
+  m_CullTransparentMesh: 0
+--- !u!1 &2143910938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143910939}
+  - component: {fileID: 2143910941}
+  - component: {fileID: 2143910940}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2143910939
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143910938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 75116080}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000024438, y: -0.000005722}
+  m_SizeDelta: {x: 293.1, y: 37.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2143910940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143910938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: de13e16614900214a9b73e4e8fa13b38, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: NEXT
+--- !u!222 &2143910941
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143910938}
   m_CullTransparentMesh: 0
 --- !u!1 &2146504548
 GameObject:
@@ -45466,6 +47471,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &2146504553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45480,8 +47486,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grid: {fileID: 1518767864}
   bSnapFree: 0
+  _lastXYZ: {x: 0, y: -12, z: -3}
   _autoName: {fileID: 2146504550}
   bChangedforEditor: 1
+  _lastLocalPosition: {x: 0, y: -4, z: -3}
 --- !u!114 &2146504554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45496,8 +47504,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 2146504553}
   _bulk: {fileID: 1518767862}
-  _autoName: {fileID: 2146504550}
   _so: {fileID: 2146504552}
+  _tileSetSprites: {fileID: 0}
+  _autoName: {fileID: 2146504550}
   _attachedList:
     bFoldout: 1
     childList:

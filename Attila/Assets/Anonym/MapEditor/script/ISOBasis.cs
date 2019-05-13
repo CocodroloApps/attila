@@ -82,7 +82,10 @@ namespace Anonym.Isometric
 
             float fHeight = 0;
             const float fGap = 0.25f;
-            Collider _col = GetCollider().fAboveGround(vOffset + Vector3.up * fGap, ref fHeight);
+            Collider _col = GetCollider();
+            if (_col)
+                _col = _col.fAboveGround(vOffset + Vector3.up * fGap, ref fHeight);
+            
             fHeight -= fGap;
             Vector3 vOnGround = vOffset + fHeight * Vector3.down;
 
@@ -153,11 +156,7 @@ namespace Anonym.Isometric
                     return (ISOTarget.First(r => r is RegularCollider) as RegularCollider).BC;
             }
 
-            Collider _col = GetComponent<Collider>();
-            if (_col != null)
-                return _col;
-
-            return null;
+            return GetComponent<Collider>();
         }
 
         Bounds GetBounds()

@@ -71,6 +71,7 @@ MonoBehaviour:
   _ISOBasis: {fileID: 0}
   _sprrISOListForBackup: 
   _prsISOListForBackup: 
+  _iOverrideISOBackup: 
 --- !u!114 &114746434182902728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinates: {fileID: 114201646073731624}
   _bulk: {fileID: 0}
+  _tileSetSprites: {fileID: 0}
   _autoName: {fileID: 114852789048637510}
   _so: {fileID: 114030795861365346}
   _attachedList:
@@ -221,7 +223,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980253687697700}
-  m_LocalRotation: {x: 0.23911761, y: -0.36964384, z: 0.09904577, w: 0.8923991}
+  m_LocalRotation: {x: -0.23911758, y: 0.3696439, z: -0.09904576, w: -0.89239913}
   m_LocalPosition: {x: -0.006123725, y: -0.005, z: 0.0061237244}
   m_LocalScale: {x: 1.4142135, y: 1.4142135, z: 1.4142135}
   m_Children: []
@@ -290,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localRotation: {x: 0, y: 0, z: 0}
   localScale: {x: 1, y: 1, z: 1}
+  bAutoUpdate: 0
   _bApplyPPUScale: 0
   fDepthFudge: 0
   _Type: 2

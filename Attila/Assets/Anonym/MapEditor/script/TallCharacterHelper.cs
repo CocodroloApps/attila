@@ -27,6 +27,9 @@ namespace Anonym.Isometric
         [SerializeField]
         IsometricSortingOrder iso;
 
+        [SerializeField, Range(0, 1)]
+        float fAlphaCutoff = 1f;
+
         [SerializeField]
         List<SpriteRenderer> sprrs;
 
@@ -138,9 +141,9 @@ namespace Anonym.Isometric
                     var child = new GameObject("SpriteMask: " + _sprr.name);
                     child.transform.SetParent(_sprr.transform, false);
                     spriteMaskHelper = child.AddComponent<SpriteMaskAssist>();
-                    spriteMaskHelper.Init(_sprr);
+                    spriteMaskHelper.Init(_sprr, fAlphaCutoff);
                 }
-                spriteMaskHelper.Regist(sprrs);
+                spriteMaskHelper.Regist(sprrs, this);
                 masks.Add(spriteMaskHelper);
                 iso.AddUpdateCallBack(spriteMaskHelper);
             }
@@ -154,6 +157,11 @@ namespace Anonym.Isometric
 
         private void OnTriggerExit(Collider other)
         {
+            Remove(other);
+        }
+
+        public void Remove(Collider other)
+        {
             if (sprrs.Count == 0 || masks.Count == 0)
                 return;
 
@@ -162,14 +170,22 @@ namespace Anonym.Isometric
             var list = other.gameObject.GetComponentsInChildren<SpriteMaskAssist>().Where(r => masks.Contains(r));
             foreach (var one in list)
             {
-                if (one.UnRegist(sprrs))
-                {
-                    masks.Remove(one);
-                    iso.RemoveUpdateCallBack(one);
-                }
+                Remove(one, false);
             }
             if (masks.Count == 0)
                 sprrs.ForEach(r => r.maskInteraction = SpriteMaskInteraction.None);
+        }
+
+        public void Remove(SpriteMaskAssist _assist, bool bUpdateMaskInteraction = false)
+        {
+            if (_assist.UnRegist(sprrs, this))
+            {
+                masks.Remove(_assist);
+                iso.RemoveUpdateCallBack(_assist);
+
+                if (bUpdateMaskInteraction && masks.Count == 0)
+                    sprrs.ForEach(r => r.maskInteraction = SpriteMaskInteraction.None);
+            }
         }
 
         private void Update()

@@ -20,6 +20,7 @@ namespace Anonym.Util
 
         public static Color Color_LightMagenta = new Color(0.84f, 0.407f, 0.45f);
         public static Color Color_LightYellow = new Color(0.945f, 0.835f, 0.305f);
+        public static Color Color_LightGray = new Color(0.8f, 0.8f, 0.8f);
 
         public static Color Color_AlphaBlend(Color foreground, Color background)
         {
@@ -141,16 +142,16 @@ namespace Anonym.Util
             EditorGUI.indentLevel -= _indextLevel;
         }
 
-        public static bool Undo_Change_Sprite(SpriteRenderer _sprr, Sprite _newSprite)
-        {
-            if (_newSprite != _sprr.sprite)
-            {
-                Undo.RecordObject(_sprr, "Sprite Changed");
-                _sprr.sprite = _newSprite;
-                return true;
-            }
-            return false;
-        }
+        //public static bool Undo_Change_Sprite(SpriteRenderer _sprr, Sprite _newSprite)
+        //{
+        //    if (_newSprite != _sprr.sprite)
+        //    {
+        //        Undo.RecordObject(_sprr, "Sprite Changed");
+        //        _sprr.sprite = _newSprite;
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         public static GameObject Undo_Instantiate(GameObject _prefab, Transform _transform, string _actionName, bool _buttonAction)
         {
@@ -469,6 +470,12 @@ namespace Anonym.Util
             return bResult;
         }
 
+        public static void FitLabel(GUIContent gUIContent)
+        {
+            Vector2 textSize = GUI.skin.label.CalcSize(gUIContent);
+            GUI.Label(EditorGUILayout.GetControlRect(GUILayout.Width(textSize.x), GUILayout.Height(textSize.y)), gUIContent);
+        }
+
         [System.Serializable]
         public class SimpleGrid<T> where T : Object
         {
@@ -634,8 +641,11 @@ namespace Anonym.Util
                 }
 
                 var evt = Event.current;
-                if (evt.type == EventType.ScrollWheel || evt.type == EventType.MouseDrag)
-                    return bResult;
+                //if (evt.type == EventType.ScrollWheel || evt.type == EventType.MouseDrag)
+                //{
+                //    EditorGUIUtility.ExitGUI();
+                //    return bResult;
+                //}
 
                 ITag elementTag = element as ITag;
                 if (elementTag != null && elementTag.Tag(sOnGUI))
@@ -711,7 +721,7 @@ namespace Anonym.Util
                     }
                 }
                 return bResult;
-            }
+            }            
         }
     }
 }

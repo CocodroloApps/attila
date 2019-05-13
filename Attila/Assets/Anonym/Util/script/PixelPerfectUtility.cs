@@ -7,6 +7,13 @@ using UnityEditor;
 namespace Anonym.Util
 {
 	public static class PixelPerfectUtility {
+        public static float ProperOrthographicSize()
+        {
+            float vertical = Screen.height;
+            float ppuScale = 1;
+            float ppu = 128;
+            return (vertical / (ppuScale * ppu)) * 0.5f;
+        }
 #if UNITY_EDITOR
 		public static float ReferencePPUScale(this Sprite _sprite, float _ReferencePPU)
 		{

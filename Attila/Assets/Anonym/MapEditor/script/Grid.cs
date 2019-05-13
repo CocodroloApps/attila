@@ -144,30 +144,36 @@ namespace Anonym.Isometric
         }
         public Vector3 CoordinatesToPosition(Vector3 coordinates, bool bSnap = false)
         {
-            coordinates.Scale(GridInterval);
-
             if (bSnap)
                 coordinates = RoundToIntVector(coordinates);
 
+            coordinates.Scale(GridInterval);
+
+            //coordinates.Scale(GridInterval);
+
+            //if (bSnap)
+            //    coordinates = RoundToIntVector(coordinates);
+
             return coordinates;
         }
-        public Vector3 PositionToCoordinates(Vector3 position, bool bSnap = false)
+        public Vector3 PositionToCoordinates(Vector3 globalPosiion, bool bSnap = false)
         {
-            position.x = position.x / GridInterval.x;
-            position.y = position.y / GridInterval.y;
-            position.z = position.z / GridInterval.z;
+            globalPosiion.x = globalPosiion.x / GridInterval.x;
+            globalPosiion.y = globalPosiion.y / GridInterval.y;
+            globalPosiion.z = globalPosiion.z / GridInterval.z;
 
             if (bSnap)
-                position = RoundToIntVector(position);
+                globalPosiion = RoundToIntVector(globalPosiion);
 
-            return position;
+            return globalPosiion;
         }
         #endregion
 
 
-        public Vector3 SnapedPosition(Vector3 position)
+        public Vector3 SnapedPosition(Vector3 position, bool bIsGlobalPosition = false)
         {
-            return CoordinatesToPosition(PositionToCoordinates(position, true), false);
+            Vector3 vGap = bIsGlobalPosition ? position - transform.position : Vector3.zero;
+            return CoordinatesToPosition(PositionToCoordinates(position - vGap, true), false) + vGap;
         }
         public static Vector3 RoundToIntVector(Vector3 vector)
         {

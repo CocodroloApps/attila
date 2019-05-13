@@ -38,7 +38,7 @@ namespace Anonym.Util
             }
         }
 
-        SpriteRenderer[] GetSpriteRenderers()
+        public SpriteRenderer[] GetSpriteRenderers()
         {
             if (Prefab != null)
                 return Prefab.GetComponentsInChildren<SpriteRenderer>();
@@ -60,9 +60,11 @@ namespace Anonym.Util
                 return sprr.Select(s => s.color).ToArray();
             return null;
         }
-        private void OnEnable()
+
+        public void UpdateIcon()
         {
             textureForGUI.bCorrupted = true;
+            MakeIcon(this);
         }
 
         protected override void OnCustomGUI(Rect rect)
@@ -87,70 +89,138 @@ namespace Anonym.Util
             bool bBody = (bool)values[2];
             bool bAttachments = (bool)values[3];
             bool bAutoIsoLight = (bool)values[4];
-            IsoTile refTile = Tile;
             IsoTileBulk refBulk = (IsoTileBulk)values[5];
+            IsoTile refTile = Tile;
+            IsoTile TargetTile = IsoTile.Find(target);
+            bool bPrefabConnected_TargetTile = target != null && target.IsPrefabConnected();
 
-            if (target == null)
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+            if (MasterPaletteWindow.bNewPrefabStyle)
+            {
+                bool bPrefabConnected_RefTile = refTile != null && refTile.IsPrefabConnected();
+                if (bPrefabConnected_RefTile)// && bPrefabConnected_TargetTile)
+                {
+                    if (bPrefabConnected_TargetTile)
+                    {
+                        var one = PrefabUtility.GetCorrespondingObjectFromSource(target);
+                        if (one.transform.IsChildOf(refTile.transform))
+                            return false;
+                    }                    
+                }
+            }
+#endif
+
+            bool bTileAtPosition = false;
+
+            if (TargetTile)
+            {
+                // 타겟 타일이 있을 경우 그것이 파라미터 좌표에 있는 타일이 맞는지 대조하는 것 같다.
+                // 신규 목표는 bAutoStack일 경우 타일이 포지션에 있다고 판정하고 싶음
+                // 내포되어 있던 문제는 기존 코드가 coordinate와 position을 혼용해서 사용하고 있었다는 것
+                Vector3 vPositionParamCoordinates = vAt;
+                if (TargetTile.Bulk)
+                    vPositionParamCoordinates -= TargetTile.Bulk.transform.position;
+                vPositionParamCoordinates = TargetTile.Bulk.coordinates.PositionToCoordinates(vPositionParamCoordinates, !TargetTile.coordinates.bSnapFree);
+                bTileAtPosition = GridCoordinates.IsSameWithTolerance(vPositionParamCoordinates, TargetTile.coordinates._xyz);
+            }
+
+            // 타일을 지워야 할 경우. 대상이 프리팹일 때, 또는 대상이 프리팹이 아니지만 프리팹으로 배치할 때
+            if (TargetTile != null)
+            {
+#if UNITY_EDITOR && UNITY_2018_3_OR_NEWER
+                if (bPrefabConnected_TargetTile || MasterPaletteWindow.bNewPrefabStyle)
+#else
+                if (bPrefabConnected_TargetTile)
+#endif
+                {
+                    if (bTileAtPosition)
+                        Undo.DestroyObjectImmediate(TargetTile.gameObject);
+                }
+
+            }
+
+            if (!bTileAtPosition || target == null)
             {
                 if (!bAutoCreation)
                     return false;
 
-                return TileControlWand.Tile_Create(ref target, vAt, refTile, bBody, bAttachments, bAutoIsoLight, refBulk);
+                if (TileControlWand.Tile_Create(ref target, vAt, refTile, bBody, bAttachments, bAutoIsoLight, refBulk))
+                {
+                    TargetTile = IsoTile.Find(target);
+                    bPrefabConnected_TargetTile = target.IsPrefabConnected();
+                }
             }
-
-            IsoTile TargetTile = IsoTile.Find(target);
 
             if (refTile == null || TargetTile == null)
                 return false;
 
             // Undo.Record() code is aleady in Copycat()
-            TargetTile.Copycat(refTile, bBody, bAttachments, true);
+            if (!bPrefabConnected_TargetTile)
+                TargetTile.Copycat(refTile, bBody, bAttachments, true);
+
             target = TargetTile.gameObject;
             return true;
         }
 
-        public static bool MakeIcon(TileWand tileWand)
+        public static void MakeIcon(TileWand tileWand)
         {
             if (tileWand != null && tileWand.textureForGUI != null)
             {
+                if (tileWand.Prefab == null)
+                {
+                    DestroyImmediate(tileWand.textureForGUI.texture, true);
+                    tileWand.textureForGUI.texture = null;
+                    tileWand.textureForGUI.bCorrupted = false;
+                    AssetDatabase.SaveAssets();
+                    return;
+                }
                 tileWand.sprites = tileWand.GetSpriteRenderers().Select(s => s.sprite).ToArray();
                 tileWand.colors = tileWand.GetColors().ToArray();
 
-                Texture2D _tex = tileWand.textureForGUI.MakeIcon(ref tileWand.sprites, ref tileWand.colors);
+                Camera camera = FindObjectOfType<Camera>();
+                Texture2D _tex = camera != null 
+                    ? tileWand.textureForGUI.MakeRenderImage(tileWand.Prefab.GetComponent<IsoTile>().gameObject, camera, Color.clear) 
+                    : tileWand.textureForGUI.MakeIcon(ref tileWand.sprites, ref tileWand.colors);
+                
                 if (_tex == null)
                 {
                     tileWand.textureForGUI.bCorrupted = false;
-                    return true;
+                    return ;
                 }
 
-                if (tileWand.textureForGUI.texture == null || !AssetDatabase.Contains(tileWand.textureForGUI.texture))
+                var childs = AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(tileWand));
+                var expiredList = childs.Where(c => c != tileWand).ToArray();
+                for (int i = 0; i < expiredList.Length; ++i)
                 {
-                    AssetDatabase.AddObjectToAsset(_tex, tileWand);
-                    tileWand.textureForGUI.texture = _tex;
+                    DestroyImmediate(expiredList[i], true);
                 }
-                else
-                {
-                    EditorUtility.CopySerialized(_tex, tileWand.textureForGUI.texture);
-                }
+
+                AssetDatabase.AddObjectToAsset(_tex, tileWand);
+                tileWand.textureForGUI.texture = _tex;
+
                 tileWand.textureForGUI.bCorrupted = false;
 
                 EditorUtility.SetDirty(tileWand.textureForGUI.texture);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-                return true;
+                return;
             }
-            return false;
+            return;
         }
-        public static TileWand CreateAsset(string path, IsoTile tile)
+        public static TileWand CreateAsset(string path, IsoTile tile, bool bOverride = false)
         {
             TileWand newTileWand = ScriptableObject.CreateInstance<TileWand>();
 
-            string _path = AssetDatabase.GenerateUniqueAssetPath(path + ".asset");
+            string _path = bOverride ? path : AssetDatabase.GenerateUniqueAssetPath(path + ".asset");
             AssetDatabase.CreateAsset(newTileWand, _path);
 
             GameObject tileGameObject = tile.gameObject;
             if (!PrefabHelper.IsPrefab(tileGameObject))
-                tileGameObject = PrefabHelper.CreatePrefab(AssetDatabase.GenerateUniqueAssetPath(path + ".prefab"), tileGameObject);
+            {
+                path = System.IO.Path.ChangeExtension(path, ".prefab");
+                _path = bOverride ? path : AssetDatabase.GenerateUniqueAssetPath(path);
+                tileGameObject = PrefabHelper.CreatePrefab(_path, tileGameObject);
+            }
 
             // Revert All Lightings
             tile = IsoTile.Find(tileGameObject);
@@ -178,5 +248,5 @@ namespace Anonym.Util
             return newTileWand;
         }
 #endif
-    }
-}
+            }
+        }

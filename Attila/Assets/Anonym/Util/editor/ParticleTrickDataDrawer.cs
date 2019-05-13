@@ -44,8 +44,11 @@ namespace Anonym.Util
                 return;
             }
 
-            if (Event.current.type == EventType.ScrollWheel)
-                return;
+            //if (Event.current.type == EventType.ScrollWheel)
+            //{
+            //    EditorGUIUtility.ExitGUI();
+            //    return;
+            //}
 
             ParticleSortingTrick _base = (ParticleSortingTrick)property.serializedObject.targetObject;
             EditorGUI.BeginProperty (position, label, property);

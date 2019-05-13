@@ -22,7 +22,10 @@ namespace Anonym.Util
         }
 
         [SerializeField]
-        List <GameObject> models;
+        List<GameObject> protagonists;
+
+        [SerializeField]
+        List <GameObject> extras;
 
         const string MSG_DefaultPath = "Assets/SSHelper";
         const string MSG_fileEX = ".png";
@@ -48,15 +51,15 @@ namespace Anonym.Util
         [MethodBTN(false)]
         public void Screenshot()
         {
-            _savePath = Screenshot(cam, models, savePathEX);
+            _savePath = Screenshot(cam, protagonists, extras, savePathEX);
         }
 
-        public static string Screenshot(Camera cam, List<GameObject> models, string path)
+        public static Texture2D TakeScreenshot(Camera cam, List<GameObject> protagonists, List<GameObject> extras)
         {
             if (cam == null)
             {
                 Debug.Log("Camera Field is required.");
-                return path;
+                return null;
             }
 
             Rect rt_origin = cam.rect;
@@ -70,11 +73,12 @@ namespace Anonym.Util
 #endif
             RenderTexture rt = new RenderTexture(resWidth, resHeight, 32);
             Texture2D screenShot = new Texture2D(resWidth, resHeight, TextureFormat.ARGB32, false);
+            screenShot.filterMode = FilterMode.Point;
 
             cam.targetTexture = rt;
             cam.rect = new Rect(0, 0, 1, 1);
 
-            var extraList = Extra_ToggleOff(models);
+            var extraList = Extra_ToggleOff(extras);
             cam.Render();
             Extra_ToggleOn(extraList);
 
@@ -86,29 +90,45 @@ namespace Anonym.Util
             cam.rect = rt_origin;
             RenderTexture.active = null;
 
+            GameObject.DestroyImmediate(rt);
+
+            return screenShot;
+        }
+
+        public static string Screenshot(Camera cam, List<GameObject> protagonists, List<GameObject> extras, string path)
+        {
+            if (cam == null)
+            {
+                Debug.Log("Camera Field is required.");
+                return path;
+            }
+            Texture2D screenShot = TakeScreenshot(cam, protagonists, extras);
+            if (screenShot == null)
+            {
+                Debug.Log("Failed, something wrong.");
+                return path;
+            }
+
             System.IO.File.WriteAllBytes(path, screenShot.EncodeToPNG());
             UnityEditor.AssetDatabase.ImportAsset(path);
             Debug.Log("Saved: " + path);
-
             path  = NextFileName(path);
-
-            GameObject.DestroyImmediate(rt);
             GameObject.DestroyImmediate(screenShot);
 
             return path;
         }
 
-        static List<GameObject> Extra_ToggleOff(List<GameObject> models)
+        static List<GameObject> Extra_ToggleOff(List<GameObject> extras)
         {
             List<GameObject> backupedList = new List<GameObject>();
-            if (models != null && models.Any(r => r.activeSelf))
+            if (extras != null && extras.Any(r => r != null && r.activeSelf))
             {
                 GameObject[] allGameObjects = GameObject.FindObjectsOfType<GameObject>();
                 backupedList.AddRange(allGameObjects.Where(r => r.activeSelf && r.transform == r.transform.root));
-                models.RemoveAll(r => r == null);
+                extras.RemoveAll(r => r == null);
                 // backupedList.RemoveAll(r => models.Any(rr => rr.transform.IsChildOf(r.transform)));
                 backupedList.ForEach(r => r.SetActive(false));
-                models.ForEach(m => m.SetActive(true));
+                extras.ForEach(m => m.SetActive(true));
             }
             return backupedList;
         }
@@ -124,6 +144,53 @@ namespace Anonym.Util
         static string NextFileName(string path)
         {
             return UnityEditor.AssetDatabase.GenerateUniqueAssetPath(path);
+        }
+
+        public static Bounds CalculateBounds(List<GameObject> goList)
+        {
+            var gos = goList.Where(go => go != null).GetEnumerator();
+            if (gos.MoveNext())
+            {
+                var b = CalculateBounds(gos.Current);
+                while (gos.MoveNext())
+                {
+                    b.Encapsulate(CalculateBounds(gos.Current));
+                }
+                return b;
+            }
+            return new Bounds();
+        }
+
+        public static Bounds CalculateBounds(GameObject go)
+        {
+            Bounds b = new Bounds(go.transform.position, Vector3.zero);
+            Object[] rList = go.GetComponentsInChildren(typeof(Renderer));
+            foreach (Renderer r in rList)
+            {
+                b.Encapsulate(r.bounds);
+            }
+            return b;
+        }
+
+        public static void FocusCameraOnGameObject(Camera c, List<GameObject> gos, Vector3 vGap, float fScale = 1f)
+        {
+            FocusCameraOnBound(c, CalculateBounds(gos), vGap, fScale);
+        }
+
+        public static void FocusCameraOnGameObject(Camera c, GameObject go, Vector3 vGap, float fScale = 1f)
+        {
+            FocusCameraOnBound(c, CalculateBounds(go), vGap, fScale);
+        }
+
+        public static void FocusCameraOnBound(Camera c, Bounds b, Vector3 vGap, float fScale = 1f)
+        {
+            Vector3 max = b.size;
+            float radius = Mathf.Max(max.x, Mathf.Max(max.y, max.z));
+            float dist = radius / (Mathf.Sin(c.fieldOfView * Mathf.Deg2Rad / 2f));
+            Vector3 pos = vGap * dist + b.center;
+            c.transform.position = pos;
+            c.transform.LookAt(b.center);
+            c.orthographicSize = radius * 0.5f * fScale;
         }
 
         void OnEnable()

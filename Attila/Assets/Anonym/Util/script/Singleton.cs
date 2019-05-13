@@ -14,6 +14,23 @@ namespace Anonym.Util
                 return IsNull ? null : _instance;
             }
         }
+
+        public static T Instance
+        {
+            get
+            {
+                if (IsNull)
+                    CreateInstance();
+
+                return  _instance;
+            }
+        }
+
+        protected static T CreateInstance()
+        {
+            return _instance = new GameObject(typeof(T).Name, typeof(T)).GetComponent<T>();
+        }
+
         public static bool IsNull{  
             get{
                 if (_instance == null)
@@ -27,11 +44,21 @@ namespace Anonym.Util
         {
             if (this != instance)
             {
-                GameObject obj = this.gameObject;
                 Destroy(this);
-                Destroy(obj);
                 return;
             }
+        }
+
+        public static void DestroySingleton(T destroy)
+        {
+            if (destroy != null)
+            {
+                GameObject obj = destroy.gameObject;
+                DestroyImmediate(destroy);
+                if (obj != null)
+                    DestroyImmediate(obj);
+            }
+            return;
         }
     }
 }

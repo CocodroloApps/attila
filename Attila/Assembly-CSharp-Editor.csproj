@@ -69,6 +69,7 @@
     <Compile Include="Assets\Anonym\MagicWand\editor\MasterPaletteWindow.cs" />
     <Compile Include="Assets\Anonym\MagicWand\editor\TileControlWand.cs" />
     <Compile Include="Assets\Anonym\MagicWand\editor\TileWand.cs" />
+    <Compile Include="Assets\Anonym\MagicWand\editor\TileWandEditor.cs" />
     <Compile Include="Assets\Anonym\MapEditor\editor\AtlasHelperWindow.cs" />
     <Compile Include="Assets\Anonym\MapEditor\editor\AutoNamingEditor.cs" />
     <Compile Include="Assets\Anonym\MapEditor\editor\CustomEditorGUI.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="Assets\Anonym\MapEditor\editor\MeshUpEditor.cs" />
     <Compile Include="Assets\Anonym\MapEditor\editor\RegularColliderEditor.cs" />
     <Compile Include="Assets\Anonym\MapEditor\editor\SubColliderHelperEditor.cs" />
+    <Compile Include="Assets\Anonym\MapEditor\editor\SubTileSetDrawer.cs" />
+    <Compile Include="Assets\Anonym\MapEditor\editor\SubTileSetEditor.cs" />
+    <Compile Include="Assets\Anonym\MapEditor\editor\TileSetSpritesDrawer.cs" />
+    <Compile Include="Assets\Anonym\MapEditor\editor\TileSetSpritesEditor.cs" />
     <Compile Include="Assets\Anonym\Util\editor\ConditionalHidePropertyDrawer.cs" />
     <Compile Include="Assets\Anonym\Util\editor\CustomEditorGUI.cs" />
     <Compile Include="Assets\Anonym\Util\editor\CustomMonoBehaviourEditor.cs" />
@@ -96,7 +101,14 @@
     <Compile Include="Assets\Anonym\Util\editor\GUIDisableScope.cs" />
     <Compile Include="Assets\Anonym\Util\editor\ParticleSortingTrickEditor.cs" />
     <Compile Include="Assets\Anonym\Util\editor\ParticleTrickDataDrawer.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\SelfieStickEditor.cs" />
     <Compile Include="Assets\Anonym\Util\editor\SerializedPropertyEX.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\Tag.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\TagDrawer.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\TagHolder.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\TagHolderDrawer.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\TagList.cs" />
+    <Compile Include="Assets\Anonym\Util\editor\TagListEditor.cs" />
     <Compile Include="Assets\Anonym\Util\editor\TmpTexture2D.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

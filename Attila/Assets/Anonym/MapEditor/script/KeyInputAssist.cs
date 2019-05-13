@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Anonym.Isometric
 {
+    using Util;
+
     public class KeyInputAssist : Util.Singleton<KeyInputAssist>
     {
         [SerializeField]

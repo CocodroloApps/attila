@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 namespace Anonym.Util
 {    
@@ -13,15 +14,10 @@ namespace Anonym.Util
 
         public bool bCorrupted = false;
 
-        public void SetIcon(Texture2D newIcon)
-        {
-            texture = newIcon;
-        }
-
         public Texture2D MakeIcon(ref Sprite[] sprites, ref Color[] colors)
         {
             string conditions = sprites.Select(s => s.name).Concat(colors.Select(c => c.ToString())).Aggregate((i, j) => i + j);
-            if (texture == null || !texture.name.Equals(conditions))
+            if (bCorrupted || texture == null || !texture.name.Equals(conditions))
             {
                 Texture2D _texture = null;
                 bool bAccumulate = false;
@@ -35,7 +31,127 @@ namespace Anonym.Util
                     bAccumulate |= OverrideColoredTexture2D(sprite.texture, sprite.textureRect, ref _texture, color, bAccumulate);
                 }
                 _texture.name = conditions;
-                return _texture;
+                return texture = _texture;
+            }
+            return texture = null;
+        }
+
+        public Texture2D MakeRenderImage(List<GameObject> _target, Camera camera_original, Color baseColor, int width = 128, int height = 128, string extraCondition = "", int iLayer = 0)
+        {
+            List<SpriteRenderer> sprites = new List<SpriteRenderer>();
+            _target.ForEach(go => sprites.AddRange(go.GetComponentsInChildren<SpriteRenderer>()));
+            if (sprites.All(r => r == null || r.sprite == null))
+                return texture = null;
+
+            string conditions = sprites.Select(s => s.sprite == null ? "_" : s.sprite.name).Concat(
+                sprites.Select(s => s.sprite == null ? "_" : s.color.ToString())).Aggregate((i, j) => i + j) + extraCondition;
+
+            if (bCorrupted || texture == null || !texture.name.Equals(conditions))
+            {
+
+                var flags = BindingFlags.Static | BindingFlags.NonPublic;
+                var propInfo = typeof(Camera).GetProperty("PreviewCullingLayer", flags);
+                int previewLayer = iLayer != 0 ? iLayer : (int)propInfo.GetValue(null, new object[0]);
+
+                var targets = _target.Where(_t => _t != null).Select(_t => GameObject.Instantiate(_t).gameObject).ToList();
+                if (targets.Count == 0)
+                    return null;
+
+                targets.ForEach(t =>
+                {
+                    t.hideFlags = HideFlags.HideAndDontSave;
+                    t.layer = previewLayer;
+                    foreach (Transform transform in t.GetComponentsInChildren<Transform>())
+                    {
+                        transform.gameObject.layer = previewLayer;
+                    }
+                });
+
+                Texture2D _texture = null;
+
+                if (camera_original == null)
+                    camera_original = Object.FindObjectOfType<Camera>();
+
+                Camera camera = Camera.Instantiate(camera_original) as Camera;
+                camera.nearClipPlane = 0.1f;
+                camera.farClipPlane = 100f;
+                camera.orthographic = true;
+                camera.pixelRect = new Rect(0, 0, width, height);
+                camera.cullingMask = 1 << previewLayer;
+                camera.clearFlags = CameraClearFlags.SolidColor;
+                camera.backgroundColor = baseColor;
+
+                Isometric.IsoTransform isoTransform = targets.Select(t => t.GetComponentInChildren<Isometric.IsoTransform>()).First();
+                if (isoTransform != null)
+                {
+                    Quaternion isometricQuaternion = Quaternion.Euler(isoTransform.transform.eulerAngles);
+                    SSHelper.FocusCameraOnGameObject(camera, targets, isometricQuaternion * Vector3.back, 0.6f);
+                }
+
+                _texture = SSHelper.TakeScreenshot(camera, targets, null);
+
+                targets.ForEach(t => GameObject.DestroyImmediate(t, true));
+                GameObject.DestroyImmediate(camera.gameObject, true);
+                _texture.name = conditions;
+                return texture = _texture;
+            }
+            return null;
+        }
+
+        public Texture2D MakeRenderImage(GameObject _target, Camera camera_original, Color baseColor, int width = 128, int height = 128, string extranCondition = "")
+        {
+            var sprites = _target.gameObject.GetComponentsInChildren<SpriteRenderer>();
+            if (sprites.All(r => r == null || r.sprite == null))
+                return texture = null;
+
+            string conditions = sprites.Select(s => s.sprite == null ? "null" : s.sprite.name).Concat(
+                sprites.Select(s => s.color.ToString())).Aggregate((i, j) => i + j) + extranCondition;
+
+            if (bCorrupted || texture == null || !texture.name.Equals(conditions))
+            {
+
+                var flags = BindingFlags.Static | BindingFlags.NonPublic;
+                var propInfo = typeof(Camera).GetProperty("PreviewCullingLayer", flags);
+                int previewLayer = 1; // (int)propInfo.GetValue(null, new object[0]);
+
+                GameObject target = GameObject.Instantiate(_target).gameObject;
+                target.hideFlags = HideFlags.HideAndDontSave;
+                target.layer = previewLayer;
+
+                foreach (Transform transform in target.GetComponentsInChildren<Transform>())
+                {
+                    transform.gameObject.layer = previewLayer;
+                }
+
+                if (target != null)
+                {
+                    if (camera_original == null)
+                        camera_original = Object.FindObjectOfType<Camera>();
+
+                    Camera camera = Camera.Instantiate(camera_original) as Camera;
+                    camera.nearClipPlane = 0.1f;
+                    camera.farClipPlane = 100f;
+                    camera.orthographic = true;
+                    camera.pixelRect = new Rect(0, 0, width, height);
+                    camera.cullingMask = 1 << previewLayer;
+                    camera.clearFlags = CameraClearFlags.SolidColor;
+                    camera.backgroundColor = baseColor;
+
+                    Isometric.IsoTransform isoTransform = target.GetComponentInChildren<Isometric.IsoTransform>();
+                    if (isoTransform != null)
+                    {
+                        Quaternion isometricQuaternion = Quaternion.Euler(isoTransform.transform.eulerAngles);
+                        SSHelper.FocusCameraOnGameObject(camera, target, isometricQuaternion * Vector3.back);
+                    }
+
+                    Texture2D _texture = SSHelper.TakeScreenshot(camera, new List<GameObject>() { target }, null);
+                    GameObject.DestroyImmediate(camera.gameObject, true);
+                    GameObject.DestroyImmediate(target, true);
+                    _texture.name = conditions;
+                    return texture = _texture;
+                }
+                else
+                    texture = null;
             }
             return null;
         }

@@ -10,7 +10,7 @@ namespace Anonym.Isometric
             if (boxCollider == null)
                 return new Bounds();
 
-            if (boxCollider.enabled)
+            if (boxCollider.enabled && boxCollider.bounds.size != Vector3.zero)
                 return boxCollider.bounds;
 
             var transform = boxCollider.transform;

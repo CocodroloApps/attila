@@ -27,20 +27,25 @@ namespace Anonym.Isometric
         }
         #endregion
 
-        public IsoTile[] GetTiles()
+        public IEnumerable<IsoTile> GetAllTiles()
         {
+#if UNITY_EDITOR
+            return _attachedList;
+#else
             return GetComponentsInChildren<IsoTile>();
+#endif
         }
 
-        public List<IsoTile> GetTiles_At(Vector3 atCoordinates)
+        public IEnumerable<IsoTile> GetTile_At_OverlapBox(Vector3 vCentor, Vector3 vHalfExtents)
         {
-            var tiles = GetTiles();
-            return GetTiles_At(atCoordinates, ref tiles);
+            return Physics.OverlapBox(vCentor, vHalfExtents).Select(h => IsoTile.Find(h.gameObject)).Distinct();
         }
 
-        public static List<IsoTile> GetTiles_At(Vector3 atCoordinates, ref IsoTile[] tileArray)
+        public IEnumerable<IsoTile> GetTiles_At(Vector3 atCoordinates)
         {
-            return tileArray.Where(t => t != null && (GridCoordinates.IsSameWithTolerance(t.coordinates._xyz, atCoordinates, Grid.fGridTolerance))).ToList();
+            Vector3 _position = coordinates.grid.transform.position + coordinates.CoordinatesToPosition(atCoordinates);
+            var nominess = GetTile_At_OverlapBox(_position, coordinates.grid.TileSize * 0.125f);
+            return nominess.Where(t => t != null && GridCoordinates.IsSameWithTolerance(t.coordinates._xyz, atCoordinates));
         }
 
         public List<IsoTile> GetTiles_At(Vector3 startingCoordinates,
@@ -50,12 +55,11 @@ namespace Anonym.Isometric
                 return GetTiles_At_Continuously(startingCoordinates, _direction, bApplyRefTileSize);
 
             List<IsoTile> _tiles = new List<IsoTile>();
-            IsoTile[] _bulkTiles = GetTiles();
             int iSubGridCount = !bApplyRefTileSize ? 1 : coordinates.CoordinatesCountInTile(_direction);
             for (int j = 0; j < iSubGridCount; j++)
             {
                 startingCoordinates += _direction;
-                _tiles.AddRange(GetTiles_At(startingCoordinates, ref _bulkTiles));
+                _tiles.AddRange(GetTiles_At(startingCoordinates));
             }
             _tiles = _tiles.Distinct().ToList();
             _tiles.Remove(null);
@@ -64,7 +68,7 @@ namespace Anonym.Isometric
 
         List<IsoTile> GetTiles_At_Continuously(Vector3 startingCoordinates, Vector3 _direction, bool bApplyRefTileSize)
         {
-            IsoTile[] _bulkTiles = GetTiles();
+            var _bulkTiles = GetAllTiles();
             int iSubGridCount = !bApplyRefTileSize ? 1 : coordinates.CoordinatesCountInTile(_direction);
 
             Plane plane = new Plane(_direction, startingCoordinates);
@@ -100,7 +104,12 @@ namespace Anonym.Isometric
         public List<IsoTile> _attachedList;
 
         [SerializeField]
+        bool bFrozen = false;
+
+        [SerializeField]
         GameObject _referenceTile;
+        public GameObject RefTile { get { return _referenceTile; } }
+
         [SerializeField]
         bool _bSensorOff_ChildChange = false;
         public void Do_With_SensorOff(System.Action _underAction)
@@ -166,7 +175,7 @@ namespace Anonym.Isometric
             }
         }
 
-        public void Update_ChildList()
+        public void Update_ChildList(bool bSort = true)
         {
             _attachedList.Clear();
             SizeXZ_Clear();
@@ -179,7 +188,8 @@ namespace Anonym.Isometric
                     SizeXZ_Update(_obj.coordinates);
                 }
             }
-            Sort();
+            if (bSort)
+                Sort();
         }
 
         public void Update_Grid()
@@ -307,7 +317,7 @@ namespace Anonym.Isometric
             }
         }
 
-        public void NoRedundancy()
+        public bool NoRedundancy()
         {
             Undo.RecordObject(this, "Bulk : No Redundancy");
             List<IsoTile> _UniqueList = new List<IsoTile>();
@@ -330,7 +340,9 @@ namespace Anonym.Isometric
                 if (_RedundantTile != null)
                     _DelList.Add(_RedundantTile);
             }
+            bool bResult = _DelList.Count > 0;
             Do_With_SensorOff(() => _DelList.ForEach(r => Undo.DestroyObjectImmediate(r.gameObject)));
+            return bResult;
         }
 
         void SizeXZ_Clear()
@@ -359,7 +371,7 @@ namespace Anonym.Isometric
         {
             Bounds bounds = new Bounds();
             GetChildBulkList(true).Select(b => b.GetBounds()).ToList().ForEach(b => bounds.Encapsulate(b));
-            GetTiles().Select(t => t.GetBounds_SideOnly()).ToList().ForEach(b => bounds.Encapsulate(b));
+            GetAllTiles().Select(t => t.GetBounds_SideOnly()).ToList().ForEach(b => bounds.Encapsulate(b));
             return bounds;
         }
 
@@ -398,16 +410,19 @@ namespace Anonym.Isometric
             });
         }
 
-        public IsoTile NewTile(Vector3 _at, bool _isCoordinates = true)
+        public IsoTile NewTile(Vector3 _at, bool _isCoordinates = true, IsoTile _connectedPtrfab = null, bool bUseNewPrefabWorkflow = false)
         {
+            const string UndoName = "IsoTile:Create";
             IsoTile _newTile = null;
-            if (_referenceTile != null)
+            IsoTile _baseTile = _connectedPtrfab ? _connectedPtrfab : (_referenceTile ? _referenceTile : IsoMap.instance.TilePrefab).GetComponent<IsoTile>();
+
+            if (bUseNewPrefabWorkflow)
+                _newTile = PrefabUtility.InstantiatePrefab(_baseTile) as IsoTile;
+            else
             {
-                _newTile = GameObject.Instantiate(_referenceTile).GetComponent<IsoTile>();
-                Undo.RegisterCreatedObjectUndo(_newTile.gameObject, "IsoTile:Create");			
+                _newTile = GameObject.Instantiate(_baseTile).GetComponent<IsoTile>();
+                Undo.RegisterCreatedObjectUndo(_newTile.gameObject, UndoName);			
             }
-			else if (!IsoMap.IsNull)
-				_newTile = IsoMap.instance.NewTile_Raw();
 
             if (!_newTile)
                 return null;
@@ -421,6 +436,7 @@ namespace Anonym.Isometric
             _newTile.Rename();
             SizeXZ_Update(_newTile.coordinates);
             addToAttachedList(_newTile);
+            IsoTile.UpdateTileSet(_newTile, false, true, UndoName);
             return _newTile;
         }
 

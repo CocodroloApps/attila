@@ -137,7 +137,8 @@ namespace Anonym.Isometric
             if (target == BC.gameObject)
             {
                 IsoTile _tile = GetComponentInParent<IsoTile>();
-                if (!_tile.GetSideObjects(Iso2DObject.Type.Side_Union, Iso2DObject.Type.Side_X, Iso2DObject.Type.Side_Y, Iso2DObject.Type.Side_Z).All(r => target != r.SC.gameObject))
+                if (_tile == null || 
+                    !_tile.GetSideObjects(Iso2DObject.Type.Side_Union, Iso2DObject.Type.Side_X, Iso2DObject.Type.Side_Y, Iso2DObject.Type.Side_Z).All(r => target != r.SC.gameObject))
                     return;
 
                 Gizmos.color = new Color(0.95f, 0.5f, 0.05f, 0.65f);

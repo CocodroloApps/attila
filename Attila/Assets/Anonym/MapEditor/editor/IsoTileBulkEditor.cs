@@ -25,6 +25,7 @@ namespace Anonym.Isometric
         string[] filters;
         SerializedProperty _SizeXZ;
         SerializedProperty _RefTile;
+        SerializedProperty _bFrozen;
         List<int> filteredChildIndexList = new List<int>();
         List<IsoTileBulk> connectedBulkList = new List<IsoTileBulk>();
         bool undoredo()
@@ -81,6 +82,7 @@ namespace Anonym.Isometric
 
             _SizeXZ = serializedObject.FindProperty("SizeXZ");
             _RefTile = serializedObject.FindProperty("_referenceTile");
+            _bFrozen = serializedObject.FindProperty("bFrozen");
             _bulkGrid = _bulk.gameObject.GetComponent<Grid>();
             refresh_Child(true);
             refresh_ConnectedBulk();
@@ -96,8 +98,41 @@ namespace Anonym.Isometric
 
             if (undoredo())
                 return;
-                
+
             serializedObject.Update();
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(_bFrozen, new GUIContent("Freeze", "When this option is enabled, all Iso Components belonging to this IsoTileBulk are Unabled. This is different from InActive of GameObject.\n" +
+                "Use this to prevent the editor from slowing down when creating large maps. You can manage the map by dividing it into several sections.\nWhen editing is needed, you can turn off the option again."));
+            bool isFrozen = _bFrozen.boolValue;
+            if (EditorGUI.EndChangeCheck())
+            {
+                foreach (var one in serializedObject.targetObjects)
+                {
+                    IsoTileBulk _tb = one as IsoTileBulk;
+                    if (_tb != null)
+                    {
+                        IsoComRemover.SetEnable(!isFrozen, _tb.gameObject);
+                    }
+                }
+                serializedObject.ApplyModifiedProperties();
+                
+                // Strangely enough, this will change the IsoTileBulk normally.
+                foreach (var one in serializedObject.targetObjects.Select(t => t as IsoTileBulk).Where(b => b != null))
+                {
+                    one.enabled = !isFrozen;
+                }
+
+                EditorGUIUtility.ExitGUI();
+            }
+
+            if (isFrozen)
+            {
+                EditorGUILayout.HelpBox("This IsoTileBulk and all the child's Iso Components are frozen. This is a way to prevent the Unity Editor from slowing down. " +
+                    "When isometric work is needed, turn off Freeze at the above.", MessageType.Warning);
+                return;
+            }
+            EditorGUILayout.Separator();
 
             if (!bCollapseOtherItems)
             {
@@ -324,21 +359,33 @@ namespace Anonym.Isometric
                         _rtList = _rtList[4].Division(null, new float[] { 0.15f, 0.25f, 0.05f, 0.25f, 0.05f, 0.25f });
                         if (GUI.Button(_rtList[1], "No Redundancy"))
                         {
-                            _bulk.NoRedundancy();
+
+                            while (_bulk.NoRedundancy())
+                                _bulk.Update_ChildList();
                             refresh_Child(true);
                         }
 
-                        if (GUI.Button(_rtList[3], "Flat"))
+                        var _rt_Hor = _rtList[3].Division(new float[] { 0.48f, 0.04f, 0.48f }, null);
+                        if (GUI.Button(_rt_Hor[0], "Flat"))
                         {
                             _bulk.Flat();
                             refresh_Child(true);
                         }     
 
-                        if (GUI.Button(_rtList[5], "Clear"))
+                        if (GUI.Button(_rt_Hor[2], "Clear"))
                         {
                             _bulk.Clear();
                             refresh_Child(true);
-                        }                    
+                        }
+
+                        if (GUI.Button(_rtList[5], "Update All TileSetSprites"))
+                        {
+                            foreach(var oneBulk in serializedObject.targetObjects.Select(t => t as IsoTileBulk).Where(b => b != null))
+                            {
+                                IsoTile.UpdateTileSet(oneBulk.GetAllTiles().Where(t => t != null && t.tileSetSprites != null), true, true, "Update All TileSetSprites");
+                            }
+                        }
+                        ;
                     }
                 }
             }
@@ -348,8 +395,13 @@ namespace Anonym.Isometric
         {
             using (new GUIBackgroundColorScope(Util.CustomEditorGUI.Color_LightBlue))
             {
-                EditorGUILayout.ObjectField(_RefTile, new GUIContent("Style Reference Tile", 
-                    "The default style of the tile that is created in this bulk."));
+                IsoTile _tile = _RefTile.objectReferenceValue == null ? null : ((GameObject)_RefTile.objectReferenceValue).GetComponent<IsoTile>();
+                IsoTile _newTile = EditorGUILayout.ObjectField(
+                    new GUIContent("Style Reference Tile", "The default style of the tile that is created in this bulk."),
+                    _tile, typeof(IsoTile), allowSceneObjects:true) as IsoTile;
+                if (_tile != _newTile)
+                    _RefTile.objectReferenceValue = _newTile == null ? null : _newTile.gameObject;
+
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     string _BtnMsg = _bulk.bYFirstSort ? "Sort Xyz -> Yxz" : "Sort Yxz -> Xyz";
@@ -477,6 +529,12 @@ namespace Anonym.Isometric
                 using (var scrolled = new EditorGUILayout.ScrollViewScope(tileListScroll, GUILayout.ExpandHeight(true)))
                 {
                     tileListScroll = scrolled.scrollPosition;
+                    //if (Event.current.type == EventType.ScrollWheel)
+                    //{
+                    //    EditorGUIUtility.ExitGUI();
+                    //    return;
+                    //}
+
                     int iStart = Mathf.Max(Mathf.FloorToInt(tileListScroll.y / cellHeight) -1 , 0);
                     int iEnd = Mathf.Min(filteredChildIndexList.Count, iStart + iMaxRowCount);
                     // Debug.LogFormat("Tile List : start({0}), end({1})", iStart, iEnd);
