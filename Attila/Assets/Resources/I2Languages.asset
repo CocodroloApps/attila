@@ -38,7 +38,7 @@ MonoBehaviour:
       - IDIOMAS
       - IDIOMES
       - IDIOMAS
-      - LE LINGUE
+      - LINGUE
       Flags: 000000000000
       Languages_Touch: []
     - Term: Exit
@@ -77,9 +77,69 @@ MonoBehaviour:
       - Formazione
       Flags: 000000000000
       Languages_Touch: []
+    - Term: App_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Attila, Scorched earth
+      - "Atila, Terre br\xFBl\xE9e"
+      - Atila, Tierra quemada
+      - Atila, Terra cremada
+      - "\xC1tila, Terra arrasada"
+      - Atila, Terra bruciata
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Result
+      TermType: 0
+      Description: 
+      Languages:
+      - RESULT
+      - "R\xC9SULTAT"
+      - RESULTADO
+      - RESULTAT
+      - RESULTADO
+      - RISULTATO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Battle
+      TermType: 0
+      Description: 
+      Languages:
+      - BATTLE
+      - BATAILLE
+      - BATALLA
+      - BATALLA
+      - BATALHA
+      - BATTAGLIA
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Next
+      TermType: 0
+      Description: 
+      Languages:
+      - NEXT
+      - SUIVANT
+      - SIGUIENTE
+      - "SEG\xDCENT"
+      - "PR\xD3XIMO"
+      - PROSSIMO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Victory!
+      TermType: 0
+      Description: 
+      Languages:
+      - Victory!
+      - Victoire!
+      - "\xA1Victoria!"
+      - "Vict\xF2ria!"
+      - "Vit\xF3ria!"
+      - Vittoria!
+      Flags: 000000000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
-    mTerm_AppName: 
+    mTerm_AppName: App_Name
     mLanguages:
     - Name: English
       Code: en

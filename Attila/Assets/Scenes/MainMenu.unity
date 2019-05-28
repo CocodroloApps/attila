@@ -302,8 +302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: -0.000005722}
-  m_SizeDelta: {x: 293.1, y: 37.3}
+  m_AnchoredPosition: {x: -5.4, y: -0.6}
+  m_SizeDelta: {x: 292, y: 36.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87527140
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SALIR
+  m_Text: USCITA
 --- !u!222 &87527142
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -622,6 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216152769}
   - component: {fileID: 216152768}
+  - component: {fileID: 216152770}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -646,6 +647,7 @@ MonoBehaviour:
   water: {fileID: 273817758}
   food: {fileID: 1277544218}
   gold: {fileID: 1056831308}
+  langBox: {fileID: 1087414091}
 --- !u!4 &216152769
 Transform:
   m_ObjectHideFlags: 0
@@ -660,6 +662,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216152770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216152767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d9972410d8df774c8a736aa13343407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  langPrefab: {fileID: 9347751544259060, guid: db81df67f6d69ca449952c9df3373801, type: 3}
+  itemsParent: {fileID: 861802277}
 --- !u!1 &273817756
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +826,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: Giocare
 --- !u!222 &309814457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1060,7 +1076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: Giocare
 --- !u!222 &328300915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1584,7 +1600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Entrenamiento
+  m_Text: Formazione
 --- !u!222 &751831334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2100,8 +2116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000024438, y: -0.000005722}
-  m_SizeDelta: {x: 293.1, y: 37.3}
+  m_AnchoredPosition: {x: -8.4, y: -0.6}
+  m_SizeDelta: {x: 292, y: 36.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904085240
 MonoBehaviour:
@@ -2176,7 +2192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SALIR
+  m_Text: USCITA
 --- !u!222 &904085242
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2311,8 +2327,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.7, y: 62.5}
-  m_SizeDelta: {x: 636.4, y: 572.6}
+  m_AnchoredPosition: {x: 14.7, y: 69.2}
+  m_SizeDelta: {x: 636.4, y: 526.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948441840
 MonoBehaviour:
@@ -2467,7 +2483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Entrenamiento
+  m_Text: Formazione
 --- !u!222 &1040734060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2606,6 +2622,7 @@ GameObject:
   - component: {fileID: 1069677000}
   - component: {fileID: 1069677002}
   - component: {fileID: 1069677001}
+  - component: {fileID: 1069677003}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2671,6 +2688,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069676999}
   m_CullTransparentMesh: 0
+--- !u!114 &1069677003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069676999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1069677001}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 216152768}
+        m_MethodName: HideLanguageBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1077348832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,7 +2826,6 @@ GameObject:
   - component: {fileID: 1087414092}
   - component: {fileID: 1087414095}
   - component: {fileID: 1087414094}
-  - component: {fileID: 1087414093}
   m_Layer: 5
   m_Name: LangBox
   m_TagString: Untagged
@@ -2786,24 +2855,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1087414093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087414091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0aea3fdf3d6264680bb93c07019d2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  troops: {fileID: 0}
-  weapons: {fileID: 0}
-  water: {fileID: 0}
-  food: {fileID: 0}
-  gold: {fileID: 0}
-  gems: {fileID: 0}
 --- !u!114 &1087414094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3075,8 +3126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 2.2}
-  m_SizeDelta: {x: 379.32, y: 51.39}
+  m_AnchoredPosition: {x: -4.3, y: -0.2}
+  m_SizeDelta: {x: 380, y: 39.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1303224150
 MonoBehaviour:
@@ -3111,7 +3162,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDIOMAS
+  m_Text: LE LINGUE
 --- !u!222 &1303224151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3754,7 +3805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDIOMAS
+  m_Text: LE LINGUE
 --- !u!222 &1516144211
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3774,6 +3825,7 @@ GameObject:
   - component: {fileID: 1581437682}
   - component: {fileID: 1581437684}
   - component: {fileID: 1581437683}
+  - component: {fileID: 1581437685}
   m_Layer: 5
   m_Name: bLanguages
   m_TagString: Untagged
@@ -3839,6 +3891,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581437681}
   m_CullTransparentMesh: 0
+--- !u!114 &1581437685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581437681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1581437683}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 216152768}
+        m_MethodName: ShowLanguageBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1683156186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4014,8 +4119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 379.32, y: 51.39}
+  m_AnchoredPosition: {x: -0.3, y: -0.2}
+  m_SizeDelta: {x: 380, y: 39.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1881366263
 MonoBehaviour:
@@ -4050,7 +4155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDIOMAS
+  m_Text: LE LINGUE
 --- !u!222 &1881366264
 CanvasRenderer:
   m_ObjectHideFlags: 0

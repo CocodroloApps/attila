@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     public Text food;
     public Text gold;
 
+    public GameObject langBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,5 +57,15 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene("Winner");
         }        
+    }
+
+    public void ShowLanguageBox()
+    {
+        langBox.SetActive(true);
+    }
+
+    public void HideLanguageBox()
+    {
+        langBox.SetActive(false);
     }
 }

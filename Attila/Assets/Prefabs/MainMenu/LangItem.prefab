@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9347751544259067}
   - component: {fileID: 9347751544259066}
   - component: {fileID: 1299338159298593740}
-  - component: {fileID: 7640896194172752490}
+  - component: {fileID: 9111174803016934504}
   m_Layer: 5
   m_Name: LangItem
   m_TagString: FileCell
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7640896194172752490}
-        m_MethodName: LoadStageFile
+      - m_Target: {fileID: 9111174803016934504}
+        m_MethodName: LoadNewLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -153,7 +153,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &7640896194172752490
+--- !u!114 &9111174803016934504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,13 +162,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9347751544259060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c083cebbf8612f4fa12d35f011cb645, type: 3}
+  m_Script: {fileID: 11500000, guid: e2a4cb5322099664f9e53a4db3d1fbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageName: {fileID: 8735614752489814434}
-  stageFile: {fileID: 0}
-  stageNum: {fileID: 7496742904596810865}
-  line: {fileID: 0}
+  langName: {fileID: 8735614752489814434}
+  langCode: {fileID: 7496742904596810865}
 --- !u!1 &3320563510371902209
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +234,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1fccf8faa48c106429f692d21ea20317, type: 3}
-    m_FontSize: 24
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

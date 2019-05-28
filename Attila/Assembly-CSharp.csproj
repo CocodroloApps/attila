@@ -215,6 +215,8 @@
     <Compile Include="Assets\Scripts\Levels\Grid.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelEditor.cs" />
     <Compile Include="Assets\Scripts\LoadConfig.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Language.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Languages.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
