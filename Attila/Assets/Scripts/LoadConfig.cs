@@ -20,6 +20,7 @@ public class LoadConfig : MonoBehaviour {
             PlayerInfo saveData = new PlayerInfo();
             saveData.gameDateFirstTime = DateTime.Now.ToBinary().ToString();
             saveData.playDateFirstTime = "";
+            saveData.showTutorial = true;
             IntialConditions cond = new IntialConditions();
             saveData.maxStagesGame = cond.maxStagesGame;
             saveData.actualStage = cond.actualStage;
@@ -41,7 +42,8 @@ public class LoadConfig : MonoBehaviour {
             GlobalInfo.sessionsCount = 0;
             GlobalInfo.stagesCount = 0;
             GlobalInfo.maxStageCompleted = 0;
-                        
+            GlobalInfo.showTutorial = true;
+
             //Initial conditions            
             GlobalInfo.maxStagesGame = cond.maxStagesGame;
             GlobalInfo.actualStage = cond.actualStage;
@@ -50,7 +52,7 @@ public class LoadConfig : MonoBehaviour {
             GlobalInfo.food = cond.food;
             GlobalInfo.troops = cond.troops;
             GlobalInfo.weapons = cond.weapons;
-            GlobalInfo.gold = cond.gold;
+            GlobalInfo.gold = cond.gold;            
         } else
         {
             PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(configFileName,"txt");
@@ -70,6 +72,7 @@ public class LoadConfig : MonoBehaviour {
 
             GlobalInfo.language = loadedData.language;
             GlobalInfo.soundPlay = loadedData.soundPlay;
+            GlobalInfo.showTutorial = loadedData.showTutorial;
             GlobalInfo.sessionsCount = loadedData.sessionsCount;
             GlobalInfo.stagesCount = 0;
 

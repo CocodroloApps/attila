@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
             //Sprite
             if (GlobalInfo.gridStage[i - 1].type > 0)
             {
+                spriteCell.GetComponent<Transform>().localScale = spriteCell.GetComponent<Transform>().localScale / 2;
                 spriteCell.GetComponent<SpriteRenderer>().sprite = TypeSprite(GlobalInfo.gridStage[i - 1].type);
                 if (GlobalInfo.gridStage[i - 1].isObjective)
                 {                    
@@ -214,6 +215,7 @@ public class GameManager : MonoBehaviour
 
     public void ToStageMenu()
     {
+        RestoreOriginals();
         SceneManager.LoadScene("StageSelector");
     }
 

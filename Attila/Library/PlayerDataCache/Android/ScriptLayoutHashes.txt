@@ -24,6 +24,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
+90657d1c81fd16b4b61073301ec7412f Assembly-CSharp.dll:.Languages
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LoadConfig
 99b30b87b234d78d05a813ad85cf3477 Assembly-CSharp.dll:Anonym.Isometric.IsoTransform
 86b2e309b4704ac5f31bb9ce5486fc30 Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityStandard_Child
@@ -114,6 +115,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+fb0b82149656f4af82b77b8521cb3256 Assembly-CSharp.dll:.Language
 b4c27b0d0e59735cc08fba51db1a2fd3 Assembly-CSharp.dll:.StageManager
 b30e5c61fb9bc4529c1904b873eed218 Assembly-CSharp.dll:.FadeScene
 00274a21279f5cb831ce20f895049e38 Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
@@ -224,6 +226,7 @@ c641110b2080549642e18fa6dece3ba1 Assembly-CSharp.dll:Anonym.Isometric.Grid
 4fd1e6b0613626f6097bf7fc0adc0656 Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityUI_RawImage
 ad5ed3b606a5817b9b3b95e14c079610 Assembly-CSharp.dll:Anonym.Isometric.KeyInputAssist
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:I2.Loc.GlobalParametersExample
+2bd01f05019ead156d39e702908b53c3 Assembly-CSharp.dll:.Config
 041bd15ba019bebf8fd21afc524b35dc Assembly-CSharp.dll:.AppVersion
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:I2.Loc.Example_ChangeLanguage
@@ -300,7 +303,7 @@ d34103413f1163feaca3d8921142dd9e Assembly-CSharp.dll:I2.Loc.LocalizeTarget_Unity
 8a6ab9615f8bb95baa054f7accfbad46 Assembly-CSharp.dll:Anonym.Isometric.Iso2DObject
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ShowColliders
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-fee1e348577bfcd638fcfd6e500418b3 Assembly-CSharp.dll:.MainMenu
+ad38baf03fadc826914f6f382030dec1 Assembly-CSharp.dll:.MainMenu
 fefb468d0ed403c583ac8876634b46be Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityStandard_TextMesh
 5edb0056ed9ab11b65e93f830e75d6ed Assembly-CSharp.dll:I2.Loc.LocalizationParamsManager
 b9d3e77e5899f4e933b461b904f4eddc Assembly-CSharp.dll:.Grid
@@ -386,5 +389,3 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-90657d1c81fd16b4b61073301ec7412f Assembly-CSharp.dll:.Languages
-fb0b82149656f4af82b77b8521cb3256 Assembly-CSharp.dll:.Language

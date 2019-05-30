@@ -10,6 +10,7 @@ public class PlayerInfo
     public int sessionsCount;
     public string language = "en";
     public bool soundPlay = true;
+    public bool showTutorial = true;
 
     //Game
     public int maxStagesGame;

@@ -14,11 +14,18 @@ public class MainMenu : MonoBehaviour
     public Text gold;
 
     public GameObject langBox;
+    public GameObject configBox;
+    public GameObject legalBox;
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalInfo.sessionsCount++;
+        if (GlobalInfo.gameFirstTime == true)
+        {
+            ShowLegalBox();
+            GlobalInfo.gameFirstTime = false;
+        }
         StartCoroutine(SaveSessionsConfig());
         SetEnviroment();
     }
@@ -67,5 +74,31 @@ public class MainMenu : MonoBehaviour
     public void HideLanguageBox()
     {
         langBox.SetActive(false);
+    }
+
+    public void ShowConfigBox()
+    {
+        GameObject.Find("MenuManager").GetComponent<Config>().HideCompleted();
+        configBox.SetActive(true);
+    }
+
+    public void HideConfigBox()
+    {
+        configBox.SetActive(false);
+    }
+
+    public void ShowLegalBox()
+    {
+        legalBox.SetActive(true);
+    }
+
+    public void OpenPolicyWeb()
+    {
+        Application.OpenURL("https://www.jugandohaciendojuegos.com/p/attila-privacy-policy.html");
+    }
+
+    public void HideLegalBox()
+    {
+        legalBox.SetActive(false);
     }
 }

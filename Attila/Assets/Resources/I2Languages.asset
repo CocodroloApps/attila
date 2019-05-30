@@ -85,7 +85,7 @@ MonoBehaviour:
       - "Atila, Terre br\xFBl\xE9e"
       - Atila, Tierra quemada
       - Atila, Terra cremada
-      - "\xC1tila, Terra arrasada"
+      - "\xC1tila, Terra queimada"
       - Atila, Terra bruciata
       Flags: 000000000000
       Languages_Touch: []
@@ -135,6 +135,102 @@ MonoBehaviour:
       - "Vict\xF2ria!"
       - "Vit\xF3ria!"
       - Vittoria!
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Config
+      TermType: 0
+      Description: 
+      Languages:
+      - CONFIGURATION
+      - CONFIGURATION
+      - "CONFIGURACI\xD3N"
+      - "CONFIGURACI\xD3"
+      - "CONFIGURA\xC7\xC3O"
+      - CONFIGURAZIONE
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Sound effects
+      TermType: 0
+      Description: 
+      Languages:
+      - Sound effects
+      - Effets sonores
+      - Efectos de sonido
+      - Efectes de so
+      - Efeitos sonoros
+      - Effetti sonori
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Reboot
+      TermType: 0
+      Description: 
+      Languages:
+      - Reboot Attila
+      - "Red\xE9marrer Attila"
+      - Reiniciar Atila
+      - "Reiniciar \xC0tila"
+      - Reinicie o Atila
+      - Riavvia Atila
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Rate game
+      TermType: 0
+      Description: 
+      Languages:
+      - Rate game
+      - Noter le jeu
+      - Califica el juego
+      - Valora el joc
+      - Taxa de jogo
+      - Vota il gioco
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Share the game
+      TermType: 0
+      Description: 
+      Languages:
+      - Share
+      - Partager
+      - Comparte
+      - Comparteix
+      - Compartilhe
+      - Condividi
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Legal policy
+      TermType: 0
+      Description: 
+      Languages:
+      - Legal policy
+      - "Politique l\xE9gale"
+      - "Pol\xEDtica legal"
+      - "Pol\xEDtica legal"
+      - "Pol\xEDtica legal"
+      - Politica legale
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Web
+      TermType: 0
+      Description: 
+      Languages:
+      - WEB
+      - WEB
+      - WEB
+      - WEB
+      - WEB
+      - WEB
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Completed
+      TermType: 0
+      Description: 
+      Languages:
+      - Process completed.
+      - "Processus termin\xE9."
+      - Proceso completado.
+      - "Proc\xE9s completat."
+      - Processo completo.
+      - Processo completato.
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

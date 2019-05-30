@@ -16,6 +16,7 @@ public class Languages : MonoBehaviour
         langs = I2.Loc.LocalizationManager.GetAllLanguagesCode();
         List<string> langsName = new List<string>();
         langsName = I2.Loc.LocalizationManager.GetAllLanguages();
+
         for (int i = 0; i < langs.Count ; i++)
         {
             //Edit Prefab before Instantiate
