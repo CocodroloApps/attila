@@ -26,7 +26,16 @@ public class GlobalInfo : MonoBehaviour
     public static bool isOldCellDestroyed;  //Se ha destruido ya la celda de origen?
     public static bool isEventAvaliable;
     public static bool isShowingInfo;
+
+    //Tutorials
     public static bool showTutorial;
+    public static bool showTutorial1;
+    public static bool showTutorial2;
+    public static bool showTutorial3;
+    public static bool showTutorial4;
+    public static bool showTutorial5;
+    public static bool showTutorial6;
+    public static bool showTutorial7;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente

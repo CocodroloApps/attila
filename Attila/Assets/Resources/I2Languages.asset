@@ -49,7 +49,7 @@ MonoBehaviour:
       - SORTIE
       - SALIR
       - SORTIR
-      - "SA\xCDDA"
+      - SAIR
       - USCITA
       Flags: 000000000000
       Languages_Touch: []
@@ -231,6 +231,323 @@ MonoBehaviour:
       - "Proc\xE9s completat."
       - Processo completo.
       - Processo completato.
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Agree
+      TermType: 0
+      Description: 
+      Languages:
+      - I AGREE
+      - D'ACCORD
+      - DE ACUERDO
+      - D'ACORD
+      - CONCORDO
+      - D'ACCORDO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Tutorial
+      TermType: 0
+      Description: 
+      Languages:
+      - TUTORIAL
+      - DIDACTICIEL
+      - TUTORIAL
+      - TUTORIAL
+      - TUTORIAL
+      - TUTORIAL
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Rome
+      TermType: 0
+      Description: 
+      Languages:
+      - ROME
+      - ROME
+      - ROMA
+      - ROMA
+      - ROMA
+      - ROMA
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Actual position
+      TermType: 0
+      Description: 
+      Languages:
+      - Actual position
+      - Position actuelle
+      - "Posici\xF3n actual"
+      - "Posici\xF3 actual"
+      - "Posi\xE7\xE3o actual"
+      - Posizione attuale
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila1
+      TermType: 0
+      Description: 
+      Languages:
+      - Accompany Attila, king of the Huns in his campaign towards the conquest of
+        the West. Beat each stage until you reach the capital of the Roman Empire
+        and conquer it. Click on Atila to continue.
+      - "Accompagnez Attila, roi des Huns, dans sa campagne pour la conqu\xEAte de
+        l'Ouest. Battez chaque \xE9tape jusqu'\xE0 ce que vous atteigniez la capitale
+        de l'empire romain et que vous la conqu\xE9riez. Cliquez sur Atila pour continuer."
+      - "Acompa\xF1a a Atila, rey de los Hunos en su campa\xF1a hacia la conquista
+        de occidente. Supera cada etapa hasta llegar a la capital del imperio romano
+        y conqu\xEDstalo. Pulsa sobre Atila para continuar."
+      - "Acompanya a \xC0tila, rei dels Huns a la seva campanya cap a la conquesta
+        d'occident. Supera cada etapa fins arribar a la capital de l'Imperi Rom\xE0
+        i conquereix-la. Prem sobre \xC0tila per continuar."
+      - "Acompanha \xC1tila, Rei dos Hunos, na sua campanha pela conquista do Ocidente.
+        Supera cada uma das etapas at\xE9 conquistares a capital do Imp\xE9rio Romano.
+        Clica em \xC1tila para \rcontinuar."
+      - Accompagna Attila, re degli Unni nella sua campagna verso la conquista dell'Occidente.
+        Batti ogni tappa fino a raggiungere la capitale dell'Impero Romano e conquistarla.
+        Clicca su Atila per continuare.
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila2
+      TermType: 0
+      Description: 
+      Languages:
+      - Use your fingers to enlarge or reduce the playing area and adjust the board
+        to the desired size.
+      - "Utilisez vos doigts pour agrandir ou r\xE9duire la surface de jeu et ajustez
+        le tableau \xE0 la taille souhait\xE9e."
+      - "Utiliza los dedos para ampliar o reducir el \xE1rea de juego y ajustar el
+        tablero a la medida deseada."
+      - "Utilitza els dits per ampliar o reduir l'\xE0rea de joc i ajustar el tauler
+        a la mida desitjada."
+      - "Usa os dedos para ampliar ou reduzir a \xE1rea de jogo e ajustar o tabuleiro
+        ao tamanho desejado."
+      - Usa le dita per ingrandire o ridurre l'area di gioco e regola la tavola alla
+        dimensione desiderata.
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila3
+      TermType: 0
+      Description: 
+      Languages:
+      - The horse represents your army. Move it to one of the available boxes marked
+        with the green circle. Use your strategy to reach the target squares (yellow
+        flags) or the final square (blue flag).
+      - "Le cheval repr\xE9sente votre arm\xE9e. D\xE9placez-le dans l'une des cases
+        disponibles marqu\xE9es du cercle vert. Utilisez votre strat\xE9gie pour atteindre
+        les carr\xE9s cibles (drapeaux jaunes) ou le carr\xE9 final (drapeau bleu)."
+      - El caballo representa tu ejercito. Muevelo a una de las casillas disponibles
+        marcadas con el circulo verde. Usa tu estrategia para llegar a las casillas
+        objetivo (banderas amarillas) o la casilla final (bandera azul).
+      - "El cavall representa el teu ex\xE8rcit. Mou-lo a una de les caselles disponibles
+        marcades amb el cercle verd. Fes servir la teva estrat\xE8gia per arribar
+        a les caselles objectiu (banderes grogues) o la casella final (bandera blava)."
+      - "O cavalo representa o teu ex\xE9rcito. Move-o para uma das casas dispon\xEDveis
+        marcadas com o c\xEDrculo verde. Usa a tua estrat\xE9gia para alcan\xE7ar
+        as casas objectivo (bandeiras amarelas) ou a casa final (bandeira azul).\r"
+      - Il cavallo rappresenta il tuo esercito. Spostalo in una delle caselle disponibili
+        contrassegnate con il cerchio verde. Usa la tua strategia per raggiungere
+        i quadrati bersaglio (bandiere gialle) o il quadrato finale (bandiera blu).
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Objetive
+      TermType: 0
+      Description: 
+      Languages:
+      - OBJECTIVE
+      - OBJECTIF
+      - OBJETIVO
+      - OBJECTIU
+      - OBJECTIVO
+      - OBIETTIVO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Final
+      TermType: 0
+      Description: 
+      Languages:
+      - FINAL
+      - FINAL
+      - FINAL
+      - FINAL
+      - FINAL
+      - FINALE
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Move
+      TermType: 0
+      Description: 
+      Languages:
+      - MOVEMENT
+      - MOUVEMENT
+      - MOVIMIENTO
+      - MOVIMENT
+      - MOVIMENTO
+      - MOVIMENTO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila4
+      TermType: 0
+      Description: 
+      Languages:
+      - The cities, the towns, the enemy armies and the objectives provoke a struggle
+        between your forces and the Roman resistance. This can cause an alteration
+        of the resources of your troops.
+      - "Les villes, les villes, les arm\xE9es ennemies et les objectifs provoquent
+        une lutte entre vos forces et la r\xE9sistance romaine. Cela peut entra\xEEner
+        une modification des ressources de vos troupes."
+      - "Las ciudades, los pueblos, los ejercitos enemigos y los objetivos provocan
+        una lucha entre tus fuerzas y la resistencia romana. Esto puede provocar una
+        alteraci\xF3n de los recursos de tus tropas."
+      - "Les ciutats, els pobles, els ex\xE8rcits enemics i els objectius provoquen
+        una lluita entre les teves forces i la resist\xE8ncia romana. Aix\xF2 pot
+        provocar una alteraci\xF3 dels recursos de les teves tropes."
+      - "As cidades, as cidades, os ex\xE9rcitos inimigos e os objetivos provocam
+        uma luta entre suas for\xE7as e a resist\xEAncia romana. Isso pode causar
+        uma altera\xE7\xE3o dos recursos de suas tropas."
+      - "Le citt\xE0, le citt\xE0, gli eserciti nemici e gli obiettivi provocano una
+        lotta tra le tue forze e la resistenza romana. Questo pu\xF2 causare un'alterazione
+        delle risorse delle tue truppe."
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila5
+      TermType: 0
+      Description: 
+      Languages:
+      - These are the properties of your army. If they decrease they can affect your
+        strength and you will not achieve your goals. Conquer squares to improve your
+        troops. Win gems and advance in your conquest.
+      - "Ce sont les propri\xE9t\xE9s de votre arm\xE9e. S'ils diminuent, ils peuvent
+        affecter votre force et vous n'atteindrez pas vos objectifs. Conqu\xE9rir
+        des carr\xE9s pour am\xE9liorer vos troupes. Gagnez des pierres pr\xE9cieuses
+        et avancez dans votre conqu\xEAte."
+      - "Estas son las propiedades de tu ejercito. Si disminuyen pueden afectar a
+        su fuerza y no conseguir\xE1s tus objetivos. Conquista casillas para mejorar
+        tus tropas. Gana gemas y avanza en tu conquista."
+      - "Aquestes s\xF3n les propietats del teu ex\xE8rcit. Si disminueixen poden
+        afectar la seva for\xE7a i no aconseguir\xE0s els teus objectius. Conquereix
+        caselles per millorar les teves tropes. Guanya gemmes i avan\xE7a amb la teva
+        conquesta."
+      - "Estas s\xE3o as propriedades do seu ex\xE9rcito. Se eles diminu\xEDrem, eles
+        podem afetar sua for\xE7a e voc\xEA n\xE3o alcan\xE7ar\xE1 seus objetivos.
+        Conquiste pra\xE7as para melhorar suas tropas. Ganhe gemas e avance em sua
+        conquista."
+      - "Queste sono le propriet\xE0 del tuo esercito. Se diminuiscono, possono influenzare
+        la tua forza e non raggiungerai i tuoi obiettivi. Conquista i quadrati per
+        migliorare le tue truppe. Vinci gemme e avanza nella tua conquista."
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Troops
+      TermType: 0
+      Description: 
+      Languages:
+      - Troops
+      - Troupes
+      - Tropas
+      - Tropes
+      - Tropas
+      - Truppe
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Weapons
+      TermType: 0
+      Description: 
+      Languages:
+      - Weapons
+      - Armes
+      - Armas
+      - Armes
+      - Armas
+      - Armi
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Water
+      TermType: 0
+      Description: 
+      Languages:
+      - Water
+      - Eau
+      - Agua
+      - Aigua
+      - "\xC1gua"
+      - Acqua
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Food
+      TermType: 0
+      Description: 
+      Languages:
+      - Food
+      - Aliments
+      - Comida
+      - Aliments
+      - Comida
+      - Cibo
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Gold
+      TermType: 0
+      Description: 
+      Languages:
+      - Gold
+      - Or
+      - Oro
+      - Or
+      - Ouro
+      - Oro
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Gems
+      TermType: 0
+      Description: 
+      Languages:
+      - Gems
+      - Gemmes
+      - Gemas
+      - Gemmes
+      - Gemas
+      - Gems
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila6
+      TermType: 0
+      Description: 
+      Languages:
+      - The final squares can not be attacked or destroyed until we have destroyed
+        the objective squares of the board. We can go through them to move to other
+        positions on the map.
+      - "Les carr\xE9s finaux ne peuvent \xEAtre attaqu\xE9s ni d\xE9truits avant
+        d'avoir d\xE9truit les carr\xE9s objectifs du plateau. Nous pouvons les parcourir
+        pour passer \xE0 d\u2019autres positions sur la carte."
+      - Las casillas finales no se pueden atacar ni destruir hasta que hayamos destruido
+        las casillas objetivos del tablero. Podemos pasar por ellas para movernos
+        a otras posiciones del mapa.
+      - "Les caselles finals no es poden atacar ni destruir fins que haguem destru\xEFt
+        les caselles objectius del tauler. Podem passar per elles per moure'ns a altres
+        posicions del mapa."
+      - "Os quadrados finais n\xE3o podem ser atacados ou destru\xEDdos at\xE9 que
+        destruamos os quadrados objetivos do tabuleiro. Podemos passar por eles para
+        passar para outras posi\xE7\xF5es no mapa."
+      - "I quadrati finali non possono essere attaccati o distrutti finch\xE9 non
+        abbiamo distrutto i quadrati obiettivo del tabellone. Possiamo attraversarli
+        per passare ad altre posizioni sulla mappa."
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila7
+      TermType: 0
+      Description: 
+      Languages:
+      - The mountains are not destroyed when we pass through them. They are very useful
+        boxes to move around the board without destroying it in our path.
+      - "Les montagnes ne sont pas d\xE9truites lorsque nous les traversons. Ce sont
+        des bo\xEEtes tr\xE8s utiles pour se d\xE9placer sur le tableau sans le d\xE9truire
+        sur notre passage."
+      - "Las monta\xF1as no se destruyen cuando pasamos por ellas. Son casillas muy
+        \xFAtiles para movernos por el tablero sin destruirlo a nuestro paso."
+      - "Les muntanyes no es destrueixen quan passem per elles. S\xF3n caselles molt
+        \xFAtils per moure'ns pel tauler sense destruir-lo al nostre pas."
+      - "As montanhas n\xE3o s\xE3o destru\xEDdas quando passamos por elas. S\xE3o
+        caixas muito \xFAteis para se deslocar pelo tabuleiro sem o destruir no nosso
+        caminho."
+      - Le montagne non vengono distrutte quando le attraversiamo. Sono scatole molto
+        utili per muoversi intorno al tabellone senza distruggerlo sul nostro cammino.
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

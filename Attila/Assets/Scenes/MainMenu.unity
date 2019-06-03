@@ -922,7 +922,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: Jouer
 --- !u!222 &309814457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jugar
+  m_Text: Jouer
 --- !u!222 &328300915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 1240346318}
+  mTarget: {fileID: 756377851}
 --- !u!1 &449152864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,7 +2386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Entrenamiento
+  m_Text: "Entra\xEEnement"
 --- !u!222 &751831334
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTerm: Exit
+  mTerm: Agree
   mTermSecondary: 
   PrimaryTermModifier: 0
   SecondaryTermModifier: 0
@@ -2546,7 +2546,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SALIR
+  m_Text: D'ACCORD
 --- !u!222 &756377852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3195,7 +3195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 1683055039}
+  mTarget: {fileID: 2140822464}
 --- !u!1 &948441838
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Entrenamiento
+  m_Text: "Entra\xEEnement"
 --- !u!222 &1040734060
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4571,7 +4571,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDIOMAS
+  m_Text: LANGUES
 --- !u!222 &1303224151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTerm: Exit
+  mTerm: Agree
   mTermSecondary: 
   PrimaryTermModifier: 0
   SecondaryTermModifier: 0
@@ -5122,7 +5122,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SALIR
+  m_Text: D'ACCORD
 --- !u!222 &1459296372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6609,7 +6609,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDIOMAS
+  m_Text: LANGUES
 --- !u!222 &1881366264
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6988,7 +6988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332e36893e7cf4a49b3c1f72f76cd5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 1280329516}
+  mTarget: {fileID: 1459296371}
 --- !u!1 &2057137765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,7 +7378,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pol\xEDtica legal"
+  m_Text: "Politique l\xE9gale"
 --- !u!222 &2140822465
 CanvasRenderer:
   m_ObjectHideFlags: 0

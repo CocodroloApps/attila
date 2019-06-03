@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -49,16 +48,15 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        if (GlobalInfo.playFirstTime == true)
-        {
-            // Save PLAYDATEFIRSTTIME info to CONFIG
-            PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
-            loadedData.playDateFirstTime = DateTime.Now.ToBinary().ToString();
-            DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
-            GlobalInfo.playFirstTime = false;
-        }
         if (GlobalInfo.maxStageCompleted < GlobalInfo.maxStagesGame)
         {
+            if (GlobalInfo.showTutorial == true)
+            {
+                GlobalInfo.showTutorial1 = true;
+            } else
+            {
+                GlobalInfo.showTutorial1 = false;
+            }
             SceneManager.LoadScene("StageSelector");
         } else
         {

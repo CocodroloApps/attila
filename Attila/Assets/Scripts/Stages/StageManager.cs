@@ -11,6 +11,8 @@ public class StageManager : MonoBehaviour
     public Sprite background2;
     public Sprite background3;
 
+    public GameObject tutorialBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,16 +54,63 @@ public class StageManager : MonoBehaviour
                 line.SetActive(true);
             }
         }
+
+        if (GlobalInfo.showTutorial1 == true)
+        {
+            ShowTutorialBox();
+        }
     }
 
     public void ToGameScene()
     {
         GlobalInfo.actualStage = GlobalInfo.maxStageCompleted + 1;
+        if (GlobalInfo.showTutorial == true)
+        {
+            if (GlobalInfo.actualStage == 1)
+            {
+                GlobalInfo.showTutorial2 = true;
+                GlobalInfo.showTutorial3 = true;
+                GlobalInfo.showTutorial4 = true;
+                GlobalInfo.showTutorial5 = true;
+
+                GlobalInfo.showTutorial6 = true;
+                GlobalInfo.showTutorial7 = true;
+            }
+            if (GlobalInfo.actualStage == 2)
+            {
+                GlobalInfo.showTutorial2 = false;
+                GlobalInfo.showTutorial3 = false;
+                GlobalInfo.showTutorial4 = false;
+                GlobalInfo.showTutorial5 = false;
+
+                GlobalInfo.showTutorial6 = true;
+                GlobalInfo.showTutorial7 = true;
+            }
+        } else
+        {
+            GlobalInfo.showTutorial2 = false;
+            GlobalInfo.showTutorial3 = false;
+            GlobalInfo.showTutorial4 = false;
+            GlobalInfo.showTutorial5 = false;
+            GlobalInfo.showTutorial6 = false;
+            GlobalInfo.showTutorial7 = false;
+        }
         SceneManager.LoadScene("Attila");
     }
 
     public void ToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void HideTutorialBox()
+    {
+        tutorialBox.SetActive(false);
+        GlobalInfo.showTutorial1 = false;
+    }
+
+    public void ShowTutorialBox()
+    {
+        tutorialBox.SetActive(true);
     }
 }

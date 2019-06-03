@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject infoBox;
     public GameObject battleBox;
+    public GameObject tutorial1Box;
+    public GameObject tutorial2Box;
+    public GameObject tutorial3Box;
+    public GameObject tutorial4Box;
+    public GameObject tutorial5Box;
+    public GameObject tutorial6Box;
 
     private int troopsO;
     private int weaponsO;
@@ -47,6 +54,25 @@ public class GameManager : MonoBehaviour
         GlobalInfo.isShowingInfo = false;
         GlobalInfo.stagesCount++;
         SetEnviroment();
+        if (GlobalInfo.playFirstTime == true)
+        {
+            // Save PLAYDATEFIRSTTIME info to CONFIG
+            PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
+            loadedData.playDateFirstTime = DateTime.Now.ToBinary().ToString();
+            DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
+            GlobalInfo.playFirstTime = false;
+        }
+
+        //Show tutorials if necesary
+        if (GlobalInfo.actualStage==1 && GlobalInfo.showTutorial2 == true)
+        {
+            ShowTutorial1();
+        }
+        if (GlobalInfo.actualStage == 2 && GlobalInfo.showTutorial6 == true)
+        {
+            ShowTutorial5();
+        }
+
         StartPlay();
     }
 
@@ -243,8 +269,14 @@ public class GameManager : MonoBehaviour
 
     public void ShowBattleResult()
     {
-        GlobalInfo.isShowingInfo = true;
-        battleBox.SetActive(true);
+        if (GlobalInfo.showTutorial4 == true)
+        {
+            ShowTutorial3();
+        } else
+        {
+            GlobalInfo.isShowingInfo = true;
+            battleBox.SetActive(true);
+        }        
     }
 
     public void HideBattleResult()
@@ -287,5 +319,97 @@ public class GameManager : MonoBehaviour
                 }                
             }
         }
+    }
+
+    public void ShowTutorial1()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial1Box.SetActive(true);
+    }
+
+    public void HideTutorial1()
+    {
+        tutorial1Box.SetActive(false);
+        GlobalInfo.showTutorial2 = false;
+        GlobalInfo.isShowingInfo = false;
+        ShowTutorial2();
+    }
+
+    public void ShowTutorial2()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial2Box.SetActive(true);
+    }
+
+    public void HideTutorial2()
+    {
+        tutorial2Box.SetActive(false);
+        GlobalInfo.showTutorial3 = false;
+        GlobalInfo.isShowingInfo = false;
+    }
+
+    public void ShowTutorial3()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial3Box.SetActive(true);
+    }
+
+    public void HideTutorial3()
+    {
+        tutorial3Box.SetActive(false);
+        GlobalInfo.showTutorial4 = false;
+        GlobalInfo.isShowingInfo = false;
+        ShowTutorial4();
+    }
+
+    public void ShowTutorial4()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial4Box.SetActive(true);
+    }
+
+    public void HideTutorial4()
+    {
+        tutorial4Box.SetActive(false);
+        GlobalInfo.showTutorial5 = false;
+        GlobalInfo.isShowingInfo = true;
+        GlobalInfo.isShowingInfo = false;
+        battleBox.SetActive(true);
+    }
+
+    public void ShowTutorial5()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial5Box.SetActive(true);
+    }
+
+    public void HideTutorial5()
+    {
+        tutorial5Box.SetActive(false);
+        GlobalInfo.showTutorial6 = false;
+        GlobalInfo.isShowingInfo = false;
+        ShowTutorial6();
+    }
+
+    public void ShowTutorial6()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial6Box.SetActive(true);
+    }
+
+    public void HideTutorial6()
+    {
+        tutorial6Box.SetActive(false);
+        GlobalInfo.showTutorial7 = false;        
+        GlobalInfo.isShowingInfo = false;
+        FinishTutorials();
+    }
+
+    public void FinishTutorials()
+    {        
+        PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
+        loadedData.showTutorial = false;
+        DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
+        GlobalInfo.showTutorial = false;
     }
 }
