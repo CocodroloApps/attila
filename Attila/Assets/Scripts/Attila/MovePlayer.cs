@@ -93,8 +93,7 @@ public class MovePlayer : MonoBehaviour
         //Update values
         if (GameObject.Find(destination).GetComponent<GameCell>().objective == true)
         {
-            Objective();
-            
+            Objective();            
         }
         if (GameObject.Find(destination).GetComponent<GameCell>().final == true)
         {
@@ -138,7 +137,7 @@ public class MovePlayer : MonoBehaviour
                 else
                 {
                     //Next stage
-                    StartCoroutine(NextLevel());                    
+                    GlobalInfo.levelCompleted = true;                    
                 }                
             }
         }
@@ -146,10 +145,16 @@ public class MovePlayer : MonoBehaviour
         if (GlobalInfo.movementsNum == 0)
         {
             //Game over;
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowBlockedBox();
         }
 
         ShowInfo();
         GlobalInfo.isPlayerMoving = false;
+    }
+
+    public void LoadNextLevel()
+    {
+        StartCoroutine(NextLevel());
     }
 
     public void Objective()

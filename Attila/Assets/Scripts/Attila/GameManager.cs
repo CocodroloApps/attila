@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public GameObject tutorial4Box;
     public GameObject tutorial5Box;
     public GameObject tutorial6Box;
+    public GameObject blockedBox;
+    public GameObject winBox;
 
     private int troopsO;
     private int weaponsO;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
         SaveOriginals();
         GlobalInfo.isPlaying = false;
         GlobalInfo.isShowingInfo = false;
+        GlobalInfo.levelCompleted = false;
         GlobalInfo.stagesCount++;
         SetEnviroment();
         if (GlobalInfo.playFirstTime == true)
@@ -265,6 +268,10 @@ public class GameManager : MonoBehaviour
     {
         GlobalInfo.isShowingInfo = false;
         infoBox.SetActive(false);
+        if (GlobalInfo.levelCompleted == true)
+        {
+            ShowWinBox();
+        }
     }
 
     public void ShowBattleResult()
@@ -283,6 +290,32 @@ public class GameManager : MonoBehaviour
     {        
         battleBox.SetActive(false);
         ShowMoveResult();
+    }
+
+    public void ShowBlockedBox()
+    {        
+        GlobalInfo.isShowingInfo = true;
+        blockedBox.SetActive(true);
+    }
+
+    public void HideBlockedBox()
+    {
+        blockedBox.SetActive(false);
+        GlobalInfo.isShowingInfo = false;
+        RestartLevel();
+    }
+
+    public void ShowWinBox()
+    {
+        GlobalInfo.isShowingInfo = true;
+        winBox.SetActive(true);
+    }
+
+    public void HideWinBox()
+    {
+        winBox.SetActive(false);
+        GlobalInfo.isShowingInfo = false;
+        GameObject.Find("Player").GetComponent<MovePlayer>().LoadNextLevel();
     }
 
     public void MoveHorse(string origen, string final)

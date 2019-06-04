@@ -399,9 +399,9 @@ MonoBehaviour:
       - "Les ciutats, els pobles, els ex\xE8rcits enemics i els objectius provoquen
         una lluita entre les teves forces i la resist\xE8ncia romana. Aix\xF2 pot
         provocar una alteraci\xF3 dels recursos de les teves tropes."
-      - "As cidades, as cidades, os ex\xE9rcitos inimigos e os objetivos provocam
-        uma luta entre suas for\xE7as e a resist\xEAncia romana. Isso pode causar
-        uma altera\xE7\xE3o dos recursos de suas tropas."
+      - "As cidades, as aldeias, os ex\xE9rcitos inimigos e os objectivos provocam
+        uma luta entre as tuas for\xE7as e a resist\xEAncia romana. Isso pode causar
+        uma altera\xE7\xE3o dos recursos das tuas tropas."
       - "Le citt\xE0, le citt\xE0, gli eserciti nemici e gli obiettivi provocano una
         lotta tra le tue forze e la resistenza romana. Questo pu\xF2 causare un'alterazione
         delle risorse delle tue truppe."
@@ -425,10 +425,10 @@ MonoBehaviour:
         afectar la seva for\xE7a i no aconseguir\xE0s els teus objectius. Conquereix
         caselles per millorar les teves tropes. Guanya gemmes i avan\xE7a amb la teva
         conquesta."
-      - "Estas s\xE3o as propriedades do seu ex\xE9rcito. Se eles diminu\xEDrem, eles
-        podem afetar sua for\xE7a e voc\xEA n\xE3o alcan\xE7ar\xE1 seus objetivos.
-        Conquiste pra\xE7as para melhorar suas tropas. Ganhe gemas e avance em sua
-        conquista."
+      - "Estas s\xE3o as propriedades do teu ex\xE9rcito. Se diminu\xEDrem, a sua
+        for\xE7a poder\xE1 ser afectada e comprometer\xE1 a conclus\xE3o dos teus
+        objectivos. Conquista casas para melhorar as tuas tropas, ganha gemas e avan\xE7a
+        na tua conquista."
       - "Queste sono le propriet\xE0 del tuo esercito. Se diminuiscono, possono influenzare
         la tua forza e non raggiungerai i tuoi obiettivi. Conquista i quadrati per
         migliorare le tue truppe. Vinci gemme e avanza nella tua conquista."
@@ -522,9 +522,9 @@ MonoBehaviour:
       - "Les caselles finals no es poden atacar ni destruir fins que haguem destru\xEFt
         les caselles objectius del tauler. Podem passar per elles per moure'ns a altres
         posicions del mapa."
-      - "Os quadrados finais n\xE3o podem ser atacados ou destru\xEDdos at\xE9 que
-        destruamos os quadrados objetivos do tabuleiro. Podemos passar por eles para
-        passar para outras posi\xE7\xF5es no mapa."
+      - "As casas finais n\xE3o podem ser atacadas ou destru\xEDdas at\xE9 que tenhas
+        destru\xEDdo as casas objectivos do tabuleiro, mas podes passar por elas para
+        alcan\xE7ar outras posi\xE7\xF5es no mapa."
       - "I quadrati finali non possono essere attaccati o distrutti finch\xE9 non
         abbiamo distrutto i quadrati obiettivo del tabellone. Possiamo attraversarli
         per passare ad altre posizioni sulla mappa."
@@ -543,11 +543,71 @@ MonoBehaviour:
         \xFAtiles para movernos por el tablero sin destruirlo a nuestro paso."
       - "Les muntanyes no es destrueixen quan passem per elles. S\xF3n caselles molt
         \xFAtils per moure'ns pel tauler sense destruir-lo al nostre pas."
-      - "As montanhas n\xE3o s\xE3o destru\xEDdas quando passamos por elas. S\xE3o
-        caixas muito \xFAteis para se deslocar pelo tabuleiro sem o destruir no nosso
-        caminho."
+      - "Ao contr\xE1rio de todas as outras casas, as montanhas n\xE3o se destroem
+        \xE0 tua passagem, sendo extremamente \xFAteis para continuares a deslocar-te
+        pelo tabuleiro."
       - Le montagne non vengono distrutte quando le attraversiamo. Sono scatole molto
         utili per muoversi intorno al tabellone senza distruggerlo sul nostro cammino.
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: No move
+      TermType: 0
+      Description: 
+      Languages:
+      - NO MOVE
+      - NE BOUGE PAS
+      - "NING\xDAN MOVIMIENTO"
+      - SENSE MOVIMENT
+      - SEM MOVIMENTOS
+      - NESSUN MOVIMENTO
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Blocked
+      TermType: 0
+      Description: 
+      Languages:
+      - You are blocked!
+      - "Vous \xEAtes bloqu\xE9!"
+      - "\xA1Est\xE1s bloqueado!"
+      - Esteu bloquejats!
+      - "Voc\xEA est\xE1 bloqueado!"
+      - Sei bloccato!
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Restart
+      TermType: 0
+      Description: 
+      Languages:
+      - RESTART
+      - "RED\xC9MARRER"
+      - REINICIAR
+      - REINICIAR
+      - "RECOME\xC7AR"
+      - RICOMINCIA
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Completed stage
+      TermType: 0
+      Description: 
+      Languages:
+      - COMPLETED STAGE
+      - "STADE COMPL\xC9T\xC9"
+      - ETAPA COMPLETADA
+      - ETAPA COMPLETADA
+      - "N\xCDVEL COMPLETO"
+      - FASE COMPLETATA
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Attila wins!
+      TermType: 0
+      Description: 
+      Languages:
+      - ATTILA WINS!
+      - ATTILA GAGNE!
+      - "\xA1ATILA GANA!"
+      - "\xC0TILA GUANYA!"
+      - "\xC1TILA GANHA!"
+      - ATTILA VINCE!
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
