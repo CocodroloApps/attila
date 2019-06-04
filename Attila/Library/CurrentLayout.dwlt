@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 448}
   m_MaxSize: {x: 22012, y: 10024}
   vertical: 0
-  controlID: 103
+  controlID: 69
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 448}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 34
+  controlID: 51
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -477,9 +477,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.024294566, y: -0.013695426, z: 0.00033277654, w: 0.99961096}
   m_Size:
-    m_Target: 1285.3685
+    m_Target: 1592.0917
     speed: 2
-    m_Value: 1285.3685
+    m_Value: 1592.0917
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -578,8 +578,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 72.66667
-    width: 1125
-    height: 542
+    width: 1374
+    height: 483
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &18
 MonoBehaviour:
@@ -639,9 +639,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d6310000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 2cc7ffff66c7ffffaac7ffffbec7ffff7acaffffa6caffffb0caffffd0caffffe2caffffeacaffffdaccffff54cdffff98cdffffaccdffff64d0ffff68d0ffff6ed0ffff80d0ffff8cd0ffff92d0ffff2ed2ffff72d2ffff86d2ffff3ed5ffff42d5ffff48d5ffff5ad5ffff66d5ffff6cd5ffff8adaffff58ebffff5aebffff5eebffff68ebffff9cebffff56edfffffef9ffff08faffff0cfaffffbcfbffffa6500000c00101008e350100
+      m_SelectedIDs: d2fbffff
+      m_LastClickedID: -1070
+      m_ExpandedIDs: d4fbffff22470000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -703,20 +703,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 83
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 83
   m_LastProjectPath: G:\UNITY\PROJECTS\Attila\Attila
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: be2c0000
-    m_LastClickedID: 11454
-    m_ExpandedIDs: 00000000362a0000be2c0000362d0000542e00003c300000723200006834000090340000543a0000e83a00001a3b0000ce3e00006a3f0000be3f0000ea3f0000ee3f00005241000088410000ac42000000ca9a3b
+    m_SelectedIDs: 6c2d0000
+    m_LastClickedID: 11628
+    m_ExpandedIDs: 000000003a2a00009c2e0000a6300000fe3200007233000042350000743b00009a3b0000203c0000543c0000fc4000005641000082410000104300005043000086440000724900007449000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -744,7 +744,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000362a0000be2c0000362d0000542e00003c300000723200006834000090340000543a0000e83a00001a3b0000ce3e00006a3f0000be3f0000ea3f0000ee3f00005241000088410000ac420000
+    m_ExpandedIDs: 000000003a2a00009c2e0000a6300000fe3200007233000042350000743b00009a3b0000203c0000543c0000fc40000056410000824100001043000050430000864400007249000074490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -771,8 +771,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: fc2b0000be4a000088370000aa410000fa470000984d0000762900003c3c0000d83a000000000000e43a0000703c0000f4330000
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: fc2b0000be4a000088370000aa410000fa470000984d0000762900003c3c0000d83a0000e43a0000703c0000f433000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

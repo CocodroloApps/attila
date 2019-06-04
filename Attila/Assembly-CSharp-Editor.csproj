@@ -110,6 +110,7 @@
     <Compile Include="Assets\Anonym\Util\editor\TagList.cs" />
     <Compile Include="Assets\Anonym\Util\editor\TagListEditor.cs" />
     <Compile Include="Assets\Anonym\Util\editor\TmpTexture2D.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\Editor\GAuiEditor.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\EditorTools.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceAssetInspector.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\Inspectors\LanguageSourceInspector.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Assets\I2\Localization\Scripts\Editor\PostProcessBuild_IOS.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\PostProcessBuild_UnloadLanguages.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Editor\UpgradeManager.cs" />
+    <None Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\Editor\Note.txt" />
     <None Include="Assets\I2\Localization\Scripts\Editor\Unity XCode\Xcode.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -403,6 +405,15 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="GETween">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/GUI Animator/Common/Plugins/GETween.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIAnimator">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/GUI Animator/GUI Animator for Unity UI/Plugins/GUIAnimator.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIAnimatorEditor">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/GUI Animator/GUI Animator for Unity UI/Plugins/Editor/GUIAnimatorEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS_I2Loc.Xcode">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/I2/Localization/Scripts/Editor/Unity XCode/UnityEditor.iOS_I2Loc.Xcode.dll</HintPath>

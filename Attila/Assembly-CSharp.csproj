@@ -116,6 +116,23 @@
     <Compile Include="Assets\Anonym\Util\script\TouchManager.cs" />
     <Compile Include="Assets\Anonym\Util\script\TouchUtility.cs" />
     <Compile Include="Assets\Anonym\Util\script\UndoUtil.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo00.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo01.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo02.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo03.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo04.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo05.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo06.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo07.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\Demo08.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\DemoPlaySound.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo (CSharp)\Scripts\OpenOtherScene.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo Basic 1 (CSharp)\Scripts\GA_UUI_SceneController.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo Basic 2 (CSharp)\Scripts\GAUUIEasingsRandomTest.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo Basic 3 (CSharp)\Scripts\GA_UUI_DemoBasicControlledByScripts.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Demo Basic 3 (CSharp)\Scripts\GA_UUI_DemoBasicControlledByScriptsShowRotateLoop.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\GAui.cs" />
+    <Compile Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\GSui.cs" />
     <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\CallbackNotification.cs" />
     <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\Example_ChangeLanguage.cs" />
     <Compile Include="Assets\I2\Localization\Examples\Common\Scripts\Example_LocalizedString.cs" />
@@ -222,8 +239,11 @@
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
     <Compile Include="Assets\Scripts\Winner\WinnerManager.cs" />
+    <None Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\Note.txt" />
     <None Include="Assets\Anonym\MapEditor\Read Me.txt" />
+    <None Include="Assets\GUI Animator\GUI Animator for Unity UI\!How to.txt" />
     <None Include="Assets\I2\Localization\I2 Localization - Readme.txt" />
+    <None Include="Assets\GUI Animator\GUI Animator for Unity UI\Readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -439,6 +459,12 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="GETween">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/GUI Animator/Common/Plugins/GETween.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIAnimator">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/GUI Animator/GUI Animator for Unity UI/Plugins/GUIAnimator.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
