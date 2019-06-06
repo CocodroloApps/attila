@@ -75,7 +75,10 @@ public class GameManager : MonoBehaviour
         {
             ShowTutorial5();
         }
-
+        if (GlobalInfo.actualStage == 3 && GlobalInfo.showTutorial7 == true)
+        {
+            ShowTutorial6();
+        }        
         StartPlay();
     }
 
@@ -420,8 +423,7 @@ public class GameManager : MonoBehaviour
     {
         tutorial5Box.SetActive(false);
         GlobalInfo.showTutorial6 = false;
-        GlobalInfo.isShowingInfo = false;
-        ShowTutorial6();
+        GlobalInfo.isShowingInfo = false;        
     }
 
     public void ShowTutorial6()

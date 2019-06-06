@@ -56,21 +56,35 @@ public class MainMenu : MonoBehaviour
             } else
             {
                 GlobalInfo.showTutorial1 = false;
-            }
-            SceneManager.LoadScene("StageSelector");
+            }            
+            GameObject.Find("MenuManager").GetComponent<UIAnimMenu>().HideAllGUIs();
+            StartCoroutine(ToLevel());
         } else
         {
-            SceneManager.LoadScene("Winner");
+            GameObject.Find("MenuManager").GetComponent<UIAnimMenu>().HideAllGUIs();
+            StartCoroutine(ToWinner());
         }        
     }
 
-    public void ShowLanguageBox()
+    IEnumerator ToLevel()
     {
+        yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
+        SceneManager.LoadScene("StageSelector");
+    }
+
+    IEnumerator ToWinner()
+    {
+        yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
+        SceneManager.LoadScene("Winner");
+    }
+
+    public void ShowLanguageBox()
+    {     
         langBox.SetActive(true);
     }
 
     public void HideLanguageBox()
-    {
+    {        
         langBox.SetActive(false);
     }
 

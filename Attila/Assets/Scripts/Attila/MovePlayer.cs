@@ -144,7 +144,7 @@ public class MovePlayer : MonoBehaviour
 
         if (GlobalInfo.movementsNum == 0)
         {
-            //Game over;
+            //Game over NO MOVES;
             GameObject.Find("GameManager").GetComponent<GameManager>().ShowBlockedBox();
         }
 
@@ -185,6 +185,7 @@ public class MovePlayer : MonoBehaviour
     IEnumerator NextLevel()
     {
         yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
+        yield return new WaitForSeconds(1.0f);
         GlobalInfo.actualStage++;
         SceneManager.LoadScene("Attila");
     }
