@@ -16,6 +16,7 @@ public class UIAnimStages : MonoBehaviour
     public GAui hun8;
     public GAui hun9;
     public GAui hun10;
+    public GAui ToMenu;
 
     void Awake()
     {
@@ -48,6 +49,7 @@ public class UIAnimStages : MonoBehaviour
         hun8.PlayInAnims(eGUIMove.Self);
         hun9.PlayInAnims(eGUIMove.Self);
         hun10.PlayInAnims(eGUIMove.Self);
+        ToMenu.PlayInAnims(eGUIMove.Self);
 
         // Play In-Animations of all primary buttons
         StartCoroutine(EnableAllDemoButtons());

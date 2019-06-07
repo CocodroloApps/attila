@@ -402,8 +402,8 @@ MonoBehaviour:
       - "As cidades, as aldeias, os ex\xE9rcitos inimigos e os objectivos provocam
         uma luta entre as tuas for\xE7as e a resist\xEAncia romana. Isso pode causar
         uma altera\xE7\xE3o dos recursos das tuas tropas."
-      - "Le citt\xE0, le citt\xE0, gli eserciti nemici e gli obiettivi provocano una
-        lotta tra le tue forze e la resistenza romana. Questo pu\xF2 causare un'alterazione
+      - "Le citt\xE0, gli eserciti nemici e gli obiettivi provocano una lotta tra
+        le tue forze e la resistenza romana. Questo pu\xF2 causare un'alterazione
         delle risorse delle tue truppe."
       Flags: 000000000000
       Languages_Touch: []
@@ -608,6 +608,18 @@ MonoBehaviour:
       - "\xC0TILA GUANYA!"
       - "\xC1TILA GANHA!"
       - ATTILA VINCE!
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Defeat
+      TermType: 0
+      Description: 
+      Languages:
+      - DEFEAT
+      - "D\xC9FAITE"
+      - DERROTA
+      - DERROTA
+      - DERROTA
+      - SCONFITTA
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

@@ -90,6 +90,7 @@ public class MovePlayer : MonoBehaviour
 
     public void ProcessEvents()
     {
+        GlobalInfo.isPlayerMoving = false;
         //Update values
         if (GameObject.Find(destination).GetComponent<GameCell>().objective == true)
         {
@@ -106,7 +107,7 @@ public class MovePlayer : MonoBehaviour
             // Is Town OR City OR Army
             if (nType == 4 || nType == 5 || nType == 6 )
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
+                GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
             }
             Normal();
         }
@@ -142,14 +143,13 @@ public class MovePlayer : MonoBehaviour
             }
         }
 
-        if (GlobalInfo.movementsNum == 0)
+        if (GlobalInfo.movementsNum == 0 && GlobalInfo.levelCompleted == false)
         {
             //Game over NO MOVES;
             GameObject.Find("GameManager").GetComponent<GameManager>().ShowBlockedBox();
         }
 
-        ShowInfo();
-        GlobalInfo.isPlayerMoving = false;
+        ShowInfo();        
     }
 
     public void LoadNextLevel()
@@ -161,8 +161,8 @@ public class MovePlayer : MonoBehaviour
     {
         GlobalInfo.score = GlobalInfo.score + 100;
         GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
-        GlobalInfo.objectivesNum--;
-        GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
+        GlobalInfo.objectivesNum--;        
+        GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
     }
 
     public void Final()
@@ -172,7 +172,7 @@ public class MovePlayer : MonoBehaviour
         {
             GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
             GlobalInfo.finalNum--;
-            GameObject.Find("GameManager").GetComponent<GameManager>().ShowBattleResult();
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
         }        
     }
 

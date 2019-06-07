@@ -217,6 +217,7 @@
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\Attila\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Attila\MovePlayer.cs" />
+    <Compile Include="Assets\Scripts\Attila\UIAnimAttila.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
     <Compile Include="Assets\Scripts\General\DataSaver.cs" />
     <Compile Include="Assets\Scripts\General\FadeScene.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
     <Compile Include="Assets\Scripts\Stages\UIAnimStages.cs" />
+    <Compile Include="Assets\Scripts\Title\UIAnimTitle.cs" />
     <Compile Include="Assets\Scripts\Winner\WinnerManager.cs" />
     <None Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\Note.txt" />
     <None Include="Assets\Anonym\MapEditor\Read Me.txt" />
