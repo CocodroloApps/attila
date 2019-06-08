@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().SceneEffect();
         SaveOriginals();
         GlobalInfo.isPlaying = false;
         GlobalInfo.isShowingInfo = false;
@@ -492,6 +493,7 @@ public class GameManager : MonoBehaviour
 
     public void MoveHorse(string origen, string final)
     {
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().MoveEffect();
         GameObject.Find("Player").GetComponent<MovePlayer>().Move(final);
     }
 

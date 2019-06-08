@@ -7,6 +7,8 @@ public class UIAnimTitle : MonoBehaviour
 {
     public Canvas m_Canvas;
     public GAui title;
+    public AudioClip introSound;
+    public AudioSource audioSource;
 
     void Awake()
     {
@@ -29,6 +31,7 @@ public class UIAnimTitle : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         title.PlayInAnims(eGUIMove.Self);        
+        audioSource.PlayOneShot(introSound);
         StartCoroutine(EnableAllDemoButtons());
     }
 

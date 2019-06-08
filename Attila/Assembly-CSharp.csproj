@@ -213,6 +213,7 @@
     <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguage.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Utils\SetLanguageDropdown.cs" />
     <Compile Include="Assets\I2\Localization\Scripts\Utils\StringObfuscator.cs" />
+    <Compile Include="Assets\Scripts\Attila\AudioAttila.cs" />
     <Compile Include="Assets\Scripts\Attila\GameCell.cs" />
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\Attila\InfoBox.cs" />
@@ -233,12 +234,14 @@
     <Compile Include="Assets\Scripts\Levels\Grid.cs" />
     <Compile Include="Assets\Scripts\Levels\LevelEditor.cs" />
     <Compile Include="Assets\Scripts\LoadConfig.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\AudioMainMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Config.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Language.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Languages.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu\UIAnimMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\Stages\AudioStagesMenu.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
     <Compile Include="Assets\Scripts\Stages\UIAnimStages.cs" />
     <Compile Include="Assets\Scripts\Title\UIAnimTitle.cs" />

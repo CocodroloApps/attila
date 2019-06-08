@@ -36,7 +36,7 @@ public class UIAnimMenu : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         // Play In-Animations of m_Title1
-        m_Title1.PlayInAnims(eGUIMove.Self);        
+        m_Title1.PlayInAnims(eGUIMove.Self);
 
         // Play In-Animations of all primary buttons
         StartCoroutine(MoveInPrimaryButtons());
@@ -50,7 +50,7 @@ public class UIAnimMenu : MonoBehaviour
         m_TopLeft_A.PlayInAnims(eGUIMove.Self);
         m_Right.PlayInAnims(eGUIMove.Self);
         m_Bottom.PlayInAnims(eGUIMove.Self);
-
+        
         // Enable all scene switch buttons
         StartCoroutine(EnableInPrimaryButtonsAnim());
     }
@@ -71,7 +71,7 @@ public class UIAnimMenu : MonoBehaviour
     IEnumerator EnableAllDemoButtons()
     {
         yield return new WaitForSeconds(0.2f);
-        GSui.Instance.EnableGraphicRaycaster(m_Canvas, true);
+        GSui.Instance.EnableGraphicRaycaster(m_Canvas, true);        
     }
 
     public void HideAllGUIs()

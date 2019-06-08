@@ -16,6 +16,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("StageManager").GetComponent<AudioStagesMenu>().SceneEffect();
         int stageGroup = 0;
         GameObject lineMain = GameObject.Find("Lines");
 
@@ -63,6 +64,7 @@ public class StageManager : MonoBehaviour
 
     public void ToGameScene()
     {
+        GameObject.Find("StageManager").GetComponent<AudioStagesMenu>().ClickEffect();
         GlobalInfo.actualStage = GlobalInfo.maxStageCompleted + 1;
         if (GlobalInfo.showTutorial == true)
         {
@@ -95,22 +97,30 @@ public class StageManager : MonoBehaviour
             GlobalInfo.showTutorial6 = false;
             GlobalInfo.showTutorial7 = false;
         }
+        StartCoroutine(ToGame());
+    }
+
+    IEnumerator ToGame()
+    {
+        yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene("Attila");
     }
 
     public void ToMainMenu()
     {
+        GameObject.Find("StageManager").GetComponent<AudioStagesMenu>().ClickEffect();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void HideTutorialBox()
     {
+        GameObject.Find("StageManager").GetComponent<AudioStagesMenu>().ClickEffect();
         tutorialBox.SetActive(false);
         GlobalInfo.showTutorial1 = false;
     }
 
     public void ShowTutorialBox()
-    {
+    {        
         tutorialBox.SetActive(true);
     }
 }

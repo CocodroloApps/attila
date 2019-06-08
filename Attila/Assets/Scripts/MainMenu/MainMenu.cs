@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().SceneEffect();
         GlobalInfo.sessionsCount++;
         if (GlobalInfo.gameFirstTime == true)
         {
@@ -48,6 +49,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         if (GlobalInfo.maxStageCompleted < GlobalInfo.maxStagesGame)
         {
             if (GlobalInfo.showTutorial == true)
@@ -68,49 +70,58 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator ToLevel()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
         SceneManager.LoadScene("StageSelector");
     }
 
     IEnumerator ToWinner()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         yield return new WaitUntil(() => GlobalInfo.isShowingInfo == false);
         SceneManager.LoadScene("Winner");
     }
 
     public void ShowLanguageBox()
-    {     
+    {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         langBox.SetActive(true);
     }
 
     public void HideLanguageBox()
-    {        
+    {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         langBox.SetActive(false);
     }
 
     public void ShowConfigBox()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         GameObject.Find("MenuManager").GetComponent<Config>().HideCompleted();
         configBox.SetActive(true);
     }
 
     public void HideConfigBox()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         configBox.SetActive(false);
     }
 
     public void ShowLegalBox()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         legalBox.SetActive(true);
     }
 
     public void OpenPolicyWeb()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         Application.OpenURL("https://www.jugandohaciendojuegos.com/p/attila-privacy-policy.html");
     }
 
     public void HideLegalBox()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         legalBox.SetActive(false);
     }
 }
