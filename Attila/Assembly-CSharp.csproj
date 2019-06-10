@@ -239,12 +239,15 @@
     <Compile Include="Assets\Scripts\MainMenu\Language.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Languages.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\MoveAnims.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\MoveAnims2.cs" />
     <Compile Include="Assets\Scripts\MainMenu\UIAnimMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\AudioStagesMenu.cs" />
     <Compile Include="Assets\Scripts\Stages\StageManager.cs" />
     <Compile Include="Assets\Scripts\Stages\UIAnimStages.cs" />
     <Compile Include="Assets\Scripts\Title\UIAnimTitle.cs" />
+    <Compile Include="Assets\Scripts\Winner\AudioWinner.cs" />
     <Compile Include="Assets\Scripts\Winner\WinnerManager.cs" />
     <None Include="Assets\GUI Animator\GUI Animator for Unity UI\Scripts\Note.txt" />
     <None Include="Assets\Anonym\MapEditor\Read Me.txt" />

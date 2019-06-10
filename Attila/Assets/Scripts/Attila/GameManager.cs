@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public GameObject tutorial6Box;
     public GameObject blockedBox;
     public GameObject winBox;
+    public GameObject waitBox;
+
     public Text hunsTroops;
     public Text romanTroops;
     public Text hunsDice;
@@ -307,7 +309,7 @@ public class GameManager : MonoBehaviour
         infoBox.SetActive(false);
         int nType = GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type;
         // Is Town OR City OR Army
-        if (nType == 4 || nType == 5 || nType == 6 || nType == 11)
+        if (nType == 4 || nType == 5 || nType == 6 || nType == 11 || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal == true || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isObjective == true)
         {
             if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal && GlobalInfo.objectivesNum > 0)
             {                
@@ -425,14 +427,19 @@ public class GameManager : MonoBehaviour
 
             //Show
             hunsLose.text = "-" + nHunLoses.ToString("#,#");
-            romanLose.text = "-" + nRomanLoses.ToString("#,#");            
+            romanLose.text = "-" + nRomanLoses.ToString("#,#");
+            GameObject.Find("GameManager").GetComponent<AudioAttila>().BattleEffect();
             StartCoroutine(ShowBattlePoints(nHunTroops, nRomanTroops));
         }        
     }
 
     IEnumerator ShowBattlePoints(int huns, int romans)
-    {
-        yield return new WaitForSeconds(1.8f);
+    {        
+        waitBox.SetActive(true);
+        GameObject.Find("Timer").GetComponent<Animator>().StopPlayback();
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Fisnish");
+        waitBox.SetActive(false);
         battleBox.SetActive(true);
         yield return new WaitForSeconds(1f);
         GameObject.Find("GameManager").GetComponent<UIAnimAttila>().ShowBattleLost();
@@ -481,6 +488,7 @@ public class GameManager : MonoBehaviour
     public void ShowWinBox()
     {
         GlobalInfo.isShowingInfo = true;
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().VictoryEffect();
         winBox.SetActive(true);
     }
 

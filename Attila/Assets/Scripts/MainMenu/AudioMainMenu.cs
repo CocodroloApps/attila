@@ -17,23 +17,29 @@ public class AudioMainMenu : MonoBehaviour
         if (GlobalInfo.soundPlay == true)
         {
             audioSource.volume = 0.8f;
-            int nAux = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 4f));
-            if (nAux == 1)
-            {
-                audioSource.PlayOneShot(effect1);
-            }
-            if (nAux == 2)
-            {
-                audioSource.PlayOneShot(effect2);
-            }
-            if (nAux == 3)
-            {
-                audioSource.PlayOneShot(effect3);
-            }
-            if (nAux == 4)
-            {
-                audioSource.PlayOneShot(effect4);
-            }
+            StartCoroutine(Sound());
+        }        
+    }
+
+    IEnumerator Sound()
+    {
+        yield return new WaitForSeconds(0.1f);
+        int nAux = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 4f));
+        if (nAux == 1)
+        {
+            audioSource.PlayOneShot(effect1);
+        }
+        if (nAux == 2)
+        {
+            audioSource.PlayOneShot(effect2);
+        }
+        if (nAux == 3)
+        {
+            audioSource.PlayOneShot(effect3);
+        }
+        if (nAux == 4)
+        {
+            audioSource.PlayOneShot(effect4);
         }        
     }
 

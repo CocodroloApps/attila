@@ -15,6 +15,8 @@ public class AudioAttila : MonoBehaviour
     public AudioClip move5;
     public AudioClip move6;
     public AudioClip sceneEffect;
+    public AudioClip battleEffect;
+    public AudioClip victoryEffect;
     public AudioSource audioSource;
 
     public void ClickEffect()
@@ -81,6 +83,24 @@ public class AudioAttila : MonoBehaviour
         {
             audioSource.volume = 0.8f;
             audioSource.PlayOneShot(sceneEffect);
+        }
+    }
+
+    public void BattleEffect()
+    {
+        if (GlobalInfo.soundPlay == true)
+        {
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(battleEffect);
+        }
+    }
+
+    public void VictoryEffect()
+    {
+        if (GlobalInfo.soundPlay == true)
+        {
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(victoryEffect);
         }
     }
 }
