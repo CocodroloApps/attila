@@ -85,6 +85,9 @@ public class MainMenu : MonoBehaviour
     public void ShowLanguageBox()
     {
         GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
+        
+        GameObject.Find("MenuManager").GetComponent<AdManager>().ShowAdInterticial();
+        
         langBox.SetActive(true);
     }
 
@@ -98,6 +101,7 @@ public class MainMenu : MonoBehaviour
     {
         GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         GameObject.Find("MenuManager").GetComponent<Config>().HideCompleted();
+        GameObject.Find("MenuManager").GetComponent<AdManager>().ShowAdInterticial();
         configBox.SetActive(true);
     }
 

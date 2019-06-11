@@ -46,9 +46,9 @@ public class DefaultCells
         version = 1;
         type = 1;
         water = 0;
-        food = 5;
+        food = 500;
         troops = 100;
-        weapons = 50;
+        weapons = 100;
         gold = 0;
         isFinal = false;
         isObjective = false;
@@ -73,11 +73,11 @@ public class DefaultCells
     {
         version = 1;
         type = 3;
-        water = 5;
-        food = 10;
+        water = 500;
+        food = 500;
         troops = 0;
-        weapons = 5;
-        gold = 0;
+        weapons = 500;
+        gold = 50;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -87,11 +87,11 @@ public class DefaultCells
     {
         version = 1;
         type = 4;
-        water = 10;
-        food = 50;
+        water = 1000;
+        food = 5000;
         troops = 50;
-        weapons = 50;
-        gold = 50;
+        weapons = 200;
+        gold = 10000;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -101,11 +101,11 @@ public class DefaultCells
     {
         version = 1;
         type = 5;
-        water = 100;
-        food = 500;
+        water = 50000;
+        food = 50000;
         troops = 800;
-        weapons = 100;
-        gold = 500;
+        weapons = 1000;
+        gold = 70000;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -116,10 +116,10 @@ public class DefaultCells
         version = 1;
         type = 6;
         water = 0;
-        food = 50;
+        food = 100;
         troops = 1000;
-        weapons = 500;
-        gold = 800;
+        weapons = 2000;
+        gold = 10000;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -129,11 +129,11 @@ public class DefaultCells
     {
         version = 1;
         type = 7;
-        water = 5;
-        food = 500;
-        troops = 10;
-        weapons = 5;
-        gold = 5;
+        water = 25000;
+        food = 50000;
+        troops = 50;
+        weapons = 25;
+        gold = 500;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -143,11 +143,11 @@ public class DefaultCells
     {
         version = 1;
         type = 8;
-        water = 500;
-        food = 10;
+        water = 50000;
+        food = 10000;
         troops = 0;
         weapons = 0;
-        gold = 5;
+        gold = 500;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -157,11 +157,11 @@ public class DefaultCells
     {
         version = 1;
         type = 9;
-        water = 500;
-        food = 10;
+        water = 50000;
+        food = 10000;
         troops = 0;
         weapons = 0;
-        gold = 5;
+        gold = 5000;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -171,11 +171,11 @@ public class DefaultCells
     {
         version = 1;
         type = 10;
-        water = 5;
-        food = 5;
+        water = 50;
+        food = 500;
         troops = 20;
-        weapons = 20;
-        gold = 500;
+        weapons = 200;
+        gold = 50000;
         isFinal = false;
         isObjective = false;
         isStart = false;
@@ -185,11 +185,11 @@ public class DefaultCells
     {
         version = 1;
         type = 11;
-        water = 50;
-        food = 50;
-        troops = 50;
-        weapons = 50;
-        gold = 50;
+        water = 5000;
+        food = 5000;
+        troops = 500;
+        weapons = 5000;
+        gold = 9000;
         isFinal = false;
         isObjective = true;
         isStart = false;
@@ -199,11 +199,11 @@ public class DefaultCells
     {
         version = 1;
         type = 12;
-        water = 50;
-        food = 50;
+        water = 500;
+        food = 500;
         troops = -50;
         weapons = 5;
-        gold = 10;
+        gold = 100;
         isFinal = false;
         isObjective = false;
         isStart = false;

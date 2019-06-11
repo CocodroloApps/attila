@@ -45,10 +45,10 @@ public class IntialConditions
         maxStageCompleted = 0;
         actualStage = 1;
         score = 0;
-        water = 50000;
-        food = 50000;
         troops = 10000;
         weapons = 10000;
+        water = 50000;
+        food = 50000;                
         gold = 200000;
     }
 }

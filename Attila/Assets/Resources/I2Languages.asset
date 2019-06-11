@@ -622,6 +622,30 @@ MonoBehaviour:
       - SCONFITTA
       Flags: 000000000000
       Languages_Touch: []
+    - Term: No resources
+      TermType: 0
+      Description: 
+      Languages:
+      - NO RESOURCES
+      - PAS DE RESSOURCES
+      - SIN RECURSOS
+      - SENSE RECURSOS
+      - SEM RECURSOS
+      - NESSUN RISORSE
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Without Resources
+      TermType: 0
+      Description: 
+      Languages:
+      - Your army has run out of resources to continue.
+      - "Votre arm\xE9e est \xE0 court de ressources pour continuer."
+      - "Tu ej\xE9rcito se ha quedado sin recursos para seguir."
+      - "El teu ex\xE8rcit s'ha quedat sense recursos per seguir."
+      - "Seu ex\xE9rcito ficou sem recursos para continuar."
+      - Il tuo esercito ha esaurito le risorse per continuare.
+      Flags: 000000000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

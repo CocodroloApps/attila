@@ -92,64 +92,90 @@ public class MovePlayer : MonoBehaviour
     {
         GlobalInfo.isPlayerMoving = false;
         //Update values
-        if (GameObject.Find(destination).GetComponent<GameCell>().objective == true)
+        if (MovementCost() == false)
         {
-            Objective();            
-        }
-        if (GameObject.Find(destination).GetComponent<GameCell>().final == true)
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowResourcesBox();
+        }  else
         {
-            Final();
-        }
-
-        if ((GameObject.Find(destination).GetComponent<GameCell>().final == false) && (GameObject.Find(destination).GetComponent<GameCell>().objective == false))
-        {
-            int nType = GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].type;
-            // Is Town OR City OR Army
-            if (nType == 4 || nType == 5 || nType == 6 )
+            if (GameObject.Find(destination).GetComponent<GameCell>().objective == true)
             {
-                GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
+                Objective();
             }
-            Normal();
-        }
-
-        //Events
-        if (GlobalInfo.objectivesNum == 0)
-        {
-            if (GlobalInfo.finalNum == 0)
+            if (GameObject.Find(destination).GetComponent<GameCell>().final == true)
             {
-                //Good job!
-                GlobalInfo.maxStageCompleted = GlobalInfo.actualStage;
-                PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
-                loadedData.actualStage = GlobalInfo.actualStage;
-                loadedData.maxStageCompleted = GlobalInfo.maxStageCompleted;
-                loadedData.troops = GlobalInfo.troops;
-                loadedData.weapons = GlobalInfo.weapons;
-                loadedData.water = GlobalInfo.water;
-                loadedData.food = GlobalInfo.food;
-                loadedData.gold = GlobalInfo.gold;
-                loadedData.score = GlobalInfo.gold;
-                DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
+                Final();
+            }
 
-                if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)
+            if ((GameObject.Find(destination).GetComponent<GameCell>().final == false) && (GameObject.Find(destination).GetComponent<GameCell>().objective == false))
+            {
+                int nType = GlobalInfo.gridStage[GameObject.Find(destination).GetComponent<GameCell>().num - 1].type;
+                // Is Town OR City OR Army
+                if (nType == 4 || nType == 5 || nType == 6)
                 {
-                    //Game Finish
-                    SceneManager.LoadScene("Winner");
+                    GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
                 }
-                else
-                {
-                    //Next stage
-                    GlobalInfo.levelCompleted = true;                    
-                }                
+                Normal();
             }
-        }
 
-        if (GlobalInfo.movementsNum == 0 && GlobalInfo.levelCompleted == false)
+            //Events
+            if (GlobalInfo.objectivesNum == 0)
+            {
+                if (GlobalInfo.finalNum == 0)
+                {
+                    //Good job!
+                    GlobalInfo.maxStageCompleted = GlobalInfo.actualStage;
+                    PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
+                    loadedData.actualStage = GlobalInfo.actualStage;
+                    loadedData.maxStageCompleted = GlobalInfo.maxStageCompleted;
+                    loadedData.troops = GlobalInfo.troops;
+                    loadedData.weapons = GlobalInfo.weapons;
+                    loadedData.water = GlobalInfo.water;
+                    loadedData.food = GlobalInfo.food;
+                    loadedData.gold = GlobalInfo.gold;
+                    loadedData.score = GlobalInfo.gold;
+                    DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
+
+                    if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)
+                    {
+                        //Game Finish
+                        SceneManager.LoadScene("Winner");
+                    }
+                    else
+                    {
+                        //Next stage
+                        GlobalInfo.levelCompleted = true;
+                    }
+                }
+            }
+
+            if (GlobalInfo.movementsNum == 0 && GlobalInfo.levelCompleted == false)
+            {
+                //Game over NO MOVES;
+                GameObject.Find("GameManager").GetComponent<GameManager>().ShowBlockedBox();
+            }
+            ShowInfo();
+        }                
+    }
+
+    public bool MovementCost()
+    {        
+        if (GlobalInfo.weapons < GlobalInfo.troops)
         {
-            //Game over NO MOVES;
-            GameObject.Find("GameManager").GetComponent<GameManager>().ShowBlockedBox();
+            GlobalInfo.troops = GlobalInfo.weapons;
         }
 
-        ShowInfo();        
+        GlobalInfo.water = GlobalInfo.water - Mathf.RoundToInt(GlobalInfo.troops / 3);
+        GlobalInfo.food = GlobalInfo.food - Mathf.RoundToInt(GlobalInfo.troops / 3);
+        GlobalInfo.gold = GlobalInfo.gold - Mathf.RoundToInt(GlobalInfo.gold / 2);
+
+        if (GlobalInfo.water <= 0 || GlobalInfo.food <= 0 || GlobalInfo.gold <= 0)
+        {
+            if (GlobalInfo.water <= 0) { GlobalInfo.water = 0; }
+            if (GlobalInfo.food <= 0) { GlobalInfo.food = 0; }
+            if (GlobalInfo.gold <= 0) { GlobalInfo.gold = 0; }
+            return false;
+        }
+        return true;
     }
 
     public void LoadNextLevel()

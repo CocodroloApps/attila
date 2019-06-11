@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public GameObject blockedBox;
     public GameObject winBox;
     public GameObject waitBox;
+    public GameObject resourcesBox;
 
     public Text hunsTroops;
     public Text romanTroops;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameObject.Find("GameManager").GetComponent<AudioAttila>().SceneEffect();
+        GameObject.Find("GameManager").GetComponent<AdManager>().ShowBanner();
         SaveOriginals();
         GlobalInfo.isPlaying = false;
         GlobalInfo.isShowingInfo = false;
@@ -106,7 +108,12 @@ public class GameManager : MonoBehaviour
         if (GlobalInfo.actualStage == 3 && GlobalInfo.showTutorial7 == true)
         {
             ShowTutorial6();
-        }        
+        }
+        if (GlobalInfo.stagesCount % 2 == 0 && GlobalInfo.actualStage > 1)
+        {
+            GameObject.Find("GameManager").GetComponent<AdManager>().ShowAdInterticial();
+        }
+
         StartPlay();
     }
 
@@ -278,6 +285,7 @@ public class GameManager : MonoBehaviour
     {
         RestoreOriginals();
         GameObject.Find("GameManager").GetComponent<UIAnimAttila>().HideAllGUIs();
+        GameObject.Find("GameManager").GetComponent<AdManager>().StopAdBanner();
         StartCoroutine(ToStageSelector());
     }
 
@@ -481,6 +489,19 @@ public class GameManager : MonoBehaviour
     public void HideBlockedBox()
     {
         blockedBox.SetActive(false);
+        GlobalInfo.isShowingInfo = false;
+        RestartLevel();
+    }
+
+    public void ShowResourcesBox()
+    {
+        GlobalInfo.isShowingInfo = true;
+        resourcesBox.SetActive(true);
+    }
+
+    public void HideResourcesBox()
+    {
+        resourcesBox.SetActive(false);
         GlobalInfo.isShowingInfo = false;
         RestartLevel();
     }
