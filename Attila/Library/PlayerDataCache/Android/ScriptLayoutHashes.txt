@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-G:/UNITY/PROJECTS/Attila/Attila/Android/Attila.apk
+G:/UNITY/PROJECTS/Attila/Attila/Android/Attila.aab
 SceneListBegin?
 Assets/Scenes/Splash.unity
 Assets/Scenes/Title.unity
@@ -77,6 +77,8 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 05de77f416dedc22db7c430db2076c9a Assembly-CSharp.dll:EasyMobile.Demo.DemoHomeController
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
+71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
+71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -247,6 +249,7 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 69167579cf7fcbb2676fc1e675963dcd Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
+7fa09e3a9bc4b248a1e4cfe1fb2f5156 Assembly-CSharp.dll:.Trade
 831f26041e21027f158da1b10941cc72 Assembly-CSharp.dll:Anonym.Isometric.AutoNaming
 eef3a293008e8a9aa7449e62f01da025 Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityStandard_MeshRenderer
 a3d7f8049f6e9c643f1ed00c19dee1af Assembly-CSharp.dll:Anonym.Isometric.IsometricCharacterController
@@ -477,4 +480,3 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 6a1940227f2a2b66d557f3d62a2d86c7 Assembly-CSharp.dll:EasyMobile.Demo.AdvertisingDemo
-7fa09e3a9bc4b248a1e4cfe1fb2f5156 Assembly-CSharp.dll:.Trade
