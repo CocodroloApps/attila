@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public GameObject langBox;
     public GameObject configBox;
     public GameObject legalBox;
+    public GameObject tradeBox;
 
     // Start is called before the first frame update
     void Start()
@@ -84,8 +85,7 @@ public class MainMenu : MonoBehaviour
 
     public void ShowLanguageBox()
     {
-        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
-        
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();        
         GameObject.Find("MenuManager").GetComponent<AdManager>().ShowAdInterticial();
         
         langBox.SetActive(true);
@@ -95,6 +95,21 @@ public class MainMenu : MonoBehaviour
     {
         GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         langBox.SetActive(false);
+    }
+
+    public void ShowTradeBox()
+    {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
+        GameObject.Find("MenuManager").GetComponent<AdManager>().ShowAdInterticial();
+        GameObject.Find("MenuManager").GetComponent<Trade>().UpdateGems();
+
+        tradeBox.SetActive(true);
+    }
+
+    public void HideTradeBox()
+    {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
+        tradeBox.SetActive(false);
     }
 
     public void ShowConfigBox()

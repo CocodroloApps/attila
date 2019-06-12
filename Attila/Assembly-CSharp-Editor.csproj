@@ -489,6 +489,18 @@
     <Reference Include="UnityEditor.iOS_I2Loc.Xcode">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/I2/Localization/Scripts/Editor/Unity XCode/UnityEditor.iOS_I2Loc.Xcode.dll</HintPath>
     </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.111.0">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.111.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver_v1.2.111.0">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.111.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl_v1.2.111.0">
+      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.111.0.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -503,18 +515,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.111.0">
-      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.111.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.111.0">
-      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.111.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver_v1.2.111.0">
-      <HintPath>G:/UNITY/PROJECTS/Attila/Attila/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.111.0.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

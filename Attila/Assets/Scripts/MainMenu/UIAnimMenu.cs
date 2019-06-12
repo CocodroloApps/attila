@@ -12,6 +12,7 @@ public class UIAnimMenu : MonoBehaviour
     public GAui m_Right_A;
     public GAui m_Right_B;
     public GAui m_Right_C;
+    public GAui m_Right_D;
     public GAui m_Bottom;
 
     void Awake()
@@ -63,6 +64,7 @@ public class UIAnimMenu : MonoBehaviour
         m_Right_A.PlayInAnims(eGUIMove.Self);
         m_Right_B.PlayInAnims(eGUIMove.Self);
         m_Right_C.PlayInAnims(eGUIMove.Self);
+        m_Right_D.PlayInAnims(eGUIMove.Self);
 
         // Enable all scene switch buttons
         StartCoroutine(EnableAllDemoButtons());

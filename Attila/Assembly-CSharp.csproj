@@ -673,6 +673,7 @@
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MoveAnims.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MoveAnims2.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Trade.cs" />
     <Compile Include="Assets\Scripts\MainMenu\UIAnimMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Stages\AudioStagesMenu.cs" />

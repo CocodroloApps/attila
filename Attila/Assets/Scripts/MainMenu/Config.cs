@@ -6,9 +6,39 @@ using UnityEngine.UI;
 public class Config : MonoBehaviour
 {
     public GameObject Completed;
+    public Image sound;
+    public Sprite soundSprite;
+    public Sprite noSoundSprite;
+
+    public void Start()
+    {
+        if (GlobalInfo.soundPlay == true)
+        {
+            sound.sprite = soundSprite;
+        } else
+        {
+            sound.sprite = noSoundSprite;
+        }      
+    }
+
+    public void ChangeSound()
+    {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
+        if (GlobalInfo.soundPlay == true)
+        {
+            GlobalInfo.soundPlay = false;
+            sound.sprite = noSoundSprite;
+        }
+        else
+        {
+            GlobalInfo.soundPlay = true;
+            sound.sprite = soundSprite;
+        }
+    }
 
     public void Reboot()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
         IntialConditions cond = new IntialConditions();
         loadedData.maxStagesGame = cond.maxStagesGame;
@@ -20,6 +50,7 @@ public class Config : MonoBehaviour
         loadedData.troops = cond.troops;
         loadedData.weapons = cond.weapons;
         loadedData.gold = cond.gold;
+        loadedData.showTutorial = true;        
         loadedData.sessionsCount = GlobalInfo.sessionsCount;
         DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
 
@@ -53,6 +84,7 @@ public class Config : MonoBehaviour
 
     public void Legal()
     {
+        GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         GameObject.Find("MenuManager").GetComponent<MainMenu>().HideConfigBox();
         GameObject.Find("MenuManager").GetComponent<MainMenu>().ShowLegalBox();
     }

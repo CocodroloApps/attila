@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     public Text battleButton1;
     public Text battleButton2;
 
+    public Text movesWater;
+    public Text movesFood;
+    public Text movesGold;
+
     private int troopsO;
     private int weaponsO;
     private int waterO;
@@ -136,7 +140,24 @@ public class GameManager : MonoBehaviour
         food.text = GlobalInfo.food.ToString("#,#");
         gold.text = GlobalInfo.gold.ToString("#,#");
         score.text = GlobalInfo.score.ToString("#,#");
+        CalculateMoves();
     }
+
+    public void CalculateMoves()
+    {
+        int troops = GlobalInfo.troops;
+        if (GlobalInfo.weapons < GlobalInfo.troops)
+        {
+            troops = GlobalInfo.weapons;
+        }
+
+        Debug.Log(troops / 3);
+        Debug.Log("Water:" + GlobalInfo.water);
+
+        movesWater.text = Mathf.RoundToInt(GlobalInfo.water / (troops /3)).ToString();
+        movesFood.text = Mathf.RoundToInt(GlobalInfo.food / (troops / 3)).ToString(); ;
+        movesGold.text = Mathf.RoundToInt(GlobalInfo.gold / (troops / 2)).ToString(); ;
+}
 
     public void SaveOriginals()
     {
@@ -557,6 +578,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Tutorials
     public void ShowTutorial1()
     {
         GlobalInfo.isShowingInfo = true;

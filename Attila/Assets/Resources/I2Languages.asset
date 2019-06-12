@@ -294,9 +294,9 @@ MonoBehaviour:
       - "Acompa\xF1a a Atila, rey de los Hunos en su campa\xF1a hacia la conquista
         de occidente. Supera cada etapa hasta llegar a la capital del imperio romano
         y conqu\xEDstalo. Pulsa sobre Atila para continuar."
-      - "Acompanya a \xC0tila, rei dels Huns a la seva campanya cap a la conquesta
-        d'occident. Supera cada etapa fins arribar a la capital de l'Imperi Rom\xE0
-        i conquereix-la. Prem sobre \xC0tila per continuar."
+      - "Acompanya \xC0tila, rei dels Huns a la seva campanya cap a la conquesta d'occident.
+        Supera cada etapa fins arribar a la capital de l'Imperi Rom\xE0 i conquereix-la.
+        Prem sobre \xC0tila per continuar."
       - "Acompanha \xC1tila, Rei dos Hunos, na sua campanha pela conquista do Ocidente.
         Supera cada uma das etapas at\xE9 conquistares a capital do Imp\xE9rio Romano.
         Clica em \xC1tila para \rcontinuar."
@@ -393,7 +393,7 @@ MonoBehaviour:
       - "Les villes, les villes, les arm\xE9es ennemies et les objectifs provoquent
         une lutte entre vos forces et la r\xE9sistance romaine. Cela peut entra\xEEner
         une modification des ressources de vos troupes."
-      - "Las ciudades, los pueblos, los ejercitos enemigos y los objetivos provocan
+      - "Las ciudades, los pueblos, los ej\xE9rcitos enemigos y los objetivos provocan
         una lucha entre tus fuerzas y la resistencia romana. Esto puede provocar una
         alteraci\xF3n de los recursos de tus tropas."
       - "Les ciutats, els pobles, els ex\xE8rcits enemics i els objectius provoquen
@@ -644,6 +644,30 @@ MonoBehaviour:
       - "El teu ex\xE8rcit s'ha quedat sense recursos per seguir."
       - "Seu ex\xE9rcito ficou sem recursos para continuar."
       - Il tuo esercito ha esaurito le risorse per continuare.
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Score
+      TermType: 0
+      Description: 
+      Languages:
+      - Scores
+      - Les scores
+      - Puntuaciones
+      - Puntuacions
+      - "Pontua\xE7\xF5es"
+      - I punteggi
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Trade
+      TermType: 0
+      Description: 
+      Languages:
+      - Trade
+      - Commerce
+      - Comercio
+      - "Comer\xE7"
+      - "Com\xE9rcio"
+      - Commercio
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

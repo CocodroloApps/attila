@@ -138,6 +138,7 @@ public class MovePlayer : MonoBehaviour
                     if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)
                     {
                         //Game Finish
+                        GameObject.Find("GameManager").GetComponent<AdManager>().StopAdBanner();
                         SceneManager.LoadScene("Winner");
                     }
                     else
@@ -166,7 +167,7 @@ public class MovePlayer : MonoBehaviour
 
         GlobalInfo.water = GlobalInfo.water - Mathf.RoundToInt(GlobalInfo.troops / 3);
         GlobalInfo.food = GlobalInfo.food - Mathf.RoundToInt(GlobalInfo.troops / 3);
-        GlobalInfo.gold = GlobalInfo.gold - Mathf.RoundToInt(GlobalInfo.gold / 2);
+        GlobalInfo.gold = GlobalInfo.gold - Mathf.RoundToInt(GlobalInfo.troops / 2);
 
         if (GlobalInfo.water <= 0 || GlobalInfo.food <= 0 || GlobalInfo.gold <= 0)
         {
