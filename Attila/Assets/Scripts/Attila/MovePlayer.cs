@@ -132,7 +132,7 @@ public class MovePlayer : MonoBehaviour
                     loadedData.water = GlobalInfo.water;
                     loadedData.food = GlobalInfo.food;
                     loadedData.gold = GlobalInfo.gold;
-                    loadedData.score = GlobalInfo.gold;
+                    loadedData.score = GlobalInfo.score;
                     DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
 
                     if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)

@@ -12,6 +12,8 @@ public class UIAnimAttila : MonoBehaviour
     public GAui ToStage;
     public GAui warPoints1;
     public GAui warPoints2;
+    public GAui war2Points1;
+    public GAui war2Points2;
     public GAui troops;
     public GAui weapons;
     public GAui water;
@@ -72,6 +74,13 @@ public class UIAnimAttila : MonoBehaviour
     {
         warPoints1.PlayInAnims(eGUIMove.Self);
         warPoints2.PlayInAnims(eGUIMove.Self);
+        StartCoroutine(ShowPoints());
+    }
+
+    public void ShowBattleLost2()
+    {
+        war2Points1.PlayInAnims(eGUIMove.Self);
+        war2Points2.PlayInAnims(eGUIMove.Self);
         StartCoroutine(ShowPoints());
     }
 

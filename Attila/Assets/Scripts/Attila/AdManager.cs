@@ -35,7 +35,7 @@ public class AdManager : MonoBehaviour
 
     IEnumerator Interstitial()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         Advertising.ShowInterstitialAd();
     }
 

@@ -47,9 +47,9 @@ public class IntialConditions
         score = 0;
         troops = 10000;
         weapons = 10000;
-        water = 50000;
-        food = 50000;                
-        gold = 200000;
+        water = 35000;
+        food = 35000;                
+        gold = 50000;
     }
 }
 

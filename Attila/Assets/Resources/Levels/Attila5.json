@@ -1,7 +1,7 @@
 {
     "version": 1,
     "numStage": 5,
-    "nameStage": "The first city",
+    "nameStage": "Viminacium",
     "fileName": "Attila5",
     "gridStage": [
         {
@@ -134,15 +134,15 @@
             "x": 1,
             "y": 1,
             "listPos": 9,
-            "type": 9,
+            "type": 10,
             "isFinal": false,
             "isObjective": false,
             "isStart": false,
-            "water": 50000,
-            "food": 10000,
-            "troops": 0,
-            "weapons": 0,
-            "gold": 5000
+            "water": 50,
+            "food": 500,
+            "troops": 20,
+            "weapons": 200,
+            "gold": 50000
         },
         {
             "x": 2,
@@ -263,7 +263,7 @@
             "type": 2,
             "isFinal": false,
             "isObjective": false,
-            "isStart": true,
+            "isStart": false,
             "water": 0,
             "food": 0,
             "troops": -100,
@@ -472,7 +472,7 @@
             "listPos": 33,
             "type": 6,
             "isFinal": false,
-            "isObjective": false,
+            "isObjective": true,
             "isStart": false,
             "water": 0,
             "food": 100,
@@ -641,7 +641,7 @@
             "type": 1,
             "isFinal": false,
             "isObjective": false,
-            "isStart": false,
+            "isStart": true,
             "water": 0,
             "food": 500,
             "troops": 100,

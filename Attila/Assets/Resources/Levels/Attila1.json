@@ -1,7 +1,7 @@
 {
     "version": 1,
     "numStage": 1,
-    "nameStage": "Tundra world",
+    "nameStage": "Aquincum",
     "fileName": "Attila1",
     "gridStage": [
         {
@@ -296,7 +296,7 @@
             "food": 5000,
             "troops": 500,
             "weapons": 5000,
-            "gold": 9000
+            "gold": 5000
         },
         {
             "x": 5,
@@ -643,10 +643,10 @@
             "isObjective": false,
             "isStart": false,
             "water": 5000,
-            "food": 9000,
-            "troops": 100,
+            "food": 7000,
+            "troops": 600,
             "weapons": 200,
-            "gold": 10000
+            "gold": 6000
         },
         {
             "x": 6,

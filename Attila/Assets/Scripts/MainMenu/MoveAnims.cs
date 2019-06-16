@@ -48,6 +48,10 @@ public class MoveAnims : MonoBehaviour
         {
             hunDirection = 0.3f;
         }
+        if (hit.gameObject.name == "HunLimitL2")
+        {
+            hunDirection = -0.3f;
+        }
         if (hit.gameObject.name == "Roman")
         {
             hunDirection = hunDirection * -1;

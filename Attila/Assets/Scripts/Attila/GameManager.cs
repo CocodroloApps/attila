@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject infoBox;
     public GameObject battleBox;
+    public GameObject battleDefeatBox;
     public GameObject tutorial1Box;
     public GameObject tutorial2Box;
     public GameObject tutorial3Box;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     public GameObject winBox;
     public GameObject waitBox;
     public GameObject resourcesBox;
+    public GameObject tradeBox;
 
     public Text hunsTroops;
     public Text romanTroops;
@@ -48,6 +50,14 @@ public class GameManager : MonoBehaviour
     public Text romanDice;
     public Text hunsLose;
     public Text romanLose;
+
+    public Text huns2Troops;
+    public Text roman2Troops;
+    public Text huns2Dice;
+    public Text roman2Dice;
+    public Text huns2Lose;
+    public Text roman2Lose;
+
     public Text battleResut1;
     public Text battleResut2;
     public Sprite hunsWinSprite;
@@ -69,7 +79,7 @@ public class GameManager : MonoBehaviour
     private int foodO;
     private int goldO;
     private int scoreO;
-    private bool needToRestart;
+    private bool battleDone;
     private string victory;
     private string defeat;
     private string exit;
@@ -89,7 +99,7 @@ public class GameManager : MonoBehaviour
         defeat = I2.Loc.LocalizationManager.GetTermTranslation("Defeat");
         exit = I2.Loc.LocalizationManager.GetTermTranslation("Exit");
         restart = I2.Loc.LocalizationManager.GetTermTranslation("Restart");
-        needToRestart = false;
+        battleDone = false;
         SetEnviroment();
         if (GlobalInfo.playFirstTime == true)
         {
@@ -113,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             ShowTutorial6();
         }
-        if (GlobalInfo.stagesCount % 2 == 0 && GlobalInfo.actualStage > 1)
+        if (GlobalInfo.stagesCount % 3 == 0 && GlobalInfo.actualStage > 1)
         {
             GameObject.Find("GameManager").GetComponent<AdManager>().ShowAdInterticial();
         }
@@ -154,9 +164,39 @@ public class GameManager : MonoBehaviour
         Debug.Log(troops / 3);
         Debug.Log("Water:" + GlobalInfo.water);
 
-        movesWater.text = Mathf.RoundToInt(GlobalInfo.water / (troops /3)).ToString();
-        movesFood.text = Mathf.RoundToInt(GlobalInfo.food / (troops / 3)).ToString(); ;
-        movesGold.text = Mathf.RoundToInt(GlobalInfo.gold / (troops / 2)).ToString(); ;
+        int w = Mathf.RoundToInt(GlobalInfo.water / (troops / 3));
+        int f = Mathf.RoundToInt(GlobalInfo.food / (troops / 3));
+        int g = Mathf.RoundToInt(GlobalInfo.gold / (troops / 2));
+
+        if (w < 5)
+        {
+            movesWater.color = new Color32(254, 41, 0, 255);
+        } else
+        {
+            movesWater.color = Color.white;
+        }
+
+        if (f < 5)
+        {
+            movesFood.color = new Color32(254, 41, 0, 255);
+        }
+        else
+        {
+            movesFood.color = Color.white;
+        }
+
+        if (g < 5)
+        {
+            movesGold.color = new Color32(254, 41, 0, 255);
+        }
+        else
+        {
+            movesGold.color = Color.white;
+        }
+
+        movesWater.text = w.ToString();
+        movesFood.text = f.ToString();
+        movesGold.text = g.ToString();
 }
 
     public void SaveOriginals()
@@ -344,7 +384,10 @@ public class GameManager : MonoBehaviour
             {                
             } else
             {
-                ShowBattleResult();
+                if (battleDone == false)
+                {
+                    ShowBattleResult();
+                }                
             }                
         }            
     }
@@ -369,76 +412,81 @@ public class GameManager : MonoBehaviour
             float nHunFactor;
             float nRomanFactor;
 
+            bool done = false;
             nRomanTroops = 0;
             nHunLoses = 0;
             nRomanLoses = 0;
             nHunTroops = GlobalInfo.troops;
             hunsTroops.text = nHunTroops.ToString("#,#");
+            huns2Troops.text = nHunTroops.ToString("#,#");
             // Objective
             if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 11) 
             {
                 nRomanTroops = 400 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
                 romanTroops.text = nRomanTroops.ToString("#,#");
+                roman2Troops.text = nRomanTroops.ToString("#,#");
+                done = true;
             }
             // Army
             if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 6)
             {
                 nRomanTroops = 2000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
                 romanTroops.text = nRomanTroops.ToString("#,#");
+                roman2Troops.text = nRomanTroops.ToString("#,#");
+                done = true;
             }
             // Town
             if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 4)
             {
                 nRomanTroops = 600 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
                 romanTroops.text = nRomanTroops.ToString("#,#");
+                roman2Troops.text = nRomanTroops.ToString("#,#");
+                done = true;
             }
             // City
             if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 5)
             {
                 nRomanTroops = 3000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
                 romanTroops.text = nRomanTroops.ToString("#,#");
+                roman2Troops.text = nRomanTroops.ToString("#,#");
+                done = true;
             }
+            if (done == false)
+            {
+                nRomanTroops = 200;
+                romanTroops.text = nRomanTroops.ToString("#,#");
+                roman2Troops.text = nRomanTroops.ToString("#,#");
+                done = true;
+            }
+
             //Dice
             nRomanDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
             nHunDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
             hunsDice.text = nHunDice.ToString();
             romanDice.text = nRomanDice.ToString();
+            huns2Dice.text = nHunDice.ToString();
+            roman2Dice.text = nRomanDice.ToString();
             nRomanBattle = nRomanTroops * nRomanDice;
             nHunBattle = nHunTroops * nHunDice;
-            Debug.Log(nHunBattle);
-            Debug.Log(nRomanBattle);
 
             //Huns wins
             if (nHunBattle > nRomanBattle)
-            {
-                battleResut1.text = victory;
-                battleResut2.text = victory;
-                battleButton1.text = exit;
-                battleButton2.text = exit;
-
+            {                                
                 //Huns loses some troops                
                 nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
-                nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
-                Debug.Log(nHunFactor);
-                Debug.Log(nRomanFactor);
+                nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);                
                 nHunBattle = nRomanFactor;
                 nHunLoses = Mathf.RoundToInt(nHunTroops * nHunBattle);
+                GlobalInfo.weapons = GlobalInfo.weapons - nHunLoses;
                 nHunTroops = nHunTroops - nHunLoses;
                 
                 //Roman loses all troops
                 nRomanLoses = nRomanTroops;
                 nRomanTroops = 0;
                 GlobalInfo.troops = nHunTroops;                
-                hunsSprite.sprite = hunsWinSprite;
-                romanSprite.sprite = romanLoseSprite;
                     
             } else //Romans wins
-            {
-                battleResut1.text = defeat;
-                battleResut2.text = defeat;
-                battleButton1.text = restart;
-                battleButton2.text = restart;
-
+            {                
                 nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
                 nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
                 nRomanBattle = nHunFactor;
@@ -446,17 +494,16 @@ public class GameManager : MonoBehaviour
                 nRomanTroops = nRomanTroops - nRomanLoses;
 
                 // Huns loses all troops
-                needToRestart = true;
                 nHunLoses = nHunTroops;
                 nHunTroops = 0;
                 GlobalInfo.troops = 0;
-                hunsSprite.sprite = hunsLoseSprite;
-                romanSprite.sprite = romanWinSprite;                
             }
 
             //Show
             hunsLose.text = "-" + nHunLoses.ToString("#,#");
             romanLose.text = "-" + nRomanLoses.ToString("#,#");
+            huns2Lose.text = "-" + nHunLoses.ToString("#,#");
+            roman2Lose.text = "-" + nRomanLoses.ToString("#,#");
             GameObject.Find("GameManager").GetComponent<AudioAttila>().BattleEffect();
             StartCoroutine(ShowBattlePoints(nHunTroops, nRomanTroops));
         }        
@@ -466,39 +513,63 @@ public class GameManager : MonoBehaviour
     {        
         waitBox.SetActive(true);
         GameObject.Find("Timer").GetComponent<Animator>().StopPlayback();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Fisnish");
         waitBox.SetActive(false);
-        battleBox.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        GameObject.Find("GameManager").GetComponent<UIAnimAttila>().ShowBattleLost();
-        yield return new WaitForSeconds(3f);
-        hunsTroops.text = huns.ToString("#,#");
-        romanTroops.text = romans.ToString("#,#");
-        if (huns == 0)
+
+        if (huns > romans)
         {
-            hunsTroops.text = "0";
-        } else
-        {
+            battleBox.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            GameObject.Find("GameManager").GetComponent<UIAnimAttila>().ShowBattleLost();
+            yield return new WaitForSeconds(3f);
+            hunsTroops.text = huns.ToString("#,#");
+            romanTroops.text = romans.ToString("#,#");
             romanTroops.text = "0";
         }
-        PaintInfo();
+        else
+        {
+            battleDefeatBox.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            GameObject.Find("GameManager").GetComponent<UIAnimAttila>().ShowBattleLost2();
+            yield return new WaitForSeconds(3f);
+            huns2Troops.text = huns.ToString("#,#");
+            roman2Troops.text = romans.ToString("#,#");
+            huns2Troops.text = "0";
+        }
+
+        PaintInfo();        
     }
 
     public void HideBattleResult()
     {
-        if (needToRestart)
+        battleBox.SetActive(false);
+        GlobalInfo.isShowingInfo = false;
+        battleDone = true;
+        if (GlobalInfo.levelCompleted == true)
         {
-            RestartLevel();
-        } else
-        {
-            battleBox.SetActive(false);
-            GlobalInfo.isShowingInfo = false;
-            if (GlobalInfo.levelCompleted == true)
-            {
-                ShowWinBox();
-            }
-        }        
+            ShowWinBox();
+        }
+    }
+
+    public void HideBattleDefeatResult()
+    {        
+        RestartLevel();        
+    }
+
+    public void ShowTradeBox()
+    {
+        GlobalInfo.isShowingInfo = true;
+        winBox.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<TradeGold>().UpdateGold();
+        tradeBox.SetActive(true);
+    }
+
+    public void HideTradedBox()
+    {
+        tradeBox.SetActive(false);
+        GlobalInfo.isShowingInfo = false;
+        GameObject.Find("Player").GetComponent<MovePlayer>().LoadNextLevel();
     }
 
     public void ShowBlockedBox()
@@ -545,6 +616,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject.Find("GameManager").GetComponent<AudioAttila>().MoveEffect();
         GameObject.Find("Player").GetComponent<MovePlayer>().Move(final);
+        battleDone = false;
     }
 
     private bool DestionationAvaliable(GameObject dest)

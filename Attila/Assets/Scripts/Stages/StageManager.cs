@@ -48,6 +48,11 @@ public class StageManager : MonoBehaviour
                     GameObject hun = GeneralUtils.FindObject(level, "Hun" + x.ToString());
                     hun.SetActive(true);
                 }
+                if (stageGroup * 10 + x < GlobalInfo.maxStageCompleted + 1)
+                {
+                    GameObject done = GeneralUtils.FindObject(level, "Done");
+                    done.SetActive(true);
+                }
             }
             if ( x > 1 && x <= GlobalInfo.maxStageCompleted + 1)
             {             

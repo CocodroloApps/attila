@@ -39,12 +39,14 @@ public class MoveAnims2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        Debug.Log("COLLISION");
-        Debug.Log(hit.gameObject.name);
         romanRb2d.velocity = new Vector2(0, 0);
         if (hit.gameObject.name == "RomanLimitR")
         {
             romanDirection = -0.3f;
+        }
+        if (hit.gameObject.name == "RomanLimitR2")
+        {
+            romanDirection = 0.3f;
         }
         if (hit.gameObject.name == "RomanLimitL")
         {

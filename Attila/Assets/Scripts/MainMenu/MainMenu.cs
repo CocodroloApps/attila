@@ -100,7 +100,6 @@ public class MainMenu : MonoBehaviour
     public void ShowTradeBox()
     {
         GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
-        GameObject.Find("MenuManager").GetComponent<AdManager>().ShowAdInterticial();
         GameObject.Find("MenuManager").GetComponent<Trade>().UpdateGems();
 
         tradeBox.SetActive(true);

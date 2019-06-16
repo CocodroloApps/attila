@@ -25,7 +25,7 @@ MonoBehaviour:
       - "Fran\xE7ais"
       - "Espa\xF1ol"
       - "Catal\xE0"
-      - Portugues
+      - "Portugu\xEAs"
       - Italiano
       Flags: 000000000000
       Languages_Touch: []
@@ -61,7 +61,7 @@ MonoBehaviour:
       - Jouer
       - Jugar
       - Jugar
-      - Toque
+      - Jogar
       - Giocare
       Flags: 000000000000
       Languages_Touch: []
@@ -169,7 +169,7 @@ MonoBehaviour:
       - "Red\xE9marrer Attila"
       - Reiniciar Atila
       - "Reiniciar \xC0tila"
-      - Reinicie o Atila
+      - Reinicar jogo
       - Riavvia Atila
       Flags: 000000000000
       Languages_Touch: []
@@ -570,7 +570,7 @@ MonoBehaviour:
       - "Vous \xEAtes bloqu\xE9!"
       - "\xA1Est\xE1s bloqueado!"
       - Esteu bloquejats!
-      - "Voc\xEA est\xE1 bloqueado!"
+      - "Est\xE1s bloqueado!"
       - Sei bloccato!
       Flags: 000000000000
       Languages_Touch: []
@@ -668,6 +668,54 @@ MonoBehaviour:
       - "Comer\xE7"
       - "Com\xE9rcio"
       - Commercio
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Automatic
+      TermType: 0
+      Description: 
+      Languages:
+      - Automatic
+      - Automatique
+      - "Autom\xE1tico"
+      - "Autom\xE0tic"
+      - "Autom\xE1tico"
+      - Automatico
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Charge
+      TermType: 0
+      Description: 
+      Languages:
+      - Charge
+      - Charge
+      - Cargar
+      - "C\xE0rrega"
+      - Carregar
+      - Carica
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Move2
+      TermType: 0
+      Description: 
+      Languages:
+      - Move
+      - Bouger
+      - Avanzar
+      - "Avan\xE7ar"
+      - "Avan\xE7ar"
+      - Mossa
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Hold
+      TermType: 0
+      Description: 
+      Languages:
+      - Hold
+      - Tenir
+      - Esperar
+      - Esperar
+      - Esperar
+      - Tenere
       Flags: 000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

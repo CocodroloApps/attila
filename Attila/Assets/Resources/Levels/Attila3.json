@@ -1,7 +1,7 @@
 {
     "version": 1,
     "numStage": 3,
-    "nameStage": "First conquest",
+    "nameStage": "Sirmium",
     "fileName": "Attila3",
     "gridStage": [
         {
@@ -386,15 +386,15 @@
             "x": 3,
             "y": 3,
             "listPos": 27,
-            "type": 4,
+            "type": 5,
             "isFinal": true,
             "isObjective": false,
             "isStart": true,
-            "water": 1000,
-            "food": 10000,
-            "troops": 50,
-            "weapons": 200,
-            "gold": 60000
+            "water": 50000,
+            "food": 50000,
+            "troops": 1600,
+            "weapons": 1000,
+            "gold": 50000
         },
         {
             "x": 4,

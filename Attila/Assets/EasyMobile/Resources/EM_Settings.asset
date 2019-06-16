@@ -23,7 +23,7 @@ MonoBehaviour:
     mAndroidDefaultAdNetworks:
       bannerAdNetwork: 2
       interstitialAdNetwork: 2
-      rewardedAdNetwork: 0
+      rewardedAdNetwork: 2
     mAdColony:
       mAppId:
         mIosId: 
@@ -55,13 +55,13 @@ MonoBehaviour:
         mAndroidId: ca-app-pub-1213879340387002~7769715283
       mDefaultBannerAdId:
         mIosId: 
-        mAndroidId: ca-app-pub-3940256099942544/6300978111
+        mAndroidId: ca-app-pub-1213879340387002/2758460555
       mDefaultInterstitialAdId:
         mIosId: 
         mAndroidId: ca-app-pub-3940256099942544/1033173712
       mDefaultRewardedAdId:
         mIosId: 
-        mAndroidId: 
+        mAndroidId: ca-app-pub-3940256099942544/5224354917
       mCustomBannerAdIds:
         keys: []
         values: []

@@ -650,6 +650,7 @@
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\Attila\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Attila\MovePlayer.cs" />
+    <Compile Include="Assets\Scripts\Attila\TradeGold.cs" />
     <Compile Include="Assets\Scripts\Attila\UIAnimAttila.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
     <Compile Include="Assets\Scripts\General\DataSaver.cs" />

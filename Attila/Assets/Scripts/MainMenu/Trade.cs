@@ -2,19 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EasyMobile;
 
 public class Trade : MonoBehaviour
 {
     public Text gems;
 
-    const int weapons = 500;
-    const int water = 150;
-    const int food = 150;
-    const int gold = 1000;
+    const int gold1 = 500;
+    const int gold2 = 700;
+    const int gold3 = 1000;
+
+    private void Start()
+    {
+        Advertising.LoadRewardedAd();
+    }
+
+    void OnEnable()
+    {
+        Advertising.RewardedAdCompleted += RewardedAdCompletedHandler;
+        Advertising.RewardedAdSkipped += RewardedAdSkippedHandler;
+    }
+
+    // Unsubscribe events
+    void OnDisable()
+    {
+        Advertising.RewardedAdCompleted -= RewardedAdCompletedHandler;
+        Advertising.RewardedAdSkipped -= RewardedAdSkippedHandler;
+    }
+
+    void RewardedAdCompletedHandler(RewardedAdNetwork network, AdPlacement location)
+    {
+        Debug.Log("Rewarded ad has completed. The user should be rewarded now.");
+
+        VideoReward();
+        SaveSell();        
+    }
+
+    // Event handler called when a rewarded ad has been skipped
+    void RewardedAdSkippedHandler(RewardedAdNetwork network, AdPlacement location)
+    {
+        Debug.Log("Rewarded ad was skipped. The user should NOT be rewarded.");
+    }
 
     public void UpdateGems()
-    {        
-        gems.text = GlobalInfo.score.ToString("#,#");
+    {
+        if (GlobalInfo.score == 0)
+        {
+            gems.text = "-";
+        }
+        else
+        {
+            gems.text = GlobalInfo.score.ToString("#,#");
+        }       
     }
 
     public void SaveSell()
@@ -23,55 +62,55 @@ public class Trade : MonoBehaviour
         GameObject.Find("MenuManager").GetComponent<MainMenu>().SetEnviroment();
         PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
         loadedData.score = GlobalInfo.score;
-        loadedData.weapons = GlobalInfo.weapons;
-        loadedData.water = GlobalInfo.water;
-        loadedData.food = GlobalInfo.food;
         loadedData.gold = GlobalInfo.gold;
         DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
     }
 
-    public void SellWeapons()
+    public void SellGems1()
     {
-        if (GlobalInfo.score >= weapons)
+        if (GlobalInfo.score >= gold1)
         {
-            GlobalInfo.weapons = GlobalInfo.weapons + 25000;
-            GlobalInfo.score = GlobalInfo.score - weapons;
+            GlobalInfo.gold = GlobalInfo.gold + 50000;
+            GlobalInfo.score = GlobalInfo.score - gold1;
         }
         SaveSell();
         UpdateGems();
     }
 
-    public void SellWater()
+    public void SellGems2()
     {
-        if (GlobalInfo.score >= water)
+        if (GlobalInfo.score >= gold2)
         {
-            GlobalInfo.water = GlobalInfo.water + 25000;
-            GlobalInfo.score = GlobalInfo.score - water;
+            GlobalInfo.gold = GlobalInfo.gold + 75000;
+            GlobalInfo.score = GlobalInfo.score - gold2;
         }
         SaveSell();
         UpdateGems();
     }
 
-    public void SellFood()
+    public void SellGems3()
     {
-        if (GlobalInfo.score >= food)
+        if (GlobalInfo.score >= gold3)
         {
-            GlobalInfo.food = GlobalInfo.food + 25000;
-            GlobalInfo.score = GlobalInfo.score - food;
+            GlobalInfo.gold = GlobalInfo.gold + 125000;
+            GlobalInfo.score = GlobalInfo.score - gold3;
         }
         SaveSell();
         UpdateGems();
     }
 
-    public void SellGold()
+    private void VideoReward()
     {
-        if (GlobalInfo.score >= gold)
-        {
-            GlobalInfo.gold = GlobalInfo.gold + 25000;
-            GlobalInfo.score = GlobalInfo.score - gold;
-        }
-        SaveSell();
-        UpdateGems();
+        GlobalInfo.gold = GlobalInfo.gold + 50000;                
     }
 
+    public void RewardVideo()
+    {
+        bool isReady = Advertising.IsRewardedAdReady();
+        if (isReady)
+        {
+            Advertising.ShowRewardedAd();
+        }
+        Advertising.LoadRewardedAd();      
+    }
 }
