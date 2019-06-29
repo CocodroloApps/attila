@@ -27665,6 +27665,7 @@ MonoBehaviour:
   waitBox: {fileID: 1318349055}
   resourcesBox: {fileID: 739297364}
   tradeBox: {fileID: 1981282391}
+  ordersBox: {fileID: 1816952522}
   hunsTroops: {fileID: 2119641190}
   romanTroops: {fileID: 90782607}
   hunsDice: {fileID: 1340429630}
