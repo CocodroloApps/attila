@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     private string defeat;
     private string exit;
     private string restart;
+    private int battleOrder;
 
     // Start is called before the first frame update
     void Start()
@@ -372,7 +373,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("InfoBox").GetComponent<InfoBox>().ShowMoveResult(GlobalInfo.playerPos - 1);
         }        
     }
-
+    
     public void HideMoveResult()
     {
         GlobalInfo.isShowingInfo = false;
@@ -387,13 +388,13 @@ public class GameManager : MonoBehaviour
             {
                 if (battleDone == false)
                 {
-                    ShowBattleResult();
+                    ShowBattleOrdersBox();
                 }                
             }                
         }            
     }
 
-    public void ShowBattleResult()
+    public void ShowBattleOrdersBox()
     {
         if (GlobalInfo.showTutorial4 == true)
         {
@@ -401,120 +402,163 @@ public class GameManager : MonoBehaviour
         } else
         {
             GlobalInfo.isShowingInfo = true;
-            //Battle result
-            int nRomanTroops;
-            int nHunTroops;
-            int nRomanDice;
-            int nHunDice;
-            int nHunLoses;
-            int nRomanLoses;
-            float nRomanBattle;
-            float nHunBattle;
-            float nHunFactor;
-            float nRomanFactor;
-
-            bool done = false;
-            nRomanTroops = 0;
-            nHunLoses = 0;
-            nRomanLoses = 0;
-            nHunTroops = GlobalInfo.troops;
-            hunsTroops.text = nHunTroops.ToString("#,#");
-            huns2Troops.text = nHunTroops.ToString("#,#");
-            // Objective
-            if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 11) 
-            {
-                nRomanTroops = 400 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
-                romanTroops.text = nRomanTroops.ToString("#,#");
-                roman2Troops.text = nRomanTroops.ToString("#,#");
-                done = true;
-            }
-            // Army
-            if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 6)
-            {
-                nRomanTroops = 2000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
-                romanTroops.text = nRomanTroops.ToString("#,#");
-                roman2Troops.text = nRomanTroops.ToString("#,#");
-                done = true;
-            }
-            // Town
-            if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 4)
-            {
-                nRomanTroops = 600 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
-                romanTroops.text = nRomanTroops.ToString("#,#");
-                roman2Troops.text = nRomanTroops.ToString("#,#");
-                done = true;
-            }
-            // City
-            if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 5)
-            {
-                nRomanTroops = 3000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
-                romanTroops.text = nRomanTroops.ToString("#,#");
-                roman2Troops.text = nRomanTroops.ToString("#,#");
-                done = true;
-            }
-            if (done == false)
-            {
-                nRomanTroops = 200;
-                romanTroops.text = nRomanTroops.ToString("#,#");
-                roman2Troops.text = nRomanTroops.ToString("#,#");
-                done = true;
-            }
-
-            //Dice
-            nRomanDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
-            nHunDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
-            hunsDice.text = nHunDice.ToString();
-            romanDice.text = nRomanDice.ToString();
-            huns2Dice.text = nHunDice.ToString();
-            roman2Dice.text = nRomanDice.ToString();
-            nRomanBattle = nRomanTroops * nRomanDice;
-            nHunBattle = nHunTroops * nHunDice;
-
-            //Huns wins
-            if (nHunBattle > nRomanBattle)
-            {                                
-                //Huns loses some troops                
-                nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
-                nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);                
-                nHunBattle = nRomanFactor;
-                nHunLoses = Mathf.RoundToInt(nHunTroops * nHunBattle);
-                GlobalInfo.weapons = GlobalInfo.weapons - nHunLoses;
-                nHunTroops = nHunTroops - nHunLoses;
-                
-                //Roman loses all troops
-                nRomanLoses = nRomanTroops;
-                nRomanTroops = 0;
-                GlobalInfo.troops = nHunTroops;                
-                    
-            } else //Romans wins
-            {                
-                nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
-                nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
-                nRomanBattle = nHunFactor;
-                nRomanLoses = Mathf.RoundToInt(nRomanTroops * nRomanBattle);
-                nRomanTroops = nRomanTroops - nRomanLoses;
-
-                // Huns loses all troops
-                nHunLoses = nHunTroops;
-                nHunTroops = 0;
-                GlobalInfo.troops = 0;
-            }
-
-            //Show
-            hunsLose.text = "-" + nHunLoses.ToString("#,#");
-            romanLose.text = "-" + nRomanLoses.ToString("#,#");
-            huns2Lose.text = "-" + nHunLoses.ToString("#,#");
-            roman2Lose.text = "-" + nRomanLoses.ToString("#,#");
-            GameObject.Find("GameManager").GetComponent<AudioAttila>().BattleEffect();
-            StartCoroutine(ShowBattlePoints(nHunTroops, nRomanTroops));
+            battleOrdersBox.SetActive(true);
         }        
+    }
+
+    public void OrderCharge()
+    {
+        battleOrder = 1;
+        battleOrdersBox.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        ShowBattleResult();
+        GlobalInfo.isShowingInfo = false;
+    }
+
+    public void OrderMove()
+    {
+        battleOrder = 2;
+        battleOrdersBox.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        ShowBattleResult();
+        GlobalInfo.isShowingInfo = false;
+    }
+
+    public void OrderHold()
+    {
+        battleOrder = 3;
+        battleOrdersBox.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        ShowBattleResult();
+        GlobalInfo.isShowingInfo = false;
+    }
+
+    public void HideBattleOrdersBox()
+    {
+        battleOrder = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 3f));
+        battleOrdersBox.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        ShowBattleResult();
+        GlobalInfo.isShowingInfo = false;
+    }
+
+    public void ShowBattleResult()
+    {
+        GlobalInfo.isShowingInfo = true;
+        //Battle result
+        int nRomanTroops;
+        int nHunTroops;
+        int nRomanDice;
+        int nHunDice;
+        int nHunLoses;
+        int nRomanLoses;
+        float nRomanBattle;
+        float nHunBattle;
+        float nHunFactor;
+        float nRomanFactor;
+
+        bool done = false;
+        nRomanTroops = 0;
+        nHunLoses = 0;
+        nRomanLoses = 0;
+        nHunTroops = GlobalInfo.troops;
+        hunsTroops.text = nHunTroops.ToString("#,#");
+        huns2Troops.text = nHunTroops.ToString("#,#");
+        // Objective
+        if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 11)
+        {
+            nRomanTroops = 400 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            romanTroops.text = nRomanTroops.ToString("#,#");
+            roman2Troops.text = nRomanTroops.ToString("#,#");
+            done = true;
+        }
+        // Army
+        if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 6)
+        {
+            nRomanTroops = 2000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            romanTroops.text = nRomanTroops.ToString("#,#");
+            roman2Troops.text = nRomanTroops.ToString("#,#");
+            done = true;
+        }
+        // Town
+        if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 4)
+        {
+            nRomanTroops = 600 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            romanTroops.text = nRomanTroops.ToString("#,#");
+            roman2Troops.text = nRomanTroops.ToString("#,#");
+            done = true;
+        }
+        // City
+        if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 5)
+        {
+            nRomanTroops = 3000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            romanTroops.text = nRomanTroops.ToString("#,#");
+            roman2Troops.text = nRomanTroops.ToString("#,#");
+            done = true;
+        }
+        if (done == false)
+        {
+            nRomanTroops = 200;
+            romanTroops.text = nRomanTroops.ToString("#,#");
+            roman2Troops.text = nRomanTroops.ToString("#,#");
+            done = true;
+        }
+
+        //Dice
+        nRomanDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
+        nHunDice = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 6f));
+        hunsDice.text = nHunDice.ToString();
+        romanDice.text = nRomanDice.ToString();
+        huns2Dice.text = nHunDice.ToString();
+        roman2Dice.text = nRomanDice.ToString();
+        nRomanBattle = nRomanTroops * nRomanDice;
+        nHunBattle = nHunTroops * nHunDice;
+
+        //Huns wins
+        if (nHunBattle > nRomanBattle)
+        {
+            //Huns loses some troops                
+            nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
+            nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
+            nHunBattle = nRomanFactor;
+            nHunLoses = Mathf.RoundToInt(nHunTroops * nHunBattle);
+            GlobalInfo.weapons = GlobalInfo.weapons - nHunLoses;
+            nHunTroops = nHunTroops - nHunLoses;
+
+            //Roman loses all troops
+            nRomanLoses = nRomanTroops;
+            nRomanTroops = 0;
+            GlobalInfo.troops = nHunTroops;
+
+        }
+        else //Romans wins
+        {
+            nHunFactor = nHunBattle / (nHunBattle + nRomanBattle);
+            nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
+            nRomanBattle = nHunFactor;
+            nRomanLoses = Mathf.RoundToInt(nRomanTroops * nRomanBattle);
+            nRomanTroops = nRomanTroops - nRomanLoses;
+
+            // Huns loses all troops
+            nHunLoses = nHunTroops;
+            nHunTroops = 0;
+            GlobalInfo.troops = 0;
+        }
+
+        //Show
+        hunsLose.text = "-" + nHunLoses.ToString("#,#");
+        romanLose.text = "-" + nRomanLoses.ToString("#,#");
+        huns2Lose.text = "-" + nHunLoses.ToString("#,#");
+        roman2Lose.text = "-" + nRomanLoses.ToString("#,#");
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().BattleEffect();
+        StartCoroutine(ShowBattlePoints(nHunTroops, nRomanTroops));
     }
 
     IEnumerator ShowBattlePoints(int huns, int romans)
     {        
         waitBox.SetActive(true);
         GameObject.Find("Timer").GetComponent<Animator>().StopPlayback();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.55f);
         GameObject.Find("Timer").GetComponent<Animator>().SetTrigger("Fisnish");
         waitBox.SetActive(false);
 
@@ -705,7 +749,7 @@ public class GameManager : MonoBehaviour
         GlobalInfo.showTutorial5 = false;
         GlobalInfo.isShowingInfo = true;
         GlobalInfo.isShowingInfo = false;
-        ShowBattleResult();
+        ShowBattleOrdersBox();
     }
 
     public void ShowTutorial5()
