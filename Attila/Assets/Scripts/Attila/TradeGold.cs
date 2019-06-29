@@ -7,6 +7,11 @@ public class TradeGold : MonoBehaviour
 {
     public Text gold;
 
+    public Text troops;
+    public Text weapons;
+    public Text water;
+    public Text food;
+
     const int gold1 = 4000;
     const int gold2 = 2000;
     const int gold3 = 1000;
@@ -21,6 +26,58 @@ public class TradeGold : MonoBehaviour
         else
         {
             gold.text = GlobalInfo.gold.ToString("#,#");
+        }
+        UpdateTroops();
+        UpdateWeapons();
+        UpdateWater();
+        UpdateFood();
+    }
+
+    private void UpdateTroops()
+    {
+        if (GlobalInfo.troops == 0)
+        {
+            troops.text = "0";
+        }
+        else
+        {
+            troops.text = GlobalInfo.troops.ToString("#,#");
+        }
+    }
+
+    private void UpdateWeapons()
+    {
+        if (GlobalInfo.weapons == 0)
+        {
+            weapons.text = "0";
+        }
+        else
+        {
+            weapons.text = GlobalInfo.weapons.ToString("#,#");
+        }
+    }
+
+    private void UpdateWater()
+    {
+        if (GlobalInfo.water == 0)
+        {
+            water.text = "0";
+        }
+        else
+        {
+            water.text = GlobalInfo.water.ToString("#,#");
+        }
+    }
+
+    private void UpdateFood()
+    {
+        if (GlobalInfo.food == 0)
+        {
+            food.text = "0";
+        }
+        else
+        {
+            food.text = GlobalInfo.food.ToString("#,#");
         }
     }
 
@@ -43,7 +100,7 @@ public class TradeGold : MonoBehaviour
         {
             GlobalInfo.troops = GlobalInfo.troops + 1000;
             GlobalInfo.gold = GlobalInfo.gold - gold1;
-        }
+        }        
         SaveSell();
         UpdateGold();
     }
@@ -65,7 +122,7 @@ public class TradeGold : MonoBehaviour
         {
             GlobalInfo.water = GlobalInfo.water + 1000;
             GlobalInfo.gold = GlobalInfo.gold - gold3;
-        }
+        }        
         SaveSell();
         UpdateGold();
     }

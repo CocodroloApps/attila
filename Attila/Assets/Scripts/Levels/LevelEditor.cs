@@ -273,7 +273,7 @@ public class LevelEditor : MonoBehaviour
         editorStage.numStage = int.Parse(num);
         GlobalInfo.editingCell = -1;
         GameObject.Find("Grid").GetComponent<Grid>().Clean();
-        Invoke("UpdateGrid", 1.0f);        
+        Invoke("UpdateGrid", 1.2f);        
         GameObject.Find("StageNumText").GetComponent<Text>().text = editorStage.numStage.ToString();
     }
 

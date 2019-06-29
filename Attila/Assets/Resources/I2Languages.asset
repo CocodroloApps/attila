@@ -718,6 +718,37 @@ MonoBehaviour:
       - Tenere
       Flags: 000000000000
       Languages_Touch: []
+    - Term: Attila8
+      TermType: 0
+      Description: 
+      Languages:
+      - If you don't have enough resources, your army won't be able to continue. Move
+        to boxes that give you the resources you need.
+      - "Si vous n'avez pas assez de ressources, votre arm\xE9e ne pourra pas continuer.
+        D\xE9placez-vous dans des bo\xEEtes qui vous donnent les ressources dont vous
+        avez besoin."
+      - "Si no tienes suficientes recursos tu ej\xE9rcito no podr\xE1 continuar. Mu\xE9vete
+        a casillas que te ofrezcan los recursos que necesitas."
+      - "Si no teniu prou recursos, el vostre ex\xE8rcit no podr\xE0 continuar. Aneu
+        a les caselles que us donen els recursos que necessiteu."
+      - "Se n\xE3o tiveres recursos suficientes, o teu ex\xE9rcito n\xE3o poder\xE1
+        continuar. V\xE1 para as caixas que lhe d\xE3o os recursos que voc\xEA precisa."
+      - "Se non hai abbastanza risorse, il tuo esercito non sar\xE0 in grado di continuare.
+        Passa a caselle che ti offrono le risorse di cui hai bisogno."
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Close
+      TermType: 0
+      Description: 
+      Languages:
+      - CLOSE
+      - FERMER
+      - CERRAR
+      - TANCAR
+      - PERTO
+      - VICINA
+      Flags: 000000000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

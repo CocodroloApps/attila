@@ -15,16 +15,21 @@ public class InfoBox : MonoBehaviour
     public void ShowMoveResult(int cellNum)
     {
         string sign = "";
-        if (GlobalInfo.gridStage[cellNum].troops >= 0) { sign = "+ "; } else { sign = "- "; }
-        troops.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].troops).ToString();
-        if (GlobalInfo.gridStage[cellNum].weapons >= 0) { sign = "+ "; } else { sign = "- "; }
-        weapons.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].weapons).ToString();
-        if (GlobalInfo.gridStage[cellNum].water >= 0) { sign = "+ "; } else { sign = "- "; }
-        water.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].water).ToString();
-        if (GlobalInfo.gridStage[cellNum].food >= 0) { sign = "+ "; } else { sign = "- "; }
-        food.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].food).ToString();
-        if (GlobalInfo.gridStage[cellNum].gold >= 0) { sign = "+ "; } else { sign = "- "; }
-        gold.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].gold).ToString();
+        if (GlobalInfo.gridStage[cellNum].troops > 0) { sign = "+ "; } else { sign = "- "; }
+        if (GlobalInfo.gridStage[cellNum].troops == 0) { sign = "0"; }
+        troops.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].troops).ToString("#,#");
+        if (GlobalInfo.gridStage[cellNum].weapons > 0) { sign = "+ "; } else { sign = "- "; }
+        if (GlobalInfo.gridStage[cellNum].weapons == 0) { sign = "0"; }
+        weapons.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].weapons).ToString("#,#");
+        if (GlobalInfo.gridStage[cellNum].water > 0) { sign = "+ "; } else { sign = "- "; }
+        if (GlobalInfo.gridStage[cellNum].water == 0) { sign = "0"; }
+        water.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].water).ToString("#,#");
+        if (GlobalInfo.gridStage[cellNum].food > 0) { sign = "+ "; } else { sign = "- "; }
+        if (GlobalInfo.gridStage[cellNum].food == 0) { sign = "0"; }
+        food.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].food).ToString("#,#");
+        if (GlobalInfo.gridStage[cellNum].gold > 0) { sign = "+ "; } else { sign = "- "; }
+        if (GlobalInfo.gridStage[cellNum].gold == 0) { sign = "0"; }
+        gold.text = sign + Mathf.Abs(GlobalInfo.gridStage[cellNum].gold).ToString("#,#");
         gems.text = "+ 10";
         if (GlobalInfo.gridStage[cellNum].isObjective == true) 
         {
@@ -32,7 +37,8 @@ public class InfoBox : MonoBehaviour
         }
         if (GlobalInfo.gridStage[cellNum].isFinal == true)
         {
-            gems.text = "+ 1000";
+            int iAux = 1000;
+            gems.text = "+" + iAux.ToString("#,#");
         }
     }
 }

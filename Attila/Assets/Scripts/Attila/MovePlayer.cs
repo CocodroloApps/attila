@@ -187,9 +187,15 @@ public class MovePlayer : MonoBehaviour
     public void Objective()
     {
         GlobalInfo.score = GlobalInfo.score + 100;
-        GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
-        GlobalInfo.objectivesNum--;        
-        GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
+        bool result = GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+        if (result == false)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowResourcesBox();
+        } else
+        {
+            GlobalInfo.objectivesNum--;
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
+        }        
     }
 
     public void Final()
@@ -197,16 +203,28 @@ public class MovePlayer : MonoBehaviour
         GlobalInfo.score = GlobalInfo.score + 1000;
         if (GlobalInfo.objectivesNum == 0)
         {
-            GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
-            GlobalInfo.finalNum--;
-            GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
+            bool result = GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+            if (result == false)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManager>().ShowResourcesBox();
+            } else
+            {
+                GlobalInfo.finalNum--;
+                GameObject.Find("GameManager").GetComponent<GameManager>().ShowMoveResult();
+            }            
         }        
     }
 
     public void Normal()
     {
-        GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
-        GlobalInfo.score = GlobalInfo.score + 10;
+        bool result = GameObject.Find(destination).GetComponent<GameCell>().UpdateValues();
+        if (result == false)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().ShowResourcesBox();
+        } else
+        {
+            GlobalInfo.score = GlobalInfo.score + 10;
+        }        
     }
 
     IEnumerator NextLevel()

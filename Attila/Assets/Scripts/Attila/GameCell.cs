@@ -136,12 +136,19 @@ public class GameCell : MonoBehaviour
         }
     }
 
-    public void UpdateValues()
+    public bool UpdateValues()
     {
+        bool bAux = true;
         GlobalInfo.troops = GlobalInfo.troops + GlobalInfo.gridStage[num-1].troops;
         GlobalInfo.weapons = GlobalInfo.weapons + GlobalInfo.gridStage[num - 1].weapons;
         GlobalInfo.water = GlobalInfo.water + GlobalInfo.gridStage[num - 1].water;
         GlobalInfo.food = GlobalInfo.food + GlobalInfo.gridStage[num - 1].food;
         GlobalInfo.gold = GlobalInfo.gold + GlobalInfo.gridStage[num - 1].gold;
+
+        if (GlobalInfo.troops <= 0 || GlobalInfo.weapons <= 0 || GlobalInfo.water <= 0 || GlobalInfo.food <= 0 || GlobalInfo.gold <= 0)
+        {
+            bAux =  false;
+        }
+        return bAux;
     }
 }

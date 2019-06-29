@@ -81,7 +81,7 @@ public class UIAnimAttila : MonoBehaviour
     {
         war2Points1.PlayInAnims(eGUIMove.Self);
         war2Points2.PlayInAnims(eGUIMove.Self);
-        StartCoroutine(ShowPoints());
+        StartCoroutine(ShowPoints2());
     }
 
     IEnumerator ShowPoints()
@@ -89,6 +89,13 @@ public class UIAnimAttila : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         warPoints1.PlayOutAnims();
         warPoints2.PlayOutAnims();
+    }
+
+    IEnumerator ShowPoints2()
+    {
+        yield return new WaitForSeconds(0.4f);
+        war2Points1.PlayOutAnims();
+        war2Points2.PlayOutAnims();
     }
 
     public void ShowArmyEffect()

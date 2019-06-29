@@ -318,7 +318,7 @@ e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 41d303d4e8c2190105c0d3bd29b481bb Assembly-CSharp.dll:GUIAnimatorDemo.Demo05
 024180aa81add2338c40d15e3c595d28 Assembly-CSharp.dll:.ZoomInZoomOut
 37159ef932afdc72b08ff1bf8ac5c8a8 Assembly-CSharp.dll:.GameCell
-2de7e3fc385351eb6c89e46e67177fc3 Assembly-CSharp.dll:.GameManager
+8705d90790bd5db07988d5b83094a740 Assembly-CSharp.dll:.GameManager
 62d24dc9808a278c045157f0f1d572e5 Assembly-CSharp.dll:EasyMobile.Demo.ColorHandler
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
@@ -359,7 +359,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 f7a53b41932d6f517873a52a30a20e04 Assembly-CSharp.dll:.ColoredObject
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:GUIAnimatorDemo.OpenOtherScene
 756f29eb5b04ee30504fb266fec153e8 Assembly-CSharp.dll:Anonym.Isometric.IsometricNavMeshAgent
-adfd4c6284e20a637c9341c9656db91a Assembly-CSharp.dll:.TradeGold
+6cd3d8b4a8da88b75f2fd9997860c316 Assembly-CSharp.dll:.TradeGold
 6af076f23c7b289709d5d66357da7c66 Assembly-CSharp.dll:GUIAnimatorDemo.GA_UUI_SceneController
 80720cfd7e9927448366b2a3215d9008 Assembly-CSharp.dll:.MovePlayer
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:EasyMobile.Notifications

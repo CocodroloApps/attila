@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject tutorial4Box;
     public GameObject tutorial5Box;
     public GameObject tutorial6Box;
+    public GameObject tutorial7Box;
     public GameObject blockedBox;
     public GameObject winBox;
     public GameObject waitBox;
@@ -162,44 +163,56 @@ public class GameManager : MonoBehaviour
         {
             troops = GlobalInfo.weapons;
         }
-
-        Debug.Log(troops / 3);
-        Debug.Log("Water:" + GlobalInfo.water);
-
-        int w = Mathf.RoundToInt(GlobalInfo.water / (troops / 3));
-        int f = Mathf.RoundToInt(GlobalInfo.food / (troops / 3));
-        int g = Mathf.RoundToInt(GlobalInfo.gold / (troops / 2));
-
-        if (w < 5)
+        
+        if (troops >0 )
         {
-            movesWater.color = new Color32(254, 41, 0, 255);
-        } else
-        {
-            movesWater.color = Color.white;
+            int w = Mathf.RoundToInt(GlobalInfo.water / (troops / 3));
+            int f = Mathf.RoundToInt(GlobalInfo.food / (troops / 3));
+            int g = Mathf.RoundToInt(GlobalInfo.gold / (troops / 2));
+
+            if (w < 5)
+            {
+                movesWater.color = new Color32(254, 41, 0, 255);
+                if (GlobalInfo.showTutorial8 == true)
+                {
+                    ShowTutorial7();
+                }
+            }
+            else
+            {
+                movesWater.color = Color.white;
+            }
+
+            if (f < 5)
+            {
+                movesFood.color = new Color32(254, 41, 0, 255);
+                if (GlobalInfo.showTutorial8 == true)
+                {
+                    ShowTutorial7();
+                }
+            }
+            else
+            {
+                movesFood.color = Color.white;
+            }
+
+            if (g < 5)
+            {
+                movesGold.color = new Color32(254, 41, 0, 255);
+                if (GlobalInfo.showTutorial8 == true)
+                {
+                    ShowTutorial7();
+                }
+            }
+            else
+            {
+                movesGold.color = Color.white;
+            }
+            movesWater.text = w.ToString();
+            movesFood.text = f.ToString();
+            movesGold.text = g.ToString();
         }
-
-        if (f < 5)
-        {
-            movesFood.color = new Color32(254, 41, 0, 255);
-        }
-        else
-        {
-            movesFood.color = Color.white;
-        }
-
-        if (g < 5)
-        {
-            movesGold.color = new Color32(254, 41, 0, 255);
-        }
-        else
-        {
-            movesGold.color = Color.white;
-        }
-
-        movesWater.text = w.ToString();
-        movesFood.text = f.ToString();
-        movesGold.text = g.ToString();
-}
+    }
 
     public void SaveOriginals()
     {
@@ -533,7 +546,7 @@ public class GameManager : MonoBehaviour
         }
         if (done == false)
         {
-            nRomanTroops = 200;
+            nRomanTroops = 300;
             romanTroops.text = nRomanTroops.ToString("#,#");
             roman2Troops.text = nRomanTroops.ToString("#,#");
             done = true;
@@ -557,7 +570,9 @@ public class GameManager : MonoBehaviour
             nRomanFactor = nRomanBattle / (nHunBattle + nRomanBattle);
             nHunBattle = nRomanFactor;
             nHunLoses = Mathf.RoundToInt(nHunTroops * nHunBattle);
-            GlobalInfo.weapons = GlobalInfo.weapons - nHunLoses;
+            GlobalInfo.weapons = GlobalInfo.weapons - (nHunLoses + Mathf.RoundToInt(0.5f * nHunLoses));
+            GlobalInfo.water = GlobalInfo.water - nHunLoses;
+            GlobalInfo.food = GlobalInfo.food - nHunLoses;            
             nHunTroops = nHunTroops - nHunLoses;
 
             //Roman loses all troops
@@ -821,6 +836,20 @@ public class GameManager : MonoBehaviour
         GlobalInfo.showTutorial7 = false;        
         GlobalInfo.isShowingInfo = false;
         FinishTutorials();
+    }
+
+    public void ShowTutorial7()
+    {
+        GlobalInfo.isShowingInfo = true;
+        tutorial7Box.SetActive(true);
+    }
+
+    public void HideTutorial7()
+    {
+        tutorial7Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        GlobalInfo.showTutorial8 = false;
+        GlobalInfo.isShowingInfo = false;
     }
 
     public void FinishTutorials()

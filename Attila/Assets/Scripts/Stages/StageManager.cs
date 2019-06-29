@@ -82,6 +82,7 @@ public class StageManager : MonoBehaviour
 
                 GlobalInfo.showTutorial6 = true;
                 GlobalInfo.showTutorial7 = true;
+                GlobalInfo.showTutorial8 = true;
             }
             if (GlobalInfo.actualStage == 2)
             {
@@ -89,9 +90,21 @@ public class StageManager : MonoBehaviour
                 GlobalInfo.showTutorial3 = false;
                 GlobalInfo.showTutorial4 = false;
                 GlobalInfo.showTutorial5 = false;
-
+                
                 GlobalInfo.showTutorial6 = true;
                 GlobalInfo.showTutorial7 = true;
+                GlobalInfo.showTutorial8 = true;
+            }
+            if (GlobalInfo.actualStage == 3)
+            {
+                GlobalInfo.showTutorial2 = false;
+                GlobalInfo.showTutorial3 = false;
+                GlobalInfo.showTutorial4 = false;
+                GlobalInfo.showTutorial5 = false;
+                GlobalInfo.showTutorial6 = false;
+
+                GlobalInfo.showTutorial7 = true;
+                GlobalInfo.showTutorial8 = true;
             }
         } else
         {
@@ -101,6 +114,7 @@ public class StageManager : MonoBehaviour
             GlobalInfo.showTutorial5 = false;
             GlobalInfo.showTutorial6 = false;
             GlobalInfo.showTutorial7 = false;
+            GlobalInfo.showTutorial8 = false;
         }
         StartCoroutine(ToGame());
     }

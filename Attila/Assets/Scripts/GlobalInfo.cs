@@ -37,6 +37,7 @@ public class GlobalInfo : MonoBehaviour
     public static bool showTutorial5;
     public static bool showTutorial6;
     public static bool showTutorial7;
+    public static bool showTutorial8;
 
     //Actual stage
     public static int actualStage;      //Etapa que estamos jugando actualmente
