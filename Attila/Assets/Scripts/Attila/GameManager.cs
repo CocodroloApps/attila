@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject infoBox;
     public GameObject battleBox;
     public GameObject battleDefeatBox;
+    public GameObject battleOrdersBox;
     public GameObject tutorial1Box;
     public GameObject tutorial2Box;
     public GameObject tutorial3Box;
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject winBox;
     public GameObject waitBox;
     public GameObject resourcesBox;
-    public GameObject tradeBox;
+    public GameObject tradeBox;    
 
     public Text hunsTroops;
     public Text romanTroops;

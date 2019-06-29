@@ -27654,6 +27654,7 @@ MonoBehaviour:
   infoBox: {fileID: 398079008}
   battleBox: {fileID: 558985197}
   battleDefeatBox: {fileID: 1384831374}
+  battleOrdersBox: {fileID: 1816952522}
   tutorial1Box: {fileID: 169848637}
   tutorial2Box: {fileID: 1058980584}
   tutorial3Box: {fileID: 1703682251}
