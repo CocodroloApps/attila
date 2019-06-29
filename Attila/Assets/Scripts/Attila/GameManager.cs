@@ -461,13 +461,48 @@ public class GameManager : MonoBehaviour
         nRomanTroops = 0;
         nHunLoses = 0;
         nRomanLoses = 0;
+
+        int battleOrder2 = Mathf.RoundToInt(UnityEngine.Random.Range(1f, 3f));
+
         nHunTroops = GlobalInfo.troops;
         hunsTroops.text = nHunTroops.ToString("#,#");
         huns2Troops.text = nHunTroops.ToString("#,#");
+
+        // Orders
+        float orderResult = 1f;
+        if (battleOrder == battleOrder2)
+        {
+            orderResult = 1f;
+        }
+        if (battleOrder == 1 && battleOrder2 == 2)
+        {
+            orderResult = 0.5f;
+        }
+        if (battleOrder == 1 && battleOrder2 == 3)
+        {
+            orderResult = 3f;
+        }
+        if (battleOrder == 2 && battleOrder2 == 1)
+        {
+            orderResult = 0.5f;
+        }
+        if (battleOrder == 2 && battleOrder2 == 3)
+        {
+            orderResult = 2f;
+        }
+        if (battleOrder == 3 && battleOrder2 == 1)
+        {
+            orderResult = 0.5f;
+        }
+        if (battleOrder == 3 && battleOrder2 == 2)
+        {
+            orderResult = 2f;
+        }
+
         // Objective
         if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 11)
         {
-            nRomanTroops = 400 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            nRomanTroops = Mathf.RoundToInt(400 * orderResult) + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
             romanTroops.text = nRomanTroops.ToString("#,#");
             roman2Troops.text = nRomanTroops.ToString("#,#");
             done = true;
@@ -475,7 +510,7 @@ public class GameManager : MonoBehaviour
         // Army
         if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 6)
         {
-            nRomanTroops = 2000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            nRomanTroops = Mathf.RoundToInt(2000 * orderResult) + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
             romanTroops.text = nRomanTroops.ToString("#,#");
             roman2Troops.text = nRomanTroops.ToString("#,#");
             done = true;
@@ -483,7 +518,7 @@ public class GameManager : MonoBehaviour
         // Town
         if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 4)
         {
-            nRomanTroops = 600 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            nRomanTroops = Mathf.RoundToInt(600 * orderResult) + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
             romanTroops.text = nRomanTroops.ToString("#,#");
             roman2Troops.text = nRomanTroops.ToString("#,#");
             done = true;
@@ -491,7 +526,7 @@ public class GameManager : MonoBehaviour
         // City
         if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type == 5)
         {
-            nRomanTroops = 3000 + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
+            nRomanTroops = Mathf.RoundToInt(4000 * orderResult) + GlobalInfo.gridStage[GlobalInfo.playerPos - 1].troops;
             romanTroops.text = nRomanTroops.ToString("#,#");
             roman2Troops.text = nRomanTroops.ToString("#,#");
             done = true;
@@ -594,6 +629,9 @@ public class GameManager : MonoBehaviour
         if (GlobalInfo.levelCompleted == true)
         {
             ShowWinBox();
+        } else
+        {
+            GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         }
     }
 
@@ -707,6 +745,7 @@ public class GameManager : MonoBehaviour
         tutorial1Box.SetActive(false);
         GlobalInfo.showTutorial2 = false;
         GlobalInfo.isShowingInfo = false;
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         ShowTutorial2();
     }
 
@@ -719,6 +758,7 @@ public class GameManager : MonoBehaviour
     public void HideTutorial2()
     {
         tutorial2Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         GlobalInfo.showTutorial3 = false;
         GlobalInfo.isShowingInfo = false;
     }
@@ -732,6 +772,7 @@ public class GameManager : MonoBehaviour
     public void HideTutorial3()
     {
         tutorial3Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         GlobalInfo.showTutorial4 = false;
         GlobalInfo.isShowingInfo = false;
         ShowTutorial4();
@@ -746,6 +787,7 @@ public class GameManager : MonoBehaviour
     public void HideTutorial4()
     {
         tutorial4Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         GlobalInfo.showTutorial5 = false;
         GlobalInfo.isShowingInfo = true;
         GlobalInfo.isShowingInfo = false;
@@ -761,6 +803,7 @@ public class GameManager : MonoBehaviour
     public void HideTutorial5()
     {
         tutorial5Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         GlobalInfo.showTutorial6 = false;
         GlobalInfo.isShowingInfo = false;        
     }
@@ -774,6 +817,7 @@ public class GameManager : MonoBehaviour
     public void HideTutorial6()
     {
         tutorial6Box.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
         GlobalInfo.showTutorial7 = false;        
         GlobalInfo.isShowingInfo = false;
         FinishTutorials();

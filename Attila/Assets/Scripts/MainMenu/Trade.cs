@@ -101,7 +101,7 @@ public class Trade : MonoBehaviour
 
     private void VideoReward()
     {
-        GlobalInfo.gold = GlobalInfo.gold + 50000;                
+        GlobalInfo.gold = GlobalInfo.gold + 25000;                
     }
 
     public void RewardVideo()
