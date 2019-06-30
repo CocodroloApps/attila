@@ -11,6 +11,7 @@ public class GlobalInfo : MonoBehaviour
     public static int stagesCount;      //Numero de Etapas jugadas
     public static string language;      //Lenguaje
     public static bool soundPlay = true;
+    public static int levelsVersion;
 
     //Game
     public static int maxStageCompleted;//Máxima etapa conseguida   
@@ -27,6 +28,8 @@ public class GlobalInfo : MonoBehaviour
     public static bool isEventAvaliable;
     public static bool isShowingInfo;
     public static bool levelCompleted;
+    public static int spyMoves;
+    public static bool spyMode;
 
     //Tutorials
     public static bool showTutorial;

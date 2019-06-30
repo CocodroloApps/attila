@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Text gold;
     public Text stageName;
     public Text score;
+    public Text spyMoves;
 
     public Sprite tundra;
     public Sprite desert;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
     private int foodO;
     private int goldO;
     private int scoreO;
+    private int spyMovesO;
     private bool battleDone;
     private string victory;
     private string defeat;
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         GlobalInfo.isPlaying = false;
         GlobalInfo.isShowingInfo = false;
         GlobalInfo.levelCompleted = false;
+        GlobalInfo.spyMode = false;
         GlobalInfo.stagesCount++;
         victory = I2.Loc.LocalizationManager.GetTermTranslation("Victory!");
         defeat = I2.Loc.LocalizationManager.GetTermTranslation("Defeat");
@@ -152,7 +155,21 @@ public class GameManager : MonoBehaviour
         water.text = GlobalInfo.water.ToString("#,#");
         food.text = GlobalInfo.food.ToString("#,#");
         gold.text = GlobalInfo.gold.ToString("#,#");
-        score.text = GlobalInfo.score.ToString("#,#");
+
+        if (GlobalInfo.score == 0)
+        {
+            score.text = "-";
+        } else
+        {
+            score.text = GlobalInfo.score.ToString("#,#");
+        }
+        if (GlobalInfo.spyMoves == 0)
+        {
+            spyMoves.text = "-";
+        } else
+        {
+            spyMoves.text = GlobalInfo.spyMoves.ToString("#,#");
+        }        
         CalculateMoves();
     }
 
@@ -223,6 +240,7 @@ public class GameManager : MonoBehaviour
         foodO = GlobalInfo.food;
         goldO = GlobalInfo.gold;
         scoreO = GlobalInfo.score;
+        spyMovesO = GlobalInfo.spyMoves;
     }
 
     public void RestoreOriginals()
@@ -234,6 +252,7 @@ public class GameManager : MonoBehaviour
         GlobalInfo.food = foodO;
         GlobalInfo.gold = goldO;
         GlobalInfo.score = scoreO;
+        GlobalInfo.spyMoves = spyMovesO;
     } 
 
     private void StartPlay()
@@ -381,30 +400,43 @@ public class GameManager : MonoBehaviour
     {
         if (GlobalInfo.isPlayerMoving == false && GlobalInfo.isEventAvaliable == true)
         {
+            GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
             GlobalInfo.isShowingInfo = true;
             infoBox.SetActive(true);
+            Debug.Log("Player pos: " + (GlobalInfo.playerPos).ToString());
+            GameObject.Find("InfoBox").GetComponent<InfoBox>().ChangeSprite(horse);
             GameObject.Find("InfoBox").GetComponent<InfoBox>().ShowMoveResult(GlobalInfo.playerPos - 1);
         }        
     }
     
     public void HideMoveResult()
     {
-        GlobalInfo.isShowingInfo = false;
-        infoBox.SetActive(false);
-        int nType = GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type;
-        // Is Town OR City OR Army
-        if (nType == 4 || nType == 5 || nType == 6 || nType == 11 || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal == true || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isObjective == true)
+        GameObject.Find("GameManager").GetComponent<AudioAttila>().ClickEffect();
+        if (GlobalInfo.spyMode == false)
         {
-            if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal && GlobalInfo.objectivesNum > 0)
-            {                
-            } else
+            infoBox.SetActive(false);
+            GlobalInfo.isShowingInfo = false;
+            int nType = GlobalInfo.gridStage[GlobalInfo.playerPos - 1].type;
+            // Is Town OR City OR Army
+            if (nType == 4 || nType == 5 || nType == 6 || nType == 11 || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal == true || GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isObjective == true)
             {
-                if (battleDone == false)
+                if (GlobalInfo.gridStage[GlobalInfo.playerPos - 1].isFinal && GlobalInfo.objectivesNum > 0)
                 {
-                    ShowBattleOrdersBox();
-                }                
-            }                
-        }            
+                }
+                else
+                {
+                    if (battleDone == false)
+                    {
+                        ShowBattleOrdersBox();                        
+                    }
+                }
+            }
+        } else
+        {
+            GameObject.Find("GameManager").GetComponent<SpyMode>().DisableSpyMode();
+            GlobalInfo.isShowingInfo = false;
+            infoBox.SetActive(false);
+        }
     }
 
     public void ShowBattleOrdersBox()
@@ -736,13 +768,20 @@ public class GameManager : MonoBehaviour
                     if (hit.collider.gameObject.name == "Regualr_Collider_Union" 
                         && GlobalInfo.isPlaying == true 
                         && GlobalInfo.isPlayerMoving == false
-                        && GlobalInfo.isShowingInfo == false)
+                        && GlobalInfo.isShowingInfo == false
+                        && GlobalInfo.spyMode == false)
                     {
                         if (DestionationAvaliable(GameObject.Find(hit.collider.gameObject.transform.parent.name)))
                         {
                             MoveHorse("Cell" + GlobalInfo.playerPos.ToString(), hit.collider.gameObject.transform.parent.name);
                         }                        
-                    }                    
+                    }
+                    if (hit.collider.gameObject.name == "Regualr_Collider_Union"
+                        && GlobalInfo.isShowingInfo == false
+                        && GlobalInfo.spyMode == true)
+                    {
+                        GameObject.Find("GameManager").GetComponent<SpyMode>().SpyCell(hit.collider.gameObject.transform.parent.name);
+                    }
                 }                
             }
         }

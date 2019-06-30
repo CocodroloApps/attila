@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public GameObject configBox;
     public GameObject legalBox;
     public GameObject tradeBox;
+    public GameObject adBox;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,16 @@ public class MainMenu : MonoBehaviour
         }
         StartCoroutine(SaveSessionsConfig());
         SetEnviroment();
+        if (GlobalInfo.sessionsCount % 10 == 0)
+        {
+            StartCoroutine(ShowAdverd());          
+        }
+    }
+
+    IEnumerator ShowAdverd()
+    {
+        yield return new WaitForSeconds(3f);
+        ShowAdBox();
     }
 
     IEnumerator SaveSessionsConfig()
@@ -95,6 +106,17 @@ public class MainMenu : MonoBehaviour
     {
         GameObject.Find("MenuManager").GetComponent<AudioMainMenu>().ClickEffect();
         langBox.SetActive(false);
+    }
+
+    public void ShowAdBox()
+    {
+        GameObject.Find("MenuManager").GetComponent<InternalAds>().ShowAd();
+        adBox.SetActive(true);
+    }
+
+    public void HideAdBox()
+    {
+        adBox.SetActive(false);
     }
 
     public void ShowTradeBox()

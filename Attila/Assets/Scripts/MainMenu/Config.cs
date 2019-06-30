@@ -50,6 +50,7 @@ public class Config : MonoBehaviour
         loadedData.troops = cond.troops;
         loadedData.weapons = cond.weapons;
         loadedData.gold = cond.gold;
+        loadedData.spyMoves = cond.spyMoves;
         loadedData.showTutorial = true;        
         loadedData.sessionsCount = GlobalInfo.sessionsCount;
         DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
@@ -67,6 +68,7 @@ public class Config : MonoBehaviour
         GlobalInfo.troops = cond.troops;
         GlobalInfo.weapons = cond.weapons;
         GlobalInfo.gold = cond.gold;
+        GlobalInfo.spyMoves = cond.spyMoves;
 
         GameObject.Find("MenuManager").GetComponent<MainMenu>().SetEnviroment();
         ShowCompleted();

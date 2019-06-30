@@ -12,6 +12,13 @@ public class InfoBox : MonoBehaviour
     public Text gold;
     public Text gems;
 
+    public GameObject boxSprite;
+
+    public void ChangeSprite(Sprite newS)
+    {
+        boxSprite.GetComponent<Image>().sprite = newS;
+    }
+
     public void ShowMoveResult(int cellNum)
     {
         string sign = "";

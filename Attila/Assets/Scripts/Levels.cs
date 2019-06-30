@@ -61,8 +61,13 @@ public class Levels : MonoBehaviour
 
     public static void LoadLevel(int levelNum)
     {
-        //load info from levels folder       
-        TextAsset jsonTextFile = Resources.Load<TextAsset>("Levels/Attila" + levelNum.ToString());
+        string postFix = "";
+        //load info from levels folder
+        if (GlobalInfo.levelsVersion == 0)
+        {
+            postFix = "";
+        }
+        TextAsset jsonTextFile = Resources.Load<TextAsset>("Levels/Attila" + levelNum.ToString() + postFix);
         object resultValue = JsonUtility.FromJson<Stage>(Encoding.ASCII.GetString(jsonTextFile.bytes));
         Stage loadlevel = (Stage)Convert.ChangeType(resultValue, typeof(Stage));
 

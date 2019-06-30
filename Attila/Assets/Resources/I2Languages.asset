@@ -749,6 +749,30 @@ MonoBehaviour:
       - VICINA
       Flags: 000000000000
       Languages_Touch: []
+    - Term: Ad
+      TermType: 0
+      Description: 
+      Languages:
+      - Publicity
+      - "Publicit\xE9"
+      - Publicidad
+      - Publicitat
+      - Publicidade
+      - "Pubblicit\xE0"
+      Flags: 000000000000
+      Languages_Touch: []
+    - Term: Try me
+      TermType: 0
+      Description: 
+      Languages:
+      - TRY ME
+      - ESSAIE-MOI
+      - "PRU\xC9BAME"
+      - PROVA'M
+      - ME TESTE
+      - PROVA MI
+      Flags: 000000000000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

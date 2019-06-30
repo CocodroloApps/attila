@@ -285,7 +285,7 @@ a5808af1697968805e992fbcc0b82dc6 Assembly-CSharp.dll:EasyMobile.Demo.LoadingPane
 6569242ba17ec023558d681a395ffa54 Assembly-CSharp.dll:EasyMobile.Demo.UtilitiesDemo
 6363f1e4e428ceb5d0586f35c2b5ab7a Assembly-CSharp.dll:.LoadingBar
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:EasyMobile.Internal.Notifications.AndroidNotificationListener
-28123fe2c4593591fe8cf42369fe15e1 Assembly-CSharp.dll:.AudioAttila
+6a6895fbc45e74a6b2a244641baf9117 Assembly-CSharp.dll:.AudioAttila
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -307,6 +307,7 @@ cca7d97c591ec0a4d772a7594b87c536 Assembly-CSharp.dll:Anonym.Isometric.TileSetSpr
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:I2.Loc.CoroutineManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:I2.Loc.ToggleLanguage
 41d303d4e8c2190105c0d3bd29b481bb Assembly-CSharp.dll:GUIAnimatorDemo.Demo03
+d497bc29db6052bdd6e0c90edb9e7097 Assembly-CSharp.dll:.SpyMode
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 60d913ab4307d0334fb21935a4ad6e28 Assembly-CSharp.dll:EasyMobile.Demo.AddedStringStringView
 b3cef659b7319f500b8b0156b2bdf119 Assembly-CSharp.dll:Anonym.Util.TouchManager
@@ -318,7 +319,7 @@ e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 41d303d4e8c2190105c0d3bd29b481bb Assembly-CSharp.dll:GUIAnimatorDemo.Demo05
 024180aa81add2338c40d15e3c595d28 Assembly-CSharp.dll:.ZoomInZoomOut
 37159ef932afdc72b08ff1bf8ac5c8a8 Assembly-CSharp.dll:.GameCell
-8705d90790bd5db07988d5b83094a740 Assembly-CSharp.dll:.GameManager
+a828b980cd480cdf5b263258112f9198 Assembly-CSharp.dll:.GameManager
 62d24dc9808a278c045157f0f1d572e5 Assembly-CSharp.dll:EasyMobile.Demo.ColorHandler
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
@@ -379,7 +380,7 @@ d34103413f1163feaca3d8921142dd9e Assembly-CSharp.dll:I2.Loc.LocalizeTarget_Unity
 bfc3e3a0afdc0562a9f9e58a77998dcd Assembly-CSharp.dll:EasyMobile.Demo.GameServicesDemo_Multiplayer_TurnbasedKitchenSink
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:EasyMobile.Advertising
-3d2aed7559e65116c464c52a554a3ca4 Assembly-CSharp.dll:.MainMenu
+23dea15e1758ee5843a75dd6eec5ff57 Assembly-CSharp.dll:.MainMenu
 10bc312f49d5429a651b4bd1805b3c59 Assembly-CSharp.dll:.AudioStagesMenu
 fefb468d0ed403c583ac8876634b46be Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityStandard_TextMesh
 5edb0056ed9ab11b65e93f830e75d6ed Assembly-CSharp.dll:I2.Loc.LocalizationParamsManager
@@ -439,7 +440,7 @@ fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBe
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:I2.Loc.RegisterGlobalParameters
 6a8ef5517b9fd311cb94308988c32a9c Assembly-CSharp.dll:Anonym.Util.SSHelper
 fab7db98b545b08e10fcb2f1bc690ba8 Assembly-CSharp.dll:Anonym.Isometric.IsometircSortingOrder
-e231f8223476d216810a832b95b18dba Assembly-CSharp.dll:.InfoBox
+b1e4a97f70369a864f0233abe79e4d10 Assembly-CSharp.dll:.InfoBox
 c2bba42ccf8a6ae3dd81706fc48382d6 Assembly-CSharp.dll:I2.Loc.LocalizeTarget_UnityStandard_AudioSource
 32280b797839f393633d2652c0400d85 Assembly-CSharp.dll:EasyMobile.Demo.GameServicesDemo_SavedGames
 9fb38f8221186a370ce2b029aa6043aa Assembly-CSharp.dll:EasyMobile.Demo.GifDemo
@@ -479,3 +480,4 @@ cd67f3e1e9ccac6db86c1564cea5a827 Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 fbbf64dcbe0662e3eda1dec45ea8f895 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 71bb6a6b6c8f052f948db64c7dd3ca4f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 6a1940227f2a2b66d557f3d62a2d86c7 Assembly-CSharp.dll:EasyMobile.Demo.AdvertisingDemo
+cddc21fef8391e889018c3ce2e2e9fd8 Assembly-CSharp.dll:.InternalAds

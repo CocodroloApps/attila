@@ -650,6 +650,7 @@
     <Compile Include="Assets\Scripts\Attila\GameManager.cs" />
     <Compile Include="Assets\Scripts\Attila\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Attila\MovePlayer.cs" />
+    <Compile Include="Assets\Scripts\Attila\SpyMode.cs" />
     <Compile Include="Assets\Scripts\Attila\TradeGold.cs" />
     <Compile Include="Assets\Scripts\Attila\UIAnimAttila.cs" />
     <Compile Include="Assets\Scripts\General\AppVersion.cs" />
@@ -669,6 +670,7 @@
     <Compile Include="Assets\Scripts\LoadConfig.cs" />
     <Compile Include="Assets\Scripts\MainMenu\AudioMainMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Config.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\InternalAds.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Language.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Languages.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />

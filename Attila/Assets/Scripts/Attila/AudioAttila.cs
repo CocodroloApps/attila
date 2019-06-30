@@ -17,6 +17,8 @@ public class AudioAttila : MonoBehaviour
     public AudioClip sceneEffect;
     public AudioClip battleEffect;
     public AudioClip victoryEffect;
+    public AudioClip spyEffect1;
+    public AudioClip spyEffect2;
     public AudioSource audioSource;
 
     public void ClickEffect()
@@ -101,6 +103,24 @@ public class AudioAttila : MonoBehaviour
         {
             audioSource.volume = 0.8f;
             audioSource.PlayOneShot(victoryEffect);
+        }
+    }
+
+    public void SpyEffect1()
+    {
+        if (GlobalInfo.soundPlay == true)
+        {
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(spyEffect1);
+        }
+    }
+
+    public void SpyEffect2()
+    {
+        if (GlobalInfo.soundPlay == true)
+        {
+            audioSource.volume = 0.8f;
+            audioSource.PlayOneShot(spyEffect2);
         }
     }
 }

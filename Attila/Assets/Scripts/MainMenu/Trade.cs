@@ -12,6 +12,8 @@ public class Trade : MonoBehaviour
     const int gold2 = 700;
     const int gold3 = 1000;
 
+    private int origen = 0;
+
     private void Start()
     {
         Advertising.LoadRewardedAd();
@@ -34,8 +36,16 @@ public class Trade : MonoBehaviour
     {
         Debug.Log("Rewarded ad has completed. The user should be rewarded now.");
 
-        VideoReward();
-        SaveSell();        
+        if (origen == 1)
+        {
+            VideoReward();
+            SaveSell();
+        }
+        if (origen == 2)
+        {
+            VideoRewardSpy();
+            SaveSell();
+        }
     }
 
     // Event handler called when a rewarded ad has been skipped
@@ -63,6 +73,7 @@ public class Trade : MonoBehaviour
         PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(GlobalInfo.configFile, "txt");
         loadedData.score = GlobalInfo.score;
         loadedData.gold = GlobalInfo.gold;
+        loadedData.spyMoves = GlobalInfo.spyMoves;
         DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
     }
 
@@ -104,13 +115,30 @@ public class Trade : MonoBehaviour
         GlobalInfo.gold = GlobalInfo.gold + 25000;                
     }
 
+    private void VideoRewardSpy()
+    {
+        GlobalInfo.spyMoves = GlobalInfo.spyMoves + 5;
+    }
+
     public void RewardVideo()
     {
         bool isReady = Advertising.IsRewardedAdReady();
+        origen = 1;
         if (isReady)
         {
             Advertising.ShowRewardedAd();
         }
         Advertising.LoadRewardedAd();      
+    }
+
+    public void RewardVideoSpy()
+    {
+        bool isReady = Advertising.IsRewardedAdReady();
+        origen = 2;
+        if (isReady)
+        {
+            Advertising.ShowRewardedAd();
+        }
+        Advertising.LoadRewardedAd();
     }
 }

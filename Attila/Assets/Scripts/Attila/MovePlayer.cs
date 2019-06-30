@@ -133,6 +133,7 @@ public class MovePlayer : MonoBehaviour
                     loadedData.food = GlobalInfo.food;
                     loadedData.gold = GlobalInfo.gold;
                     loadedData.score = GlobalInfo.score;
+                    loadedData.spyMoves = GlobalInfo.spyMoves;
                     DataSaver.saveData(loadedData, GlobalInfo.configFile, "txt");
 
                     if (GlobalInfo.maxStageCompleted == GlobalInfo.maxStagesGame)

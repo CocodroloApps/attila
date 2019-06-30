@@ -31,6 +31,8 @@ public class LoadConfig : MonoBehaviour {
             saveData.troops = cond.troops;
             saveData.weapons = cond.weapons;
             saveData.gold = cond.gold;
+            saveData.spyMoves = cond.spyMoves;
+            saveData.levelsVersion = cond.levelsVersion;
 
             //Save data from PlayerInfo to a file named players
             DataSaver.saveData(saveData, configFileName,"txt");
@@ -52,7 +54,9 @@ public class LoadConfig : MonoBehaviour {
             GlobalInfo.food = cond.food;
             GlobalInfo.troops = cond.troops;
             GlobalInfo.weapons = cond.weapons;
-            GlobalInfo.gold = cond.gold;            
+            GlobalInfo.gold = cond.gold;
+            GlobalInfo.spyMoves = cond.spyMoves;
+            GlobalInfo.levelsVersion = cond.levelsVersion;
         } else
         {
             PlayerInfo loadedData = DataSaver.loadData<PlayerInfo>(configFileName,"txt");
@@ -85,6 +89,8 @@ public class LoadConfig : MonoBehaviour {
             GlobalInfo.troops = loadedData.troops;
             GlobalInfo.weapons = loadedData.weapons;
             GlobalInfo.gold = loadedData.gold;
+            GlobalInfo.spyMoves = loadedData.spyMoves;
+            GlobalInfo.levelsVersion = loadedData.levelsVersion;
         }
     }
 }
